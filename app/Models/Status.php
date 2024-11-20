@@ -12,7 +12,7 @@ class Status extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = 'nama_status';
+    protected $allowedFields    = ['nama_status'];
 
     // Dates
     protected $useTimestamps = false;

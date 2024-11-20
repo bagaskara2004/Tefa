@@ -12,7 +12,7 @@ class Fitur extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = 'nama_fitur';
+    protected $allowedFields    = ['nama_fitur'];
 
     // Dates
     protected $useTimestamps = false;
