@@ -7,12 +7,12 @@ use CodeIgniter\Model;
 class Fitur extends Model
 {
     protected $table            = 'fitur';
-    protected $primaryKey       = 'id_fitur';
-    protected $useAutoIncrement = true;
+    protected $primaryKey       = 'id_admin';
+    protected $useAutoIncrement = false;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_fitur'];
+    protected $allowedFields    = ['id_admin','dashboard','pesanan','projek','admin'];
 
     // Dates
     protected $useTimestamps = false;
