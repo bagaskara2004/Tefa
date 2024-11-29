@@ -15,19 +15,19 @@ class Users extends Migration
             ],
             'username' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '500',
             ],
             'password' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '500',
             ],
             'email' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '500',
             ],
             'otp' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '500',
             ],
             'actived' => [
                 'type'       => 'TINYINT',

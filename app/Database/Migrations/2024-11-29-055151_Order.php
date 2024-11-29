@@ -21,7 +21,7 @@ class Order extends Migration
             ],
             'title' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '500',
             ],
             'description' => [
                 'type'       => 'VARCHAR',

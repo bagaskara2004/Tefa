@@ -26,11 +26,11 @@ class Project extends Migration
             ],
             'photo' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '500',
             ],
             'url' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '500',
             ],
             'created' => [
                 'type'       => 'datetime',
