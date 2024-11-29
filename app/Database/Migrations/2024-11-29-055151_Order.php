@@ -4,42 +4,50 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Admin extends Migration
+class Order extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_admin' => [
+            'id_order' => [
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'nama_admin' => [
+            'id_status' => [
+                'type'           => 'INT',
+            ],
+            'id_user' => [
+                'type'           => 'INT',
+            ],
+            'title' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '200',
             ],
-            'password_admin' => [
+            'description' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '1000',
             ],
-            'tanggal_dibuat' => [
+            'created' => [
                 'type'       => 'datetime',
                 'null'       => True
             ],
-            'tanggal_diubah' => [
+            'updated' => [
                 'type'       => 'datetime',
                 'null'       => True
             ],
-            'tanggal_dihapus' => [
+            'deleted' => [
                 'type'       => 'datetime',
                 'null'       => True
-            ],
+            ]
         ]);
-        $this->forge->addKey('id_admin', true);
-        $this->forge->createTable('Admin');
+        $this->forge->addKey('id_order', true);
+        $this->forge->addForeignKey('id_status', 'Status', 'id_status');
+        $this->forge->addForeignKey('id_user', 'User', 'id_user');
+        $this->forge->createTable('Order');
     }
 
     public function down()
     {
-        $this->forge->dropTable('Admin');
+        $this->forge->dropTable('Order');
     }
 }

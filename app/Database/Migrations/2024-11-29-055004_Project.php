@@ -4,62 +4,54 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Pesanan extends Migration
+class Project extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_pesanan' => [
+            'id_project' => [
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'id_admin' => [
+            'id_user' => [
                 'type'           => 'INT',
             ],
-            'id_status' => [
-                'type'           => 'INT',
-            ],
-            'nama_pemesan' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '200',
-            ],
-            'telp_pemesan' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '200',
-            ],
-            'judul_pesanan' => [
+            'title' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '50',
             ],
-            'deskripsi_pesanan' => [
+            'description' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '1000',
             ],
-            'otp_pesanan' => [
+            'photo' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '200',
             ],
-            'tanggal_dibuat' => [
+            'url' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '200',
+            ],
+            'created' => [
                 'type'       => 'datetime',
                 'null'       => True
             ],
-            'tanggal_diubah' => [
+            'updated' => [
                 'type'       => 'datetime',
                 'null'       => True
             ],
-            'tanggal_dihapus' => [
+            'deleted' => [
                 'type'       => 'datetime',
                 'null'       => True
             ],
         ]);
-        $this->forge->addKey('id_pesanan', true);
-        $this->forge->addForeignKey('id_admin', 'Admin', 'id_admin');
-        $this->forge->addForeignKey('id_status', 'Status', 'id_status');
-        $this->forge->createTable('Pesanan');
+        $this->forge->addKey('id_project', true);
+        $this->forge->addForeignKey('id_user', 'User', 'id_user');
+        $this->forge->createTable('Project');
     }
 
     public function down()
     {
-        $this->forge->dropTable('Pesanan');
+        $this->forge->dropTable('Project');
     }
 }
