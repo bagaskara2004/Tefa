@@ -12,7 +12,7 @@ class Projek extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_admin','judul_projek','deskripsi_projek','foto_projek'];
+    protected $allowedFields    = ['id_admin', 'judul_projek', 'deskripsi_projek', 'foto_projek'];
 
     // Dates
     protected $useTimestamps = true;
@@ -24,5 +24,10 @@ class Projek extends Model
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function getAllProjects()
+    {
+        return $this->findAll(); 
     }
 }
