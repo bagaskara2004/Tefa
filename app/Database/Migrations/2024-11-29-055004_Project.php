@@ -13,7 +13,7 @@ class Project extends Migration
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'id_user' => [
+            'id_admin' => [
                 'type'           => 'INT',
             ],
             'title' => [
@@ -46,7 +46,7 @@ class Project extends Migration
             ],
         ]);
         $this->forge->addKey('id_project', true);
-        $this->forge->addForeignKey('id_user', 'User', 'id_user');
+        $this->forge->addForeignKey('id_admin', 'User', 'id_user');
         $this->forge->createTable('Project');
     }
 
