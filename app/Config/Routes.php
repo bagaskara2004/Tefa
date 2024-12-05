@@ -5,11 +5,18 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
-$routes->get('/user', 'ApiUser::index');
-$routes->post('/registeruser', 'ApiUser::create');
 
-$routes->get('/about', 'about::index');
-$routes->get('/project', 'project::index');
-$routes->get('/auth', 'auth::index');
-$routes->get('/productlist/getProducts', 'ProductList::getProducts');
+// user
+$routes->get('/', 'Home::index');
+$routes->get('/about', 'About::index');
+$routes->get('/project', 'Project::index');
+$routes->get('/order', 'Order::index');
+
+//auth
+$routes->get('/registeruser', 'AuthUser::register');
+$routes->post('/registeruser', 'AuthUser::register');
+$routes->get('/loginuser', 'AuthUser::login');
+
+// api
+$routes->post('/adduser', 'ApiUser::create');
+$routes->get('/user', 'ApiUser::index');

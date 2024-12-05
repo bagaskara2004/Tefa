@@ -24,7 +24,7 @@ class ModelUser extends Model
     // Validation
     protected $validationRules      = [
         'username' => 'required|min_length[3]|max_length[15]|alpha_numeric',
-        'password' => 'required|min_length[5]|max_length[25]',
+        'password' => 'required|min_length[5]|max_length[50]',
         'email' => 'required|valid_email|min_length[10]|max_length[50]',
     ];
     protected $validationMessages   = [];
@@ -47,6 +47,7 @@ class ModelUser extends Model
     public function __construct()
     {
         parent::__construct();
+        date_default_timezone_set('Asia/Makassar');
         $this->encryption = \Config\Services::encrypter();
     }
 

@@ -1,5 +1,6 @@
-<?= $this->extend('user\user') ?>
-<?= $this->section('content') ?>
+<?= $this->extend('Component/user.php') ?>
+
+<?= $this->section('Content') ?>
 <header class="bg-primary-gradient">
     <div class="container py-5">
         <div class="row py-5">
@@ -10,14 +11,14 @@
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="p-5 mx-lg-5" style="background: url(&quot;blob.svg&quot;) center / contain no-repeat;"><img class="rounded img-fluid shadow w-100 fit-cover" style="min-height: 300px;" src="assets/img/ilustrasi/iPhone-13-PRO-MAX-%20(1).png"></div>
+                <div class="p-5 mx-lg-5" style="background: url(&quot;blob.svg&quot;) center / contain no-repeat;"><img class="rounded img-fluid shadow w-100 fit-cover" style="min-height: 300px;" src="/assets/img/ilustrasi/iPhone-13-PRO-MAX- (1)-min.webp"></div>
             </div>
         </div>
     </div>
 </header>
 <section class="py-5">
     <div class="container text-center py-5">
-        <p class="mb-4" style="font-size: 1.6rem;">Used by <span class="text-dark bg-success-light p-1"><strong>2400+</strong></span>&nbsp;of the best companies in the world.</p><a href="#"> <img class="m-3" src="assets/img/brands/instacart.png"></a><a href="#"> <img class="m-3" src="assets/img/brands/kickstarter.png"></a><a href="#"> <img class="m-3" src="assets/img/brands/lyft.png"></a><a href="#"> <img class="m-3" src="assets/img/brands/shopify.png"></a><a href="#"> <img class="m-3" src="assets/img/brands/pinterest.png"></a><a href="#"> <img class="m-3" src="assets/img/brands/twitter.png"></a>
+        <p class="mb-4" style="font-size: 1.6rem;">Used by <span class="text-dark bg-success-light p-1"><strong>2400+</strong></span>&nbsp;of the best companies in the world.</p><a href="#"> <img class="m-3" src="/assets/img/brands/instacart.png"></a><a href="#"> <img class="m-3" src="/assets/img/brands/kickstarter.png"></a><a href="#"> <img class="m-3" src="/assets/img/brands/lyft.png"></a><a href="#"> <img class="m-3" src="/assets/img/brands/shopify.png"></a><a href="#"> <img class="m-3" src="/assets/img/brands/pinterest.png"></a><a href="#"> <img class="m-3" src="/assets/img/brands/twitter.png"></a>
     </div>
 </section>
 <section>
@@ -125,7 +126,7 @@
             <div class="col mb-4">
                 <div class="d-flex flex-column align-items-center align-items-sm-start">
                     <p class="bg-body-tertiary border rounded border-0 border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                    <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="team/avatar2.jpg">
+                    <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="/assets/img/avatars/avatar7.jpg">
                         <div>
                             <p class="fw-bold text-primary mb-0">John Smith</p>
                             <p class="text-muted mb-0">Erat netus</p>
@@ -136,7 +137,7 @@
             <div class="col mb-4">
                 <div class="d-flex flex-column align-items-center align-items-sm-start">
                     <p class="bg-body-tertiary border rounded border-0 border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                    <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="team/avatar4.jpg">
+                    <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="/assets/img/avatars/avatar6.jpg">
                         <div>
                             <p class="fw-bold text-primary mb-0">John Smith</p>
                             <p class="text-muted mb-0">Erat netus</p>
@@ -147,7 +148,7 @@
             <div class="col mb-4">
                 <div class="d-flex flex-column align-items-center align-items-sm-start">
                     <p class="bg-body-tertiary border rounded border-0 border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                    <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="team/avatar5.jpg">
+                    <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="/assets/img/avatars/avatar5.jpeg">
                         <div>
                             <p class="fw-bold text-primary mb-0">John Smith</p>
                             <p class="text-muted mb-0">Erat netus</p>
