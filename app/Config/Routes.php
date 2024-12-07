@@ -12,6 +12,10 @@ $routes->get('/about', 'About::index');
 $routes->get('/project', 'Project::index');
 $routes->get('/order', 'Order::index');
 
+//admin
+$routes->get('/dashboard', 'Dashboard::index');
+
+
 //auth
 $routes->get('/registeruser', 'AuthUser::register');
 $routes->post('/registeruser', 'AuthUser::register');

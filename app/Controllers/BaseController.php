@@ -27,6 +27,7 @@ abstract class BaseController extends Controller
      * @var CLIRequest|IncomingRequest
      */
     protected $request;
+    protected $time;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -50,6 +51,8 @@ abstract class BaseController extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
+        date_default_timezone_set('Asia/Makassar');
+        $this->time = date('d-m-Y');
 
         // Preload any models, libraries, etc, here.
 

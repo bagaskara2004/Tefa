@@ -46,6 +46,7 @@ class ModelOrder extends Model
     public function __construct()
     {
         parent::__construct();
+        date_default_timezone_set('Asia/Makassar');
         $this->encryption = \Config\Services::encrypter();
     }
 
