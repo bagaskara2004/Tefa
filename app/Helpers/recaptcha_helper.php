@@ -1,5 +1,6 @@
-<?php 
- function verifyCaptcha($remoteIp,$response) {
+<?php
+function verifyCaptcha($remoteIp, $response)
+{
     $secretKey = '6LcfKZIqAAAAACf0AkdSa1gqcYjNrNdDZfvDUFUj';
     $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
 
@@ -9,6 +10,4 @@
         return true;
     }
     return false;
- }
- 
- ?>
+}

@@ -9,10 +9,12 @@ use App\Models\ModelUser;
 class AuthUser extends BaseController
 {
     protected $modelUser;
+    protected $encryption;
 
     public function __construct()
     {
         $this->modelUser = new ModelUser();
+        $this->encryption = \Config\Services::encrypter();
     }
 
     public function login()
@@ -31,7 +33,7 @@ class AuthUser extends BaseController
             'username' => htmlspecialchars($this->request->getVar('username')),
             'password' => htmlspecialchars($this->request->getVar('password')),
             'email' => htmlspecialchars($this->request->getVar('email')),
-            'otp' => $this->generateOtp(),
+            'otp' => generateOtp(),
             'actived' => false,
             'role' => false
         ];
@@ -51,36 +53,14 @@ class AuthUser extends BaseController
             return redirect()->back()->withInput()->with('errorarray',$this->modelUser->errors());
         }
 
-        $activate = $this->sendMail($data['email'],$data['otp']);
-        if (!$activate) {
+        $sendMail = sendMail($data['email'],$data['otp']);
+        if (!$sendMail) {
             return redirect()->back()->withInput()->with('error','Failed to send email');
         }
 
-        return redirect()->to('/loginuser')->with('success','Success create account');
-    }
-
-    private function generateOtp()
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $otp = '';
-
-        for ($i = 0; $i < 6; $i++) {
-            $otp .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $otp;
-    }
-
-    private function sendMail($email,$otp) {
-        $emailService = \Config\Services::email();
-        $emailService->setFrom('testing20041120@gmail.com', 'Tefa');
-        $emailService->setTo($email);
-        $emailService->setSubject('Activate your account');
-        $emailService->setMessage("Kode OTP = $otp");
-        if ($emailService->send()) {
-            return true;
-        }
-        return false;
+        $token = $this->encryption->encrypt($data['email']);
+        session()->set('email_user', $token);
+        return redirect()->to("/actived/form");
     }
 
     private function chekEmail($email)

@@ -35,7 +35,7 @@ class ModelUser extends Model
     protected $allowCallbacks = true;
     protected $beforeInsert   = ['encryptUser'];
     protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
+    protected $beforeUpdate   = ['encryptUser'];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = ['decriptUser'];

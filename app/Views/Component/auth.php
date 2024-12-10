@@ -22,7 +22,7 @@
             <div class="card mb-0">
               <div class="card-body">
                   <div class="text-nowrap logo-img text-center d-block pt-3 pb-4 w-100">
-                    <img src="/assets/img/logos/tefa.png" width="180" alt="">
+                    <img src="/assets/img/logos/tefa.png" width="150" alt="">
                   </div>
                 <?= $this->renderSection('Form') ?>
               </div>
@@ -57,6 +57,7 @@
   </div>
   <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/auth.js"></script>
 </body>
 
 </html>
