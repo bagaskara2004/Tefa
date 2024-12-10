@@ -12,7 +12,7 @@ class ModelUser extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['username', 'password', 'email', 'otp', 'actived', 'role'];
+    protected $allowedFields    = ['username', 'password', 'email', 'photo', 'otp', 'actived', 'role'];
 
     // Dates
     protected $useTimestamps = true;
@@ -26,6 +26,7 @@ class ModelUser extends Model
         'username' => 'required|min_length[3]|max_length[25]|alpha_numeric',
         'password' => 'required|min_length[5]|max_length[50]',
         'email' => 'required|valid_email|min_length[10]|max_length[50]',
+        'photo' => 'required|min_length[3]|max_length[500]',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
