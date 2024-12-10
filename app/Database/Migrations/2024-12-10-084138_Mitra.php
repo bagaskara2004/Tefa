@@ -4,31 +4,27 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Project extends Migration
+class Mitra extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_project' => [
+            'id_mitra' => [
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'id_admin' => [
+            'id_website' => [
                 'type'           => 'INT',
             ],
-            'title' => [
+            'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '50',
             ],
-            'description' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '1000',
-            ],
-            'photo' => [
+            'logo' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '500',
             ],
-            'url' => [
+            'link' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '500',
             ],
@@ -45,13 +41,13 @@ class Project extends Migration
                 'null'       => True
             ],
         ]);
-        $this->forge->addKey('id_project', true);
-        $this->forge->addForeignKey('id_admin', 'User', 'id_user');
-        $this->forge->createTable('Project');
+        $this->forge->addKey('id_mitra', true);
+        $this->forge->addForeignKey('id_website', 'Website', 'id_website');
+        $this->forge->createTable('Mitra');
     }
 
     public function down()
     {
-        $this->forge->dropTable('Project');
+        $this->forge->dropTable('Mitra');
     }
 }

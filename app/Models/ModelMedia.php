@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ModelProject extends Model
+class ModelMedia extends Model
 {
-    protected $table            = 'project';
-    protected $primaryKey       = 'id_project';
+    protected $table            = 'media';
+    protected $primaryKey       = 'id_media';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_website','title','description','photo','url'];
+    protected $allowedFields    = ['id_website','name','link','icon'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,10 +23,9 @@ class ModelProject extends Model
 
     // Validation
     protected $validationRules      = [
-        'title' => 'required|min_length[3]|max_length[50]|alpha_numeric',
-        'description' => 'required|min_length[20]|max_length[1000]|alpha_numeric',
-        'photo' => 'required|max_length[500]',
-        'url' => 'required|max_length[500]',
+        'name' => 'required|min_length[3]|max_length[50]|alpha_numeric',
+        'link' => 'required|min_length[3]|max_length[500]|',
+        'icon' => 'required|min_length[3]|max_length[50]|',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

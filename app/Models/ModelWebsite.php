@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ModelChat extends Model
+class ModelWebsite extends Model
 {
-    protected $table            = 'chat';
-    protected $primaryKey       = 'id_chat';
+    protected $table            = 'website';
+    protected $primaryKey       = 'id_website';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_admin','id_order','message','admin_read','user_read'];
+    protected $allowedFields    = ['email', 'location'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,7 +23,8 @@ class ModelChat extends Model
 
     // Validation
     protected $validationRules      = [
-        'message' => 'required|min_length[3]|max_length[50]|alpha_numeric'
+        'email' => 'required|valid_email|min_length[10]|max_length[50]',
+        'location' => 'required|min_length[3]|max_length[500]'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -31,12 +32,12 @@ class ModelChat extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = ['encryptChat'];
+    protected $beforeInsert   = ['encryptWebsite'];
     protected $afterInsert    = [];
-    protected $beforeUpdate   = ['encryptChat'];
+    protected $beforeUpdate   = ['encryptWebsite'];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
-    protected $afterFind      = ['decriptChat'];
+    protected $afterFind      = ['decriptWebsite'];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
@@ -49,13 +50,14 @@ class ModelChat extends Model
         $this->encryption = \Config\Services::encrypter();
     }
 
-    protected function encryptChat(array $data)
+    protected function encryptWebsite(array $data)
     {
-        $data['data']['message'] = $this->encryption->encrypt($data['data']['username']);
+        $data['data']['email'] = $this->encryption->encrypt($data['data']['email']);
+
         return $data;
     }
 
-    protected function decriptChat(array $data)
+    protected function decriptWebsite(array $data)
     {
         if (isset($data['data']) && is_array($data['data']) && !isset($data['data'][0])) {
             $data['data'] = $this->decryptData($data['data']);
@@ -69,11 +71,12 @@ class ModelChat extends Model
 
     private function decryptData(array $data)
     {
-        foreach (['message'] as $field) {
+        foreach (['email'] as $field) {
             if (!empty($data[$field])) {
                 $data[$field] = $this->encryption->decrypt($data[$field]);
             }
         }
+
         return $data;
     }
 }

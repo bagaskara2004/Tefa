@@ -24,7 +24,7 @@ class ModelOrder extends Model
     // Validation
     protected $validationRules      = [
         'title' => 'required|min_length[3]|max_length[25]|alpha_numeric',
-        'description' => 'required|min_length[20]|alpha_numeric',
+        'description' => 'required|min_length[20]|max_length[1000]|alpha_numeric',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -34,7 +34,7 @@ class ModelOrder extends Model
     protected $allowCallbacks = true;
     protected $beforeInsert   = ['encryptOrder'];
     protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
+    protected $beforeUpdate   = ['encryptOrder'];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = ['decriptOrder'];
