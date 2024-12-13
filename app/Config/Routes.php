@@ -31,6 +31,7 @@ $routes->group('auth', function ($routes) {
     $routes->get('registeruser', 'AuthUser::register');
     $routes->post('registeruser', 'AuthUser::register');
     $routes->get('loginuser', 'AuthUser::login');
+    $routes->post('loginuser', 'AuthUser::login');
 });
 
 // api

@@ -4,7 +4,7 @@
 <section class="position-relative py-4 py-xl-5" style="margin-top: 5em;">
     <div class="container position-relative">
         <div class="row">
-            <div class="col" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true"><iframe allowfullscreen="" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d985.7154086506637!2d115.1628662!3d-8.7990675!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd244c13ee9d753%3A0x6c05042449b50f81!2sPoliteknik%20Negeri%20Bali!5e0!3m2!1sid!2sid!4v1727521330800!5m2!1sid!2sid" width="100%" height="100%"></iframe></div>
+            <div class="col" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true"><iframe allowfullscreen="" frameborder="0" src="<?=$location?>" width="100%" height="100%"></iframe></div>
             <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-duration="600" data-aos-once="true">
                 <div style="box-shadow: 0px 0px 12px 9px #7b7b7b15;">
                     <form class="p-3 p-xl-4" method="post">

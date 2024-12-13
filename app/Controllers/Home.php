@@ -8,5 +8,6 @@ class Home extends BaseController
     {
         $data['page'] = 'Home';
         return view('user/index',$data);
+        
     }
 }

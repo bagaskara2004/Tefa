@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tefa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/styles.min.css" />
 </head>
 
@@ -32,7 +33,7 @@
                             <span class="hide-menu">Menu</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?=$page=='Dashboard'?'active':''?>" href="/dashboard" aria-expanded="false">
+                            <a class="sidebar-link <?= $page == 'Dashboard' ? 'active' : '' ?>" href="/dashboard" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -40,7 +41,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?=$page=='Orders'?'active':''?>" href="/orders" aria-expanded="false">
+                            <a class="sidebar-link <?= $page == 'Orders' ? 'active' : '' ?>" href="/orders" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-truck-return"></i>
                                 </span>
@@ -48,7 +49,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?=$page=='Projects'?'active':''?>" href="/projects" aria-expanded="false">
+                            <a class="sidebar-link <?= $page == 'Projects' ? 'active' : '' ?>" href="/projects" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-folders"></i>
                                 </span>
@@ -56,7 +57,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?=$page=='Users'?'active':''?>" href="users" aria-expanded="false">
+                            <a class="sidebar-link <?= $page == 'Users' ? 'active' : '' ?>" href="users" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>
@@ -92,6 +93,28 @@
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
+            <div class="position-fixed bottom-0 start-0">
+                <?php if (session()->getFlashdata('errorarray')) { ?>
+                    <?php foreach (session()->getFlashdata('errorarray') as $err) { ?>
+                        <div class="alert alert-danger alert-dismissible fade show m-1" role="alert">
+                            <small><?= $err ?></small>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+                <?php if (session()->getFlashdata('error')) { ?>
+                    <div class="alert alert-danger alert-dismissible fade show m-1" role="alert">
+                        <small><?= session()->getFlashdata('error') ?></small>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
+                <?php if (session()->getFlashdata('success')) { ?>
+                    <div class="alert alert-success alert-dismissible fade show m-1" role="alert">
+                        <small><?= session()->getFlashdata('success') ?></small>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php } ?>
+            </div>
         </aside>
         <!--  Sidebar End -->
         <!--  Main wrapper -->
@@ -117,7 +140,6 @@
             <div class="container-fluid">
                 <!--  Row 1 -->
                 <?= $this->renderSection('Content') ?>
-
             </div>
         </div>
     </div>

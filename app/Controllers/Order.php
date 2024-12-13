@@ -10,6 +10,7 @@ class Order extends BaseController
     public function index()
     {
         $data['page'] = 'Order';
+        $data['location'] = $this->website['location'];
         return view('user/order',$data);
     }
 }

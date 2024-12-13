@@ -1,8 +1,8 @@
 <?php
-function sendMail($email, $otp)
+function sendMail($email, $otp , $from)
 {
     $emailService = \Config\Services::email();
-    $emailService->setFrom('testing20041120@gmail.com', 'Tefa');
+    $emailService->setFrom($from, 'Tefa');
     $emailService->setTo($email);
     $emailService->setSubject('Activate your account');
     $emailService->setMessage("Kode OTP = $otp");

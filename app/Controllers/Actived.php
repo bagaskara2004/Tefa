@@ -30,13 +30,13 @@ class Actived extends BaseController
         }
         $user['actived'] = true;
         $this->modelUser->save($user);
-        session()->remove('email_user');
+        session()->remove('actived_token');
         return redirect()->to('/auth/loginuser')->with('success', 'Your account active');
     }
 
     public function findUser()
     {
-        $email = $this->encryption->decrypt(session()->get('email_user'));
+        $email = $this->encryption->decrypt(session()->get('actived_token'));
         $users = $this->modelUser->orderBy('id_user', 'DESC')->findAll();
         foreach ($users as $user) {
             if ($user['email'] == $email) {
@@ -56,14 +56,14 @@ class Actived extends BaseController
 
     public function resendOtp() {
         $user = $this->findUser();
-        $user['otp'] = generateOtp();
+        $user['otp'] = generateKode();
 
         $updateUser = $this->modelUser->save($user);
         if (!$updateUser) {
             return redirect()->back()->withInput()->with('error','Failed Actived, try again');
         }
 
-        $sendMail = sendMail($user['email'],$user['otp']);
+        $sendMail = sendMail($user['email'],$user['otp'],$this->website['email']);
         if (!$sendMail) {
             return redirect()->back()->withInput()->with('error','Failed to send OTP');
         }

@@ -8,6 +8,8 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\ModelUser;
+use App\Models\ModelWebsite;
 
 /**
  * Class BaseController
@@ -28,6 +30,7 @@ abstract class BaseController extends Controller
      */
     protected $request;
     protected $time;
+    protected $website;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -53,7 +56,12 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
         date_default_timezone_set('Asia/Makassar');
         $this->time = date('d-m-Y');
-
+        $modelWebsite = new ModelWebsite();
+        $data = $modelWebsite->first();
+        if (!isset($data)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Website Tidak Ditemukan');
+        }
+        $this->website = $data;
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
