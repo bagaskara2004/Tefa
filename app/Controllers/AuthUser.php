@@ -44,7 +44,7 @@ class AuthUser extends BaseController
         }
 
         if ($remember) {
-            setAppCookie('remember_me',base64_encode($this->encryption->encrypt($email)));
+            setAppCookie('remember_me', base64_encode($this->encryption->encrypt($user['id_user'])));
         }
         session()->set('user', $user['id_user']);
 

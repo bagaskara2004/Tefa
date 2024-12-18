@@ -7,7 +7,6 @@ class Home extends BaseController
     public function index()
     {
         $data['page'] = 'Home';
-        return view('user/index',$data);
-        
+        return view('user/index', $data);
     }
 }

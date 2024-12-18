@@ -27,8 +27,15 @@
                     <li class="nav-item"><a class="nav-link <?= $page == 'Home' ? 'active' : '' ?>" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link <?= $page == 'About' ? 'active' : '' ?>" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link <?= $page == 'Project' ? 'active' : '' ?>" href="/project">Project</a></li>
-                    <li class="nav-item"><a class="nav-link <?= $page == 'Order' ? 'active' : '' ?>" href="/order">Order</a></li>
-                </ul><a href="/auth/loginuser" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Sign In</a>
+                    <?php if (session('user')) : ?>
+                        <li class="nav-item"><a class="nav-link <?= $page == 'Profile' ? 'active' : '' ?>" href="/profile">Profile</a></li>
+                    <?php endif ?>
+                </ul>
+                <?php if (session('user')) : ?>
+                    <a href="/order" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Order here</a>
+                <?php else :?>
+                    <a href="/auth/loginuser" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Sign In</a>
+                <?php endif ?>
             </div>
         </div>
     </nav>
