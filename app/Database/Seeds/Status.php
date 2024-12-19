@@ -8,24 +8,22 @@ class Status extends Seeder
 {
     public function run()
     {
-        $statusModel = new \App\Models\Status();
+        $modelStatus = new \App\Models\ModelStatus();
         $data = [
             [
-                "nama_status" => "Pending"
+                "status" => "Pending"
             ],
             [
-                "nama_status" => "Processed"
+                "status" => "Processed"
             ],
             [
-                "nama_status" => "Rejected"
+                "status" => "Rejected"
             ],
             [
-                "nama_status" => "Done"
+                "status" => "Done"
             ],
         ];
 
-        foreach ($data as $status) {
-            $statusModel->save($status);
-        }
+        $modelStatus->insertBatch($data);
     }
 }

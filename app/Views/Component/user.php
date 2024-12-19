@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/assets/css/Simple-Slider-swiper-bundle.min.css">
     <link rel="stylesheet" href="/assets/css/Simple-Slider.css">
     <link rel="stylesheet" href="/assets/css/Testimonials-Centered-images.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>

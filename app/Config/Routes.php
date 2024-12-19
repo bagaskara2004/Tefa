@@ -13,6 +13,7 @@ $routes->get('project', 'Project::index');
 
 $routes->group('', ['filter' => 'user'], function ($routes) {
     $routes->get('order', 'Order::index');
+    $routes->post('order', 'Order::addOrder');
 });
 
 // actived user
