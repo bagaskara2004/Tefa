@@ -11,7 +11,7 @@
                     data-aos-duration="700"
                     data-aos-offset="50"
                     data-aos-once="true">
-                    Delivering creativity with our design
+                    The Right Software Solution for Your
                     <span class="d-inline-block">
                         <img
                             class="img-fluid d-none d-md-inline-block"
@@ -21,7 +21,7 @@
                             width="100"
                             height="100" />
                     </span>
-                    solutions
+                    Business
                 </h1>
                 <p
                     class="lead text-muted mt-3"
@@ -30,8 +30,7 @@
                     data-aos-offset="50"
                     data-aos-delay="400"
                     data-aos-once="true">
-                    Passionate agency delivering creative design solutions for
-                    impactful results.
+                    A passionate agency delivers creative software solutions for impactful results.
                 </p>
             </div>
         </div>
@@ -141,8 +140,7 @@
                     data-aos="fade-up"
                     data-aos-duration="600"
                     data-aos-once="true">
-                    Korsa is a Creative Design Agency With Extensive Experience<br />And
-                    Talented Team.
+                    Tefa is a center of innovation in software creation that connects education with industry.
                 </h2>
                 <p
                     class="text-light mt-4"
@@ -151,8 +149,7 @@
                     data-aos-duration="700"
                     data-aos-delay="150"
                     data-aos-once="true">
-                    We are the ones with the creative idea of ​​creating stunning
-                    visuals that grab attention and leave a lasting impression!
+                    We are the ones who have the creative idea to create software that attracts attention and puts customer satisfaction first
                 </p>
             </div>
         </div>
@@ -170,8 +167,7 @@
             data-aos-once="true">
             <h2>Why Us</h2>
             <p class="w-lg-50">
-                Curae hendrerit donec commodo hendrerit egestas tempus, turpis
-                facilisis nostra nunc. Vestibulum dui eget ultrices.
+                We combine expert expertise and the passion of talented students to deliver the best results that meet your needs.
             </p>
         </div>
     </div>
@@ -182,124 +178,31 @@
         data-aos-once="true">
         <div class="col">
             <div class="d-flex">
-                <div
-                    class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"
-                    style="
-                                    background: rgb(234, 232, 232);
-                                    border-width: 2px;
-                                    border-color: var(--bs-body-color);
-                                ">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1em"
-                        height="1em"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                        class="bi bi-bell text-dark">
-                        <path
-                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6"></path>
-                    </svg>
-                </div>
                 <div class="px-3">
-                    <h4>Title</h4>
+                    <h4>Priced</h4>
                     <p>
-                        Erat netus est hendrerit, nullam et quis ad cras porttitor
-                        iaculis. Bibendum vulputate cras aenean.
+                        High-quality service at a more affordable cost than other commercial services.
                     </p>
-                    <a href="#">Learn More&nbsp;<svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            fill="currentColor"
-                            viewBox="0 0 16 16"
-                            class="bi bi-arrow-right">
-                            <path
-                                fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                        </svg></a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="d-flex">
-                <div
-                    class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"
-                    style="
-                                    background: rgb(234, 232, 232);
-                                    border-width: 2px;
-                                    border-color: var(--bs-body-color);
-                                ">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1em"
-                        height="1em"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                        class="bi bi-bezier text-dark">
-                        <path
-                            fill-rule="evenodd"
-                            d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"></path>
-                        <path
-                            d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z"></path>
-                    </svg>
-                </div>
                 <div class="px-3">
-                    <h4>Title</h4>
+                    <h4>Technology</h4>
                     <p>
-                        Erat netus est hendrerit, nullam et quis ad cras porttitor
-                        iaculis. Bibendum vulputate cras aenean.
+                        We use modern tools and methods to deliver efficient and reliable software.
                     </p>
-                    <a href="#">Learn More&nbsp;<svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            fill="currentColor"
-                            viewBox="0 0 16 16"
-                            class="bi bi-arrow-right">
-                            <path
-                                fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                        </svg></a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="d-flex">
-                <div
-                    class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"
-                    style="
-                                    background: rgb(234, 232, 232);
-                                    border-width: 2px;
-                                    border-color: var(--bs-body-color);
-                                ">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1em"
-                        height="1em"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                        class="bi bi-flag text-dark">
-                        <path
-                            d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001M14 1.221c-.22.078-.48.167-.766.255-.81.252-1.872.523-2.734.523-.886 0-1.592-.286-2.203-.534l-.008-.003C7.662 1.21 7.139 1 6.5 1c-.669 0-1.606.229-2.415.478A21.294 21.294 0 0 0 3 1.845v6.433c.22-.078.48-.167.766-.255C4.576 7.77 5.638 7.5 6.5 7.5c.847 0 1.548.28 2.158.525l.028.01C9.32 8.29 9.86 8.5 10.5 8.5c.668 0 1.606-.229 2.415-.478A21.317 21.317 0 0 0 14 7.655V1.222z"></path>
-                    </svg>
-                </div>
                 <div class="px-3">
-                    <h4>Title</h4>
+                    <h4>Quality</h4>
                     <p>
-                        Erat netus est hendrerit, nullam et quis ad cras porttitor
-                        iaculis. Bibendum vulputate cras aenean.
+                        We combine the expertise of experienced experts and the creativity of talented students to deliver the best results that suit your business needs.
                     </p>
-                    <a href="#">Learn More&nbsp;<svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            fill="currentColor"
-                            viewBox="0 0 16 16"
-                            class="bi bi-arrow-right">
-                            <path
-                                fill-rule="evenodd"
-                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                        </svg></a>
                 </div>
             </div>
         </div>
@@ -334,14 +237,10 @@
                 data-aos-delay="400"
                 data-aos-once="true">
                 <div>
-                    <h5 class="fw-bold">Web Design</h5>
+                    <h5 class="fw-bold">Website</h5>
                     <p class="text-muted mb-4">
-                        Erat netus est hendrerit, nullam et quis ad cras porttitor
-                        iaculis. Bibendum vulputate cras aenean.
+                        We create a website for your business. which is certainly trusted and guaranteed quality
                     </p>
-                    <button class="btn btn-primary shadow" type="button">
-                        Learn more
-                    </button>
                 </div>
             </div>
         </div>
@@ -364,14 +263,36 @@
                 data-aos-duration="700"
                 data-aos-once="true">
                 <div>
-                    <h5 class="fw-bold">Mobile Apps Design</h5>
+                    <h5 class="fw-bold">Mobile Apps</h5>
                     <p class="text-muted mb-4">
-                        Erat netus est hendrerit, nullam et quis ad cras porttitor
-                        iaculis. Bibendum vulputate cras aenean.
+                        We create mobile apps for your business. which of course is trusted and guaranteed quality
                     </p>
-                    <button class="btn btn-primary shadow" type="button">
-                        Learn more
-                    </button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="row row-cols-1 row-cols-md-2 mx-auto"
+            style="max-width: 900px">
+            <div
+                class="col mb-5"
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-once="true">
+                <img
+                    class="rounded img-fluid shadow"
+                    src="https://www.korsa.io/images/service-3.png" />
+            </div>
+            <div
+                class="col d-md-flex align-items-md-end align-items-lg-center mb-5"
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay="400"
+                data-aos-once="true">
+                <div>
+                    <h5 class="fw-bold">Desktop Apps</h5>
+                    <p class="text-muted mb-4">
+                        We create desktop apps for your business. which of course is trusted and guaranteed quality
+                    </p>
                 </div>
             </div>
         </div>
@@ -387,8 +308,7 @@
         <div class="col-md-8 col-xl-6 text-center mx-auto">
             <h2>Our Team</h2>
             <p class="w-lg-50">
-                Curae hendrerit donec commodo hendrerit egestas tempus, turpis
-                facilisis nostra nunc. Vestibulum dui eget ultrices.
+                We have a team that has experience in the field of technology and has high creativity
             </p>
         </div>
     </div>
@@ -398,106 +318,24 @@
         data-aos-duration="600"
         data-aos-delay="200"
         data-aos-once="true">
-        <div class="col">
-            <div class="card border-0 shadow-none">
-                <div class="card-body text-center d-flex flex-column align-items-center p-0">
-                    <img
-                        class="rounded-circle mb-3 fit-cover"
-                        width="130"
-                        height="130"
-                        src="/assets/img/avatars/avatar6.jpg"
-                        alt="Profile Picture" />
-                    <h5 class="fw-bold text-primary card-title mb-0">Bagas Drible</h5>
-                    <p class="text-muted card-text mb-2">Dosen</p>
-                    <ul class="list-inline fs-6 text-muted w-100 mb-0">
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-facebook"></i>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-twitter"></i>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-instagram"></i>
-                        </li>
-                    </ul>
+
+        <?php foreach ($teams as $team) : ?>
+            <div class="col">
+                <div class="card border-0 shadow-none">
+                    <div class="card-body text-center d-flex flex-column align-items-center p-0">
+                        <img
+                            class="rounded-circle mb-3 fit-cover"
+                            width="130"
+                            height="130"
+                            src="<?=$team['photo']?>"
+                            alt="Profile Picture" />
+                        <h5 class="fw-bold text-primary card-title mb-0"><?= $team['name'] ?></h5>
+                        <p class="text-muted card-text mb-2"><?= $team['degree'] ?></p>
+                        
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card border-0 shadow-none">
-                <div class="card-body text-center d-flex flex-column align-items-center p-0">
-                    <img
-                        class="rounded-circle mb-3 fit-cover"
-                        width="130"
-                        height="130"
-                        src="/assets/img/avatars/avatar7.jpg"
-                        alt="Profile Picture" />
-                    <h5 class="fw-bold text-primary card-title mb-0">Bagas Drible</h5>
-                    <p class="text-muted card-text mb-2">Dosen</p>
-                    <ul class="list-inline fs-6 text-muted w-100 mb-0">
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-facebook"></i>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-twitter"></i>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-instagram"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card border-0 shadow-none">
-                <div class="card-body text-center d-flex flex-column align-items-center p-0">
-                    <img
-                        class="rounded-circle mb-3 fit-cover"
-                        width="130"
-                        height="130"
-                        src="/assets/img/avatars/avatar8.jpg"
-                        alt="Profile Picture" />
-                    <h5 class="fw-bold text-primary card-title mb-0">Bagas Drible</h5>
-                    <p class="text-muted card-text mb-2">Dosen</p>
-                    <ul class="list-inline fs-6 text-muted w-100 mb-0">
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-facebook"></i>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-twitter"></i>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-instagram"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card border-0 shadow-none">
-                <div class="card-body text-center d-flex flex-column align-items-center p-0">
-                    <img
-                        class="rounded-circle mb-3 fit-cover"
-                        width="130"
-                        height="130"
-                        src="/assets/img/avatars/avatar9.jpg"
-                        alt="Profile Picture" />
-                    <h5 class="fw-bold text-primary card-title mb-0">Bagas Drible</h5>
-                    <p class="text-muted card-text mb-2">Dosen</p>
-                    <ul class="list-inline fs-6 text-muted w-100 mb-0">
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-facebook"></i>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-twitter"></i>
-                        </li>
-                        <li class="list-inline-item text-center">
-                            <i class="bi bi-instagram"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <?php endforeach ?>
 
     </div>
 </div>
@@ -515,60 +353,27 @@
         data-aos-duration="700"
         data-aos-delay="300"
         data-aos-once="true">
+
+        <?php foreach ($testimonials as $testimonial) :?>
         <div class="col">
             <div>
                 <p class="bg-body-tertiary border rounded border-0 p-4">
-                    Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit
-                    class dapibus, aliquet morbi.
+                    <?= $testimonial['message'] ?>
                 </p>
                 <div class="d-flex">
                     <img
                         class="rounded-circle flex-shrink-0 me-3 fit-cover"
                         width="50"
                         height="50"
-                        src="/assets/img/avatars/avatar7.jpg" />
+                        src="<?=$testimonial['photo']?>" />
                     <div class="text-center d-xxl-flex align-items-xxl-center">
-                        <p class="fw-bold text-primary mb-0">Bagas Drible</p>
+                        <p class="fw-bold text-primary mb-0"><?= $testimonial['username'] ?></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div>
-                <p class="bg-body-tertiary border rounded border-0 p-4">
-                    Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit
-                    class dapibus, aliquet morbi.
-                </p>
-                <div class="d-flex">
-                    <img
-                        class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                        width="50"
-                        height="50"
-                        src="/assets/img/avatars/avatar8.jpg" />
-                    <div class="d-xxl-flex align-items-xxl-center">
-                        <p class="fw-bold text-primary mb-0">Bagas Drible</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div>
-                <p class="bg-body-tertiary border rounded border-0 p-4">
-                    Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit
-                    class dapibus, aliquet morbi.
-                </p>
-                <div class="d-flex">
-                    <img
-                        class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                        width="50"
-                        height="50"
-                        src="/assets/img/avatars/avatar9.jpg" />
-                    <div class="d-xxl-flex align-items-xxl-center">
-                        <p class="fw-bold text-primary mb-0">Bagas Drible</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endforeach ?>
+        
     </div>
 </div>
 <?= $this->endSection() ?>

@@ -90,5 +90,5 @@ class Autoload extends AutoloadConfig
      *
      * @var list<string>
      */
-    public $helpers = ['form', 'url', 'recaptcha_helper', 'sendmail_helper', 'generatekode_helper', 'cookie_helper', 'cookie'];
+    public $helpers = ['form', 'url', 'recaptcha_helper', 'sendmail_helper', 'generatekode_helper', 'cookie_helper', 'cookie','cloudinary_helper'];
 }

@@ -23,7 +23,7 @@ class ModelFeedback extends Model
 
     // Validation
     protected $validationRules      = [
-        'message' => 'required|min_length[3]|max_length[100]|alpha_numeric'
+        'message' => 'required|min_length[3]|max_length[100]'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

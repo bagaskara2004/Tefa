@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ModelMedia;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ModelType;
 use App\Models\ModelOrder;
@@ -13,10 +14,12 @@ class Order extends BaseController
     public function index()
     {
         $modelType = new ModelType();
+        $modelMedia = new ModelMedia();
         $data = [
             'page' => 'Order',
             'location' => $this->website['location'],
-            'types' => $modelType->findAll()
+            'types' => $modelType->findAll(),
+            'medias' => $modelMedia->findAll()
         ];
         return view('user/order', $data);
     }

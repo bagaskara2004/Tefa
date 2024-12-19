@@ -23,8 +23,8 @@ class ModelTeam extends Model
 
     // Validation
     protected $validationRules      = [
-        'name' => 'required|min_length[3]|max_length[30]|alpha_numeric',
-        'degree' => 'required|min_length[3]|max_length[30]',
+        'name' => 'required|min_length[3]|max_length[50]',
+        'degree' => 'required|min_length[3]|max_length[100]',
         'photo' => 'required|min_length[3]|max_length[500]'
     ];
     protected $validationMessages   = [];

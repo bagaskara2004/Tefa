@@ -23,7 +23,7 @@ class ModelMedia extends Model
 
     // Validation
     protected $validationRules      = [
-        'name' => 'required|min_length[3]|max_length[50]|alpha_numeric',
+        'name' => 'required|min_length[3]|max_length[50]',
         'link' => 'required|min_length[3]|max_length[500]|',
         'icon' => 'required|min_length[3]|max_length[50]|',
     ];
