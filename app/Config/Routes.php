@@ -8,7 +8,6 @@ use CodeIgniter\Router\RouteCollection;
 
 // user
 $routes->get('/', 'Home::index');
-$routes->get('about', 'About::index');
 $routes->get('project', 'Project::index');
 
 $routes->group('', ['filter' => 'user'], function ($routes) {

@@ -156,9 +156,19 @@
     </div>
 </section>
 
+<section style="margin-top:9em">
+    <div class="container text-center">
+        <a href="#"> <img class="m-3" src="/assets/img/brands/instacart.png"></a>
+        <a href="#"> <img class="m-3" src="/assets/img/brands/kickstarter.png"></a>
+        <a href="#"> <img class="m-3" src="/assets/img/brands/lyft.png"></a>
+        <a href="#"> <img class="m-3" src="/assets/img/brands/shopify.png"></a>
+        <a href="#"> <img class="m-3" src="/assets/img/brands/pinterest.png"></a>
+        <a href="#"> <img class="m-3" src="/assets/img/brands/twitter.png"></a>
+    </div>
+</section>
 
 
-<div class="container py-4 py-xl-5" style="margin-top: 10em">
+<div class="container py-4 py-xl-5" style="margin-top: 9em">
     <div class="row mb-5">
         <div
             class="col-md-8 col-xl-6 text-center mx-auto"
@@ -305,11 +315,12 @@
         data-aos="fade-up"
         data-aos-duration="600"
         data-aos-once="true">
-        <div class="col-md-8 col-xl-6 text-center mx-auto">
-            <h2>Our Team</h2>
-            <p class="w-lg-50">
-                We have a team that has experience in the field of technology and has high creativity
-            </p>
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 data-aos="fade-up" data-aos-duration="700" data-aos-once="true">
+                    Our Team
+                </h2>
+            </div>
         </div>
     </div>
     <div
@@ -327,11 +338,11 @@
                             class="rounded-circle mb-3 fit-cover"
                             width="130"
                             height="130"
-                            src="<?=$team['photo']?>"
+                            src="<?= $team['photo'] ?>"
                             alt="Profile Picture" />
                         <h5 class="fw-bold text-primary card-title mb-0"><?= $team['name'] ?></h5>
                         <p class="text-muted card-text mb-2"><?= $team['degree'] ?></p>
-                        
+
                     </div>
                 </div>
             </div>
@@ -339,6 +350,9 @@
 
     </div>
 </div>
+
+
+
 <div class="container py-4 py-xl-5" style="margin-top: 5em">
     <div class="row mb-5">
         <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -354,26 +368,27 @@
         data-aos-delay="300"
         data-aos-once="true">
 
-        <?php foreach ($testimonials as $testimonial) :?>
-        <div class="col">
-            <div>
-                <p class="bg-body-tertiary border rounded border-0 p-4">
-                    <?= $testimonial['message'] ?>
-                </p>
-                <div class="d-flex">
-                    <img
-                        class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                        width="50"
-                        height="50"
-                        src="<?=$testimonial['photo']?>" />
-                    <div class="text-center d-xxl-flex align-items-xxl-center">
-                        <p class="fw-bold text-primary mb-0"><?= $testimonial['username'] ?></p>
+        <?php foreach ($testimonials as $testimonial) : ?>
+            <div class="col">
+                <div>
+                    <p class="bg-body-tertiary border rounded border-0 p-4">
+                        <?= $testimonial['message'] ?>
+                    </p>
+                    <div class="d-flex">
+                        <img
+                            class="rounded-circle flex-shrink-0 me-3 fit-cover"
+                            width="50"
+                            height="50"
+                            src="<?= $testimonial['photo'] ?>" />
+                        <div class="text-center d-xxl-flex align-items-xxl-center">
+                            <p class="fw-bold text-primary mb-0"><?= $testimonial['username'] ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         <?php endforeach ?>
-        
+
     </div>
 </div>
+
 <?= $this->endSection() ?>

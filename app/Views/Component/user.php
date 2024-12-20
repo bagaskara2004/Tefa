@@ -27,7 +27,6 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link <?= $page == 'Home' ? 'active' : '' ?>" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link <?= $page == 'About' ? 'active' : '' ?>" href="/about">About</a></li>
                     <li class="nav-item"><a class="nav-link <?= $page == 'Project' ? 'active' : '' ?>" href="/project">Project</a></li>
                     <?php if (session('user')) : ?>
                         <li class="nav-item"><a class="nav-link <?= $page == 'Profile' ? 'active' : '' ?>" href="/profile">Profile</a></li>
