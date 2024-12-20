@@ -17,7 +17,8 @@ class Home extends BaseController
             'page' => 'Home',
             'teams' => $modelTeam->findAll(),
             'testimonials' => $modelUser->join('feedback','feedback.id_user = user.id_user')->findAll(),
-            'medias' => $modelMedia->findAll()
+            'medias' => $modelMedia->findAll(),
+            'user' => $modelUser->find(session()->get('user'))
         ];
 
         return view('user/index', $data);

@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ModelType;
 use App\Models\ModelOrder;
 use App\Models\ModelOrderType;
+use App\Models\ModelUser;
 
 class Order extends BaseController
 {
@@ -15,11 +16,13 @@ class Order extends BaseController
     {
         $modelType = new ModelType();
         $modelMedia = new ModelMedia();
+        $modelUser = new ModelUser();
         $data = [
             'page' => 'Order',
             'location' => $this->website['location'],
             'types' => $modelType->findAll(),
-            'medias' => $modelMedia->findAll()
+            'medias' => $modelMedia->findAll(),
+            'user' => $modelUser->find(session()->get('user'))
         ];
         return view('user/order', $data);
     }

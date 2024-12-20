@@ -29,11 +29,39 @@
                     <li class="nav-item"><a class="nav-link <?= $page == 'Home' ? 'active' : '' ?>" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link <?= $page == 'Project' ? 'active' : '' ?>" href="/project">Project</a></li>
                     <?php if (session('user')) : ?>
-                        <li class="nav-item"><a class="nav-link <?= $page == 'Profile' ? 'active' : '' ?>" href="/profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link <?= $page == 'Order' ? 'active' : '' ?>" href="/order">Order</a></li>
                     <?php endif ?>
                 </ul>
                 <?php if (session('user')) : ?>
-                    <a href="/order" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Order here</a>
+                    <div class="dropdown">
+                        <a
+                            href="#"
+                            id="profileDropdown"
+                            class="d-flex align-items-center"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            style="cursor: pointer;">
+                            <img
+                                src="<?=$user['photo']?>"
+                                alt="Profile"
+                                style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                        </a>
+                        <ul
+                            class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="profileDropdown"
+                            style="min-width: 150px;">
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userModal">My Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#userModal">
+                        <img src="<?= $user['photo'] ?>" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+
+                    </button> -->
+                    <!-- <a href="/order" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Order here</a> -->
                 <?php else : ?>
                     <a href="/auth/loginuser" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Sign In</a>
                 <?php endif ?>
@@ -41,7 +69,30 @@
         </div>
     </nav>
     <main>
+
         <?= $this->renderSection('Content') ?>
+
+        <?php if (session('user')) :?>
+        <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="userModalLabel">My Profile</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="<?= $user['photo'] ?>" alt="User Photo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" class="mb-3">
+                        <h5 id="username"><?= $user['username'] ?></h5>
+                        <p id="email"><?= $user['email'] ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif ?>
+
         <div class="position-fixed bottom-0 start-0">
             <?php if (session()->getFlashdata('errorarray')) { ?>
                 <?php foreach (session()->getFlashdata('errorarray') as $err) { ?>
@@ -73,10 +124,10 @@
                 </div>
                 <div class="col">
                     <ul class="list-inline my-2">
-                        <?php foreach ($medias as $media) :?>
-                        <li class="list-inline-item me-4">
-                            <a href="<?=$media['link']?>" class="btn"><i class="bi <?=$media['icon']?>"></i></a>
-                        </li>
+                        <?php foreach ($medias as $media) : ?>
+                            <li class="list-inline-item me-4">
+                                <a href="<?= $media['link'] ?>" class="btn"><i class="bi <?= $media['icon'] ?>"></i></a>
+                            </li>
                         <?php endforeach ?>
                     </ul>
                 </div>
@@ -89,6 +140,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/aos.min.js"></script>
