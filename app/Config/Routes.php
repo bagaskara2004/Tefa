@@ -8,7 +8,8 @@ use CodeIgniter\Router\RouteCollection;
 
 // user
 $routes->get('/', 'Home::index');
-$routes->get('project', 'Project::index');
+$routes->get('/project', 'Project::index');
+$routes->get('/logout','AuthUser::logOut');
 
 $routes->group('', ['filter' => 'user'], function ($routes) {
     $routes->get('order', 'Order::index');

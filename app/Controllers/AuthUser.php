@@ -96,6 +96,15 @@ class AuthUser extends BaseController
         return redirect()->to("/actived/form");
     }
 
+    public function logOut() {
+        if (!session('user')) {
+            return redirect()->back()->with('error', "can't access that page");
+        }
+        session()->remove('user');
+        delete_cookie('remember_me');
+        return redirect()->to('/auth/loginuser')->withCookies()->with('success','Success Logout Your Account');
+    }
+
     private function findUser($email)
     {
         $data = $this->modelUser->findAll();
