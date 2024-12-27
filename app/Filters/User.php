@@ -26,35 +26,35 @@ class User implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        session()->remove('actived_token');
-        $encripter = \Config\Services::encrypter();
-        $modelUser = new ModelUser();
+        // session()->remove('actived_token');
+        // $encripter = \Config\Services::encrypter();
+        // $modelUser = new ModelUser();
 
-        try {
-            if (!session('user')) {
-                $cookie = base64_decode(get_cookie('remember_me'));
-                if ($cookie) {
-                    $decriptCookie = $encripter->decrypt($cookie);
-                    $user = $modelUser->find($decriptCookie);
-                    if ($user['role']) {
-                        return redirect()->to('/')->with('error', "can't access that page");
-                    }
-                    session()->set('user', $user['id_user']);
-                    return redirect()->to('/')->with('success', "Selamat Datang " . $user['username']);
-                } else {
-                    return redirect()->to('/auth/loginuser')->with('error', 'You must be logged in');
-                }
-            } else {
-                $session = session()->get('user');
-                $user = $modelUser->find($session);
-                if ($user['role']) {
-                    return redirect()->to('/admin/dashboard')->with('error', "can't access that page");
-                }
-            }
-        } catch (\CodeIgniter\Encryption\Exceptions\EncryptionException $e) {
-            delete_cookie('remember_me');
-            return redirect()->to('/auth/loginuser')->withCookies()->with('error', 'You must be logged in');
-        }
+        // try {
+        //     if (!session('user')) {
+        //         $cookie = base64_decode(get_cookie('remember_me'));
+        //         if ($cookie) {
+        //             $decriptCookie = $encripter->decrypt($cookie);
+        //             $user = $modelUser->find($decriptCookie);
+        //             if ($user['role']) {
+        //                 return redirect()->to('/')->with('error', "can't access that page");
+        //             }
+        //             session()->set('user', $user['id_user']);
+        //             return redirect()->to('/')->with('success', "Selamat Datang " . $user['username']);
+        //         } else {
+        //             return redirect()->to('/auth/loginuser')->with('error', 'You must be logged in');
+        //         }
+        //     } else {
+        //         $session = session()->get('user');
+        //         $user = $modelUser->find($session);
+        //         if ($user['role']) {
+        //             return redirect()->to('/admin/dashboard')->with('error', "can't access that page");
+        //         }
+        //     }
+        // } catch (\CodeIgniter\Encryption\Exceptions\EncryptionException $e) {
+        //     delete_cookie('remember_me');
+        //     return redirect()->to('/auth/loginuser')->withCookies()->with('error', 'You must be logged in');
+        // }
     }
 
     /**

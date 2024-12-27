@@ -16,8 +16,10 @@ class Project extends BaseController
         $data = [
             'page' => 'Project',
             'medias' => $modelMedia->findAll(),
-            'user' => $modelUser->find(session()->get('user'))
         ];
+        if (session('user') && session()->get('user')['role'] == 0) {
+            $data['user'] = $modelUser->find(session()->get('user')['id']);
+        }
         return view('user/project', $data);
     }
 }

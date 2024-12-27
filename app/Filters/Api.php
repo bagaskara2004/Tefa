@@ -5,12 +5,12 @@ namespace App\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use App\Models\ModelUser;
+use Config\Services;
 use Firebase\JWT\JWT;
 use Config\JwtConfig;
 use Firebase\JWT\Key;
 
-class Auth implements FilterInterface
+class Api implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -29,33 +29,20 @@ class Auth implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $modelUser = new ModelUser();
+        $authHeader = $request->getHeaderLine('Authorization');
+        if (!$authHeader) {
+            return Services::response()
+                ->setJSON(['status' => 'error', 'message' => 'Authorization header missing.'])
+                ->setStatusCode(401);
+        }
+        $token = str_replace('Bearer ', '', $authHeader);
         $jwtConfig = new JwtConfig();
-
         try {
-            if (session('user')) {
-                if (session()->get('user')['role']) {
-                    return redirect()->to('/admin/dashboard')->with('error', "can't access that page");
-                } else {
-                    return redirect()->to('/')->with('error', "can't access that page");
-                }
-            } else {
-                $cookie = get_cookie('remember_me');
-                if ($cookie) {
-                    $decriptCookie = JWT::decode($cookie, new Key($jwtConfig->key, $jwtConfig->algorithm));
-                    $user = $modelUser->find($decriptCookie->id);
-                    session()->set('user', [
-                        'id' => $user['id_user'],
-                        'role' => $user['role']
-                    ]);
-                    if ($user['role']) {
-                        return redirect()->to('/admin/dashboard')->with('success', "Selamat Datang " . $user['username']);
-                    }
-                    return redirect()->to('/')->with('success', "Selamat Datang " . $user['username']);
-                }
-            }
-        } catch (\CodeIgniter\Encryption\Exceptions\EncryptionException $e) {
-            delete_cookie('remember_me');
+            JWT::decode($token, new Key($jwtConfig->key,$jwtConfig->algorithm));
+        } catch (\Exception $e) {
+            return Services::response()
+                ->setJSON(['status' => 'error', 'message' => 'Invalid or expired token.'])
+                ->setStatusCode(401);
         }
     }
 

@@ -4,6 +4,9 @@ namespace App\Controllers;
 use App\Models\ModelTeam;
 use App\Models\ModelMedia;
 use App\Models\ModelUser;
+use Firebase\JWT\JWT;
+use Config\JwtConfig;
+use Firebase\JWT\Key;
 
 class Home extends BaseController
 {
@@ -18,8 +21,10 @@ class Home extends BaseController
             'teams' => $modelTeam->findAll(),
             'testimonials' => $modelUser->join('feedback','feedback.id_user = user.id_user')->findAll(),
             'medias' => $modelMedia->findAll(),
-            'user' => $modelUser->find(session()->get('user'))
         ];
+        if (session('user') && session()->get('user')['role'] == 0) {
+            $data['user'] = $modelUser->find(session()->get('user')['id']);
+        }
 
         return view('user/index', $data);
     }

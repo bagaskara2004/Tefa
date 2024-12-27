@@ -2,9 +2,13 @@
 
 namespace App\Filters;
 
+use App\Models\ModelUser;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use Firebase\JWT\JWT;
+use Config\JwtConfig;
+use Firebase\JWT\Key;
 
 class Actived implements FilterInterface
 {
@@ -25,8 +29,30 @@ class Actived implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session('actived_token')) {
-            return redirect()->to('/')->with('error', "can't access that page");
+        $token = $request->getUri()->getSegment(3);
+        
+        $jwtConfig = new JwtConfig();
+        
+        try {
+            $tokenDecode = JWT::decode($token, new Key($jwtConfig->key,$jwtConfig->algorithm));
+        } catch (\Exception $e) {
+            echo view('errors/html/costum',[
+                'title' => 'Wooops',
+                'message' => 'Invalid OR Expired Token'
+            ]);
+            exit;
+        }
+
+        $modelUser = new ModelUser();
+        $user = $modelUser->select('user.actived')->find($tokenDecode->id);
+
+        if ($user['actived']) {
+
+            echo view('errors/html/costum',[
+                'title' => 'Done',
+                'message' => 'Your account is already active'
+            ]);
+            exit;
         }
     }
 

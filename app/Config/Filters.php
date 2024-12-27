@@ -37,7 +37,9 @@ class Filters extends BaseFilters
         'admin'         => \App\Filters\Admin::class,
         'auth'          => \App\Filters\Auth::class,
         'actived'       => \App\Filters\Actived::class,
-        'user'          => \App\Filters\User::class
+        'user'          => \App\Filters\User::class,
+        'api'           => \App\Filters\Api::class,
+        'forgot'        => \App\Filters\Forgot::class
     ];
 
     /**

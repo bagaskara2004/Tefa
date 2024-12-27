@@ -28,11 +28,11 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link <?= $page == 'Home' ? 'active' : '' ?>" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link <?= $page == 'Project' ? 'active' : '' ?>" href="/project">Project</a></li>
-                    <?php if (session('user')) : ?>
+                    <?php if (isset($user)) : ?>
                         <li class="nav-item"><a class="nav-link <?= $page == 'Order' ? 'active' : '' ?>" href="/order">Order</a></li>
                     <?php endif ?>
                 </ul>
-                <?php if (session('user')) : ?>
+                <?php if (isset($user)) : ?>
                     <div class="dropdown">
                         <a
                             href="#"
@@ -42,7 +42,7 @@
                             aria-expanded="false"
                             style="cursor: pointer;">
                             <img
-                                src="<?=$user['photo']?>"
+                                src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?=$user['photo']?>"
                                 alt="Profile"
                                 style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                         </a>
@@ -63,7 +63,7 @@
                     </button> -->
                     <!-- <a href="/order" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Order here</a> -->
                 <?php else : ?>
-                    <a href="/auth/loginuser" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Sign In</a>
+                    <a href="/auth/login" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Sign In</a>
                 <?php endif ?>
             </div>
         </div>
@@ -72,7 +72,7 @@
 
         <?= $this->renderSection('Content') ?>
 
-        <?php if (session('user')) :?>
+        <?php if (isset($user)) :?>
         <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -81,7 +81,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
-                        <img src="<?= $user['photo'] ?>" alt="User Photo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" class="mb-3">
+                        <img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?=$user['photo']?>" alt="User Photo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" class="mb-3">
                         <h5 id="username"><?= $user['username'] ?></h5>
                         <p id="email"><?= $user['email'] ?></p>
                     </div>

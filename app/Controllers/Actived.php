@@ -5,6 +5,9 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\ModelUser;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Config\JwtConfig;
 
 class Actived extends BaseController
 {
@@ -16,58 +19,52 @@ class Actived extends BaseController
         $this->encryption = \Config\Services::encrypter();
         $this->modelUser = new ModelUser();
     }
-    public function index()
+    public function index($token)
     {
         if (!$this->request->getPost()) {
-            return view('user/actived');
+            return view('auth/verifikasi',[
+                'token' => $token,
+                'page' => 'actived'
+            ]);
         }
 
-        $user = $this->findUser();
-        $input = $this->combineInput($this->request->getVar());
-
-        if ($input != $user['otp']) {
+        $jwtConfig = new JwtConfig();
+        $token = JWT::decode($token,new Key($jwtConfig->key,$jwtConfig->algorithm));
+        $input = $this->request->getVar();
+        $combineInput = $input['input1'].$input['input2'].$input['input3'].$input['input4'].$input['input5'].$input['input6'];
+        
+        $user = $this->modelUser->find($token->id);
+        
+        if ($combineInput != $user['otp']) {
             return redirect()->back()->withInput()->with('error', 'Kode OTP Invalid');
         }
+
         $user['actived'] = true;
         $this->modelUser->save($user);
-        session()->remove('actived_token');
-        return redirect()->to('/auth/loginuser')->with('success', 'Your account active');
+        return redirect()->to(current_url());
     }
 
-    public function findUser()
-    {
-        $email = $this->encryption->decrypt(session()->get('actived_token'));
-        $users = $this->modelUser->orderBy('id_user', 'DESC')->findAll();
-        foreach ($users as $user) {
-            if ($user['email'] == $email) {
-                return $user;
-            }
-        }
-    }
+    public function resendOtp($token) {
+        $jwtConfig = new JwtConfig();
+        $tokenDecode = JWT::decode($token,new Key($jwtConfig->key,$jwtConfig->algorithm));
 
-    public function combineInput($input)
-    {
-        $results = '';
-        foreach ($input as $row) {
-            $results .= $row;
-        }
-        return $results;
-    }
-
-    public function resendOtp() {
-        $user = $this->findUser();
+        $user = $this->modelUser->find($tokenDecode->id);
         $user['otp'] = generateKode();
 
-        $updateUser = $this->modelUser->save($user);
-        if (!$updateUser) {
-            return redirect()->back()->withInput()->with('error','Failed Actived, try again');
-        }
+        $this->modelUser->save($user);
 
-        $sendMail = sendMail($user['email'],$user['otp'],$this->website['email']);
+        $token = [
+            'id' => $tokenDecode->id,
+            'iat' => time(),
+            'exp' => time() + 3600,
+        ];
+
+        $tokenEncode = JWT::encode($token,$jwtConfig->key,$jwtConfig->algorithm);
+
+        $sendMail = sendMail($user['email'], base_url("/auth/actived/$tokenEncode"), $user['otp'], $this->website['email'],'Activate Your Account');
         if (!$sendMail) {
             return redirect()->back()->withInput()->with('error','Failed to send OTP');
         }
-        
         return redirect()->back()->withInput()->with('success','Success send OTP');
     }
 }
