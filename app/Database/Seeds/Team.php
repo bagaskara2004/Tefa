@@ -14,25 +14,25 @@ class Team extends Seeder
                 'id_website' => 1,
                 'name' => 'Andi Pratama',
                 'degree' => 'Sarjana Komputer',
-                'photo' => 'https://res.cloudinary.com/dnppmhczy/image/upload/v1734609574/yzeenprdjyxhigjc5kwo.jpg'
+                'photo' => 'yzeenprdjyxhigjc5kwo'
             ],
             [
                 'id_website' => 1,
                 'name' => 'Maria Alexia',
                 'degree' => 'Bachelor of Technology in Information Technology',
-                'photo' => 'https://res.cloudinary.com/dnppmhczy/image/upload/v1734609574/nnlkvfuroaqn7voyipw5.jpg'
+                'photo' => 'nnlkvfuroaqn7voyipw5'
             ],
             [
                 'id_website' => 1,
                 'name' => 'John Smith',
                 'degree' => 'Bachelor of Science in Computer Science',
-                'photo' => 'https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/yreaycmadpv0fjzf2mem.jpg'
+                'photo' => 'yreaycmadpv0fjzf2mem'
             ],
             [
                 'id_website' => 1,
                 'name' => 'Rudi Hantam',
                 'degree' => 'Sarjana Komputer',
-                'photo' => 'https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/bgbj9ddohz1u4msuh5va.jpg'
+                'photo' => 'bgbj9ddohz1u4msuh5va'
             ],
         ];
 

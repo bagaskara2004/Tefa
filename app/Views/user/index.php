@@ -156,17 +156,15 @@
     </div>
 </section>
 
-<section style="margin-top:9em">
-    <div class="container text-center">
-        <a href="#"> <img class="m-3" src="/assets/img/brands/instacart.png"></a>
-        <a href="#"> <img class="m-3" src="/assets/img/brands/kickstarter.png"></a>
-        <a href="#"> <img class="m-3" src="/assets/img/brands/lyft.png"></a>
-        <a href="#"> <img class="m-3" src="/assets/img/brands/shopify.png"></a>
-        <a href="#"> <img class="m-3" src="/assets/img/brands/pinterest.png"></a>
-        <a href="#"> <img class="m-3" src="/assets/img/brands/twitter.png"></a>
-    </div>
-</section>
-
+<?php if (!empty($mitras)) : ?>
+    <section style="margin-top:9em">
+        <div class="container text-center">
+            <?php foreach ($mitras as $mitra) : ?>
+                <a href="<?= $mitra['link'] ?>"> <img class="m-3" src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $mitra['logo'] ?>"></a>
+            <?php endforeach ?>
+        </div>
+    </section>
+<?php endif ?>
 
 <div class="container py-4 py-xl-5" style="margin-top: 9em">
     <div class="row mb-5">
@@ -309,86 +307,89 @@
     </div>
 </section>
 
-<div class="container py-4 py-xl-5" style="margin-top: 5em">
-    <div
-        class="row mb-4 mb-lg-5"
-        data-aos="fade-up"
-        data-aos-duration="600"
-        data-aos-once="true">
-        <div class="row mb-5">
-            <div class="col-md-8 col-xl-6 text-center mx-auto">
-                <h2 data-aos="fade-up" data-aos-duration="700" data-aos-once="true">
-                    Our Team
-                </h2>
-            </div>
-        </div>
-    </div>
-    <div
-        class="row gy-4 row-cols-2 row-cols-md-4"
-        data-aos="fade-up"
-        data-aos-duration="600"
-        data-aos-delay="200"
-        data-aos-once="true">
-
-        <?php foreach ($teams as $team) : ?>
-            <div class="col">
-                <div class="card border-0 shadow-none">
-                    <div class="card-body text-center d-flex flex-column align-items-center p-0">
-                        <img
-                            class="rounded-circle mb-3 fit-cover"
-                            width="130"
-                            height="130"
-                            src="<?= $team['photo'] ?>"
-                            alt="Profile Picture" />
-                        <h5 class="fw-bold text-primary card-title mb-0"><?= $team['name'] ?></h5>
-                        <p class="text-muted card-text mb-2"><?= $team['degree'] ?></p>
-
-                    </div>
+<?php if (!empty($teams)) : ?>
+    <div class="container py-4 py-xl-5" style="margin-top: 5em">
+        <div
+            class="row mb-4 mb-lg-5"
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-once="true">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 data-aos="fade-up" data-aos-duration="700" data-aos-once="true">
+                        Our Team
+                    </h2>
                 </div>
             </div>
-        <?php endforeach ?>
-
-    </div>
-</div>
-
-
-
-<div class="container py-4 py-xl-5" style="margin-top: 5em">
-    <div class="row mb-5">
-        <div class="col-md-8 col-xl-6 text-center mx-auto">
-            <h2 data-aos="fade-up" data-aos-duration="700" data-aos-once="true">
-                Testimonials
-            </h2>
         </div>
-    </div>
-    <div
-        class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-lg-3"
-        data-aos="fade-up"
-        data-aos-duration="700"
-        data-aos-delay="300"
-        data-aos-once="true">
+        <div
+            class="row gy-4 row-cols-2 row-cols-md-4"
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="200"
+            data-aos-once="true">
 
-        <?php foreach ($testimonials as $testimonial) : ?>
-            <div class="col">
-                <div>
-                    <p class="bg-body-tertiary border rounded border-0 p-4">
-                        <?= $testimonial['message'] ?>
-                    </p>
-                    <div class="d-flex">
-                        <img
-                            class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                            width="50"
-                            height="50"
-                            src="<?= $testimonial['photo'] ?>" />
-                        <div class="text-center d-xxl-flex align-items-xxl-center">
-                            <p class="fw-bold text-primary mb-0"><?= $testimonial['username'] ?></p>
+            <?php foreach ($teams as $team) : ?>
+                <div class="col">
+                    <div class="card border-0 shadow-none">
+                        <div class="card-body text-center d-flex flex-column align-items-center p-0">
+                            <img
+                                class="rounded-circle mb-3 fit-cover"
+                                width="130"
+                                height="130"
+                                src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $team['photo'] ?>"
+                                alt="Profile Picture" />
+                            <h5 class="fw-bold text-primary card-title mb-0"><?= $team['name'] ?></h5>
+                            <p class="text-muted card-text mb-2"><?= $team['degree'] ?></p>
+
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach ?>
+            <?php endforeach ?>
 
+        </div>
     </div>
-</div>
+<?php endif ?>
+
+
+<?php if (!empty($testimonials)) : ?>
+    <div class="container py-4 py-xl-5" style="margin-top: 5em">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 data-aos="fade-up" data-aos-duration="700" data-aos-once="true">
+                    Testimonials
+                </h2>
+            </div>
+        </div>
+        <div
+            class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-lg-3"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-delay="300"
+            data-aos-once="true">
+
+            <?php foreach ($testimonials as $testimonial) : ?>
+                <div class="col">
+                    <div>
+                        <p class="bg-body-tertiary border rounded border-0 p-4">
+                            <?= $testimonial['message'] ?>
+                        </p>
+                        <div class="d-flex">
+                            <img
+                                class="rounded-circle flex-shrink-0 me-3 fit-cover"
+                                width="50"
+                                height="50"
+                                src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $testimonial['photo'] ?>" />
+                            <div class="text-center d-xxl-flex align-items-xxl-center">
+                                <p class="fw-bold text-primary mb-0"><?= $testimonial['username'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+
+        </div>
+    </div>
+<?php endif ?>
 
 <?= $this->endSection() ?>

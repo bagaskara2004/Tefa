@@ -14,7 +14,7 @@ class User extends Seeder
                 'username' => 'bagastmpvan',
                 'password' => 'qwerty',
                 'email' => 'testing20041120@gmail.com',
-                'photo' => 'https://res.cloudinary.com/dnppmhczy/image/upload/v1734609574/olbulzmg4oazsfxqozls.jpg',
+                'photo' => 'olbulzmg4oazsfxqozls',
                 'otp' => '123456',
                 'actived' => true,
                 'role' => 0
@@ -23,7 +23,7 @@ class User extends Seeder
                 'username' => 'rara',
                 'password' => 'qwerty',
                 'email' => 'rara20041120@gmail.com',
-                'photo' => 'https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/q4phdnmt9tdkgabeottm.jpg',
+                'photo' => 'q4phdnmt9tdkgabeottm',
                 'otp' => '123456',
                 'actived' => true,
                 'role' => 0
@@ -32,7 +32,7 @@ class User extends Seeder
                 'username' => 'roko',
                 'password' => 'qwerty',
                 'email' => 'roko20041120@gmail.com',
-                'photo' => 'https://res.cloudinary.com/dnppmhczy/image/upload/v1734609572/te5wi2etvgdnjmxsd556.jpg',
+                'photo' => 'te5wi2etvgdnjmxsd556',
                 'otp' => '123456',
                 'actived' => true,
                 'role' => 0

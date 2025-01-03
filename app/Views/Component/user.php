@@ -57,11 +57,6 @@
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>
                     </div>
-                    <!-- <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#userModal">
-                        <img src="<?= $user['photo'] ?>" alt="Avatar" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
-
-                    </button> -->
-                    <!-- <a href="/order" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Order here</a> -->
                 <?php else : ?>
                     <a href="/auth/login" class="btn text-center" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 2em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Sign In</a>
                 <?php endif ?>
