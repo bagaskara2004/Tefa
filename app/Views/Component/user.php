@@ -42,7 +42,7 @@
                             aria-expanded="false"
                             style="cursor: pointer;">
                             <img
-                                src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?=$user['photo']?>"
+                                src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?= $user['photo'] ?>"
                                 alt="Profile"
                                 style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                         </a>
@@ -67,25 +67,25 @@
 
         <?= $this->renderSection('Content') ?>
 
-        <?php if (isset($user)) :?>
-        <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="userModalLabel">My Profile</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?=$user['photo']?>" alt="User Photo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" class="mb-3">
-                        <h5 id="username"><?= $user['username'] ?></h5>
-                        <p id="email"><?= $user['email'] ?></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <?php if (isset($user)) : ?>
+            <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="userModalLabel">My Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?= $user['photo'] ?>" alt="User Photo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" class="mb-3">
+                            <h5 id="username"><?= $user['username'] ?></h5>
+                            <p id="email"><?= $user['email'] ?></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         <?php endif ?>
 
         <div class="position-fixed bottom-0 start-0">
@@ -135,13 +135,13 @@
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/aos.min.js"></script>
     <script src="/assets/js/bs-init.js"></script>
     <script src="/assets/js/Simple-Slider-swiper-bundle.min.js"></script>
     <script src="/assets/js/Simple-Slider.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 
 </html>
