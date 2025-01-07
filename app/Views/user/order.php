@@ -45,16 +45,30 @@
                                     <div class="dropdown">
                                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a data-created="<?= $order['created'] ?>" data-status="<?= $order['status'] ?>" data-title="<?= $order['title'] ?>" data-type="<?= $order['types'] ?>" data-description="<?= $order['description'] ?>" data-bs-toggle="modal" data-bs-target="#orderModal" class="dropdown-item d-flex align-items-center detailOrder">
-                                                    <button type="button" class="btn btn-secondary me-2"><i class="bi bi-eye"></i></button>
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center">
+                                                    <button data-created="<?= $order['created'] ?>" data-status="<?= $order['status'] ?>" data-title="<?= $order['title'] ?>" data-type="<?= $order['types'] ?>" data-description="<?= $order['description'] ?>" data-bs-toggle="modal" data-bs-target="#orderModal" type="button" class="btn btn-secondary me-2 detailOrder"><i class="bi bi-eye"></i></button>
                                                     <h6 class="text-secondary">Detail</h6>
                                                 </a>
                                             </li>
-                                            <li><a data-title="<?= $order['title'] ?>" data-id="<?= $order['id_order'] ?>" data-bs-toggle="modal" data-bs-target="#deleteModal" class="dropdown-item d-flex align-items-center deleteOrder">
-                                                    <button type="button" class="btn btn-danger me-2"><i class="bi bi-trash"></i></button>
-                                                    <h6 class="text-danger">Delete</h6>
-                                                </a>
-                                            </li>
+                                            <?php if ($order['id_status'] == 2) : ?>    
+                                                <li>
+                                                    <a class="dropdown-item d-flex align-items-center">
+                                                        <form action="/chat" method="post">
+                                                            <input type="hidden" name="id" value="<?=$order['id_order']?>">
+                                                            <button type="submit" class="btn btn-success me-2"><i class="bi bi-chat-dots"></i></button>
+                                                        </form>
+                                                        <h6 class="text-success">Chat</h6>
+                                                    </a>
+                                                </li>
+                                            <?php else : ?>
+                                                <li>
+                                                    <a data-title="<?= $order['title'] ?>" data-id="<?= $order['id_order'] ?>" data-bs-toggle="modal" data-bs-target="#deleteModal" class="dropdown-item d-flex align-items-center deleteOrder">
+                                                        <button type="button" class="btn btn-danger me-2"><i class="bi bi-trash"></i></button>
+                                                        <h6 class="text-danger">Delete</h6>
+                                                    </a>
+                                                </li>
+                                            <?php endif ?>
                                         </ul>
                                     </div>
                                 </div>

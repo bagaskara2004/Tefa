@@ -12,7 +12,7 @@ class ModelChat extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_admin','id_order','message','admin_read','user_read'];
+    protected $allowedFields    = ['id_admin','id_user','id_order','message','admin_read','user_read'];
 
     // Dates
     protected $useTimestamps = true;

@@ -20,9 +20,11 @@ $routes->group('/', function ($routes) {
         return redirect()->back()->with('error',"can't access that page");
     });
 
-    $routes->get('order', 'Order::index',['filter' => 'user']);
-    $routes->post('order', 'Order::addOrder',['filter' => 'user']);
-    $routes->delete('order/delete','Order::deleteOrder',['filter' => 'user']);
+    $routes->get('order', 'Order::index',['filter' => 'user']);//done
+    $routes->post('order', 'Order::addOrder',['filter' => 'user']);//done
+    $routes->delete('order/delete','Order::deleteOrder',['filter' => 'user']);//done
+
+    $routes->post('chat', 'Chat::index',['filter' => 'user']);
 });
 
 //admin
