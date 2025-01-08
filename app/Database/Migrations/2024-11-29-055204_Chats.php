@@ -16,6 +16,9 @@ class Chats extends Migration
             'id_admin' => [
                 'type'       => 'INT',
             ],
+            'id_user' => [
+                'type'       => 'INT',
+            ],
             'id_order' => [
                 'type'       => 'INT',
             ],

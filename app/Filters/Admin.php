@@ -30,7 +30,7 @@ class Admin implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (!session('user')) {
-            return redirect()->to('/auth/login')->with('error', 'You must be logged in');
+            return redirect()->to('/')->with('error', 'You must be logged in');
         } else if (session()->get('user')['role'] == 0) {
             return redirect()->to('/')->with('error', "can't access that page");
         }

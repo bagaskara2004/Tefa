@@ -7,11 +7,11 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // user
-$routes->group('', function ($routes) {
+$routes->group('/', function ($routes) {
 
-    $routes->get('/', 'Home::index');
-    $routes->get('/project', 'Project::index');
-    $routes->get('/logout',function () {
+    $routes->get('', 'Home::index');
+    $routes->get('project', 'Project::index');
+    $routes->get('logout',function () {
         if (session('user')) {
             session()->remove('user');
             delete_cookie('remember_me');
@@ -20,8 +20,11 @@ $routes->group('', function ($routes) {
         return redirect()->back()->with('error',"can't access that page");
     });
 
-    $routes->get('order', 'Order::index');
-    $routes->post('order', 'Order::addOrder');
+    $routes->get('order', 'Order::index',['filter' => 'user']);//done
+    $routes->post('order', 'Order::addOrder',['filter' => 'user']);//done
+    $routes->delete('order/delete','Order::deleteOrder',['filter' => 'user']);//done
+
+    $routes->post('chat', 'Chat::index',['filter' => 'user']);
 });
 
 // Admin
