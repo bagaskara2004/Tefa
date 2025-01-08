@@ -33,7 +33,7 @@
                             <span class="hide-menu">Menu</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?= $page == 'Dashboard' ? 'active' : '' ?>" href="/dashboard" aria-expanded="false">
+                            <a class="sidebar-link <?= $page == 'Dashboard' ? 'active' : '' ?>" href="/admin/dashboard" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?= $page == 'Orders' ? 'active' : '' ?>" href="/orders" aria-expanded="false">
+                            <a class="sidebar-link <?= $page == 'Orders' ? 'active' : '' ?>" href="/admin/orders" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-truck-return"></i>
                                 </span>
@@ -49,7 +49,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?= $page == 'Projects' ? 'active' : '' ?>" href="/projects" aria-expanded="false">
+                            <a class="sidebar-link <?= $page == 'Projects' ? 'active' : '' ?>" href="/admin/projects" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-folders"></i>
                                 </span>
@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?= $page == 'Users' ? 'active' : '' ?>" href="users" aria-expanded="false">
+                            <a class="sidebar-link <?= $page == 'Users' ? 'active' : '' ?>" href="/admin/users" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>

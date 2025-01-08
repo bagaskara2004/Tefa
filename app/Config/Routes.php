@@ -24,9 +24,26 @@ $routes->group('', function ($routes) {
     $routes->post('order', 'Order::addOrder');
 });
 
-//admin
+// Admin
 $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('dashboard', 'Dashboard::index');
+
+    // Order management routes
+    $routes->get('orders', 'OrderController::index');
+    $routes->get('orders/edit/(:num)', 'OrderController::edit/$1');
+    $routes->get('orders/delete/(:num)', 'OrderController::delete/$1');
+
+    // User management routes
+    $routes->get('users', 'UserController::index');
+    $routes->post('users/delete/(:num)', 'UserController::delete/$1');
+
+    // Project management routes
+    $routes->get('projects', 'ProjectController::index'); // List projects
+    $routes->get('projects/create', 'ProjectController::create'); // Show create project form
+    $routes->post('projects/store', 'ProjectController::store'); // Store new project
+    $routes->get('projects/edit/(:num)', 'ProjectController::edit/$1'); // Show edit project form
+    $routes->post('projects/update/(:num)', 'ProjectController::update/$1'); // Update project
+    $routes->get('projects/delete/(:num)', 'ProjectController::delete/$1'); // Delete project
 });
 
 //auth
