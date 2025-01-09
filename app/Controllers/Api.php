@@ -38,12 +38,6 @@ class Api extends ResourceController
             'role' => false
         ];
 
-        $remoteIp = $this->request->getIPAddress();
-        $response = $this->request->getVar('g-recaptcha-response');
-        if (!verifyCaptcha($remoteIp, $response)) {
-            return $this->fail('Recaptcha is not valid', 400);
-        }
-
         $user = $this->findUserByEmail($data['email']);
         if (isset($user)) {
             return $this->fail('The email must be unique', 400);
@@ -83,12 +77,6 @@ class Api extends ResourceController
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
-        $remoteIp = $this->request->getIPAddress();
-        $response = $this->request->getVar('g-recaptcha-response');
-        if (!verifyCaptcha($remoteIp, $response)) {
-            return $this->fail('Recaptcha is not valid', 400);
-        }
-
         $user = $this->findUserByEmail($email);
         if (!isset($user)) {
             return $this->fail('Email not Found', 400);
@@ -118,12 +106,6 @@ class Api extends ResourceController
     {
         $email = $this->request->getVar('email');
         $newPassword = $this->request->getVar('password');
-
-        $remoteIp = $this->request->getIPAddress();
-        $response = $this->request->getVar('g-recaptcha-response');
-        if (!verifyCaptcha($remoteIp, $response)) {
-            return $this->fail('Recaptcha is not valid', 400);
-        }
 
         $user = $this->findUserByEmail($email);
         if (!isset($user)) {
