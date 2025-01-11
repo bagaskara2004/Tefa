@@ -28,6 +28,7 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link <?= $page == 'Home' ? 'active' : '' ?>" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link <?= $page == 'Project' ? 'active' : '' ?>" href="/project">Project</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $page == 'Contact' ? 'active' : '' ?>" href="/contact">Contact</a></li>
                     <?php if (isset($user)) : ?>
                         <li class="nav-item"><a class="nav-link <?= $page == 'Order' ? 'active' : '' ?>" href="/order">Order</a></li>
                     <?php endif ?>

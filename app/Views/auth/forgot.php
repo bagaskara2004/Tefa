@@ -2,13 +2,14 @@
 
 <?= $this->section('Form') ?>
 <form action="/auth/forgot" method="post">
+  <?= csrf_field() ?>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="email" value="<?= old('email') ?>" required minlength="10" maxlength="50">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?= old('email') ?>" required minlength="10" maxlength="50">
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">New Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1"  name="password" value="<?= old('password') ?>" required minlength="5" maxlength="50">
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" value="<?= old('password') ?>" required minlength="5" maxlength="50">
   </div>
   <div class="mb-3">
     <div class="g-recaptcha" data-sitekey="6LcfKZIqAAAAAHPIfoy-RQqqUFSw7HadTo9q6PIE"></div>

@@ -11,6 +11,8 @@ $routes->group('/', function ($routes) {
 
     $routes->get('', 'Home::index');
     $routes->get('project', 'Project::index');
+    $routes->get('contact', 'Contact::index');
+    $routes->post('feedback', 'Contact::feedback',['filter' => 'user']);
     $routes->get('logout',function () {
         if (session('user')) {
             session()->remove('user');

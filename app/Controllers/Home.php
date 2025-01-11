@@ -21,7 +21,7 @@ class Home extends BaseController
         $data = [
             'page' => 'Home',
             'teams' => $modelTeam->findAll(),
-            'testimonials' => $modelUser->join('feedback','feedback.id_user = user.id_user')->findAll(),
+            'testimonials' => $modelUser->join('feedback','feedback.id_user = user.id_user')->where('post',true)->findAll(),
             'medias' => $modelMedia->findAll(),
             'mitras' => $modelMitra->findAll(),
         ];

@@ -51,11 +51,11 @@
                                                     <h6 class="text-secondary">Detail</h6>
                                                 </a>
                                             </li>
-                                            <?php if ($order['id_status'] == 2) : ?>    
+                                            <?php if ($order['id_status'] == 2) : ?>
                                                 <li>
                                                     <a class="dropdown-item d-flex align-items-center">
                                                         <form action="/chat" method="post">
-                                                            <input type="hidden" name="id" value="<?=$order['id_order']?>">
+                                                            <input type="hidden" name="id" value="<?= $order['id_order'] ?>">
                                                             <button type="submit" class="btn btn-success me-2"><i class="bi bi-chat-dots"></i></button>
                                                         </form>
                                                         <h6 class="text-success">Chat</h6>
@@ -80,15 +80,16 @@
             <div class="col-md-6 col-xl-4 mb-2" data-aos="fade-up" data-aos-duration="600" data-aos-once="true">
                 <div style="box-shadow: 0px 0px 12px 9px #7b7b7b15;">
                     <form class="p-3 p-xl-4" method="post" action="/order">
+                        <?= csrf_field() ?>
                         <h4>Order Now</h4>
-                        <p class="text-muted">Order disini, isi form untuk membuat pesanan. pastikan data sesuai!</p>
+                        <p class="text-muted">Enjoy the convenience of ordering our products or services. Simply fill in your order details in the form below, and we will process it shortly.</p>
                         <div class="mb-3">
-                            <label class="form-label" for="judul">Judul</label>
+                            <label class="form-label" for="judul">Title</label>
                             <input class="form-control" type="text" id="judul" name="judul" value="<?= old('judul') ?>" required minlength="3" maxlength="25">
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Tipe</label>
+                            <label class="form-label">Type</label>
                             <?php foreach ($types as $type) : ?>
                                 <div class="mb-2">
                                     <input id="<?= $type['type'] ?>" type="checkbox" name="type[]" value="<?= $type['id_type'] ?>">
