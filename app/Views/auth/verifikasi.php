@@ -1,7 +1,7 @@
 <?= $this->extend('Component/auth.php') ?>
 
 <?= $this->section('Form') ?>
-<form action="" method="post">
+<form action="" method="post" id="formAuth">
     <?= csrf_field() ?>
     <div class="row g-1 justify-content-center mb-4">
         <div class="col-4 col-sm-2">
@@ -23,13 +23,13 @@
             <input type="text" class="form-control text-center otp-input" maxlength="1" required name="input6" value="<?= old('input6') ?>">
         </div>
     </div>
-    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Verify</button>
+    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" id="btnSubmit">Verify</button>
     <div class="d-flex align-items-center justify-content-center">
         <p class="fs-4 mb-0 fw-bold">Not receiving OTP?</p>
         <?php if ($page == 'actived') : ?>
-            <a class="text-primary fw-bold ms-2" href="/auth/resendactived/<?= $token ?>">Resend OTP</a>
+            <a class="text-primary fw-bold ms-2" href="/auth/resendactived/<?= $token ?>" id="btnResend">Resend OTP</a>
         <?php elseif($page == 'forgot') : ?>
-            <a class="text-primary fw-bold ms-2" href="/auth/resendforgot/<?= $token ?>">Resend OTP</a>
+            <a class="text-primary fw-bold ms-2" href="/auth/resendforgot/<?= $token ?>" id="btnResend">Resend OTP</a>
         <?php endif ?>
     </div>
 </form>

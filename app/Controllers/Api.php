@@ -74,8 +74,8 @@ class Api extends ResourceController
 
     public function login()
     {
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
+        $email = htmlspecialchars($this->request->getVar('email'));
+        $password = htmlspecialchars($this->request->getVar('password'));
 
         $user = $this->findUserByEmail($email);
         if (!isset($user)) {
@@ -104,8 +104,8 @@ class Api extends ResourceController
 
     public function forgot()
     {
-        $email = $this->request->getVar('email');
-        $newPassword = $this->request->getVar('password');
+        $email = htmlspecialchars($this->request->getVar('email'));
+        $newPassword = htmlspecialchars($this->request->getVar('password'));
 
         $user = $this->findUserByEmail($email);
         if (!isset($user)) {

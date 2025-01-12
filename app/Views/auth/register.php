@@ -1,7 +1,7 @@
 <?= $this->extend('Component/auth.php') ?>
 
 <?= $this->section('Form') ?>
-<form action="/auth/register" method="post">
+<form action="/auth/register" method="post" id="formAuth">
   <?= csrf_field() ?>
   <div class="mb-3">
     <label for="exampleInputtext1" class="form-label">Username</label>
@@ -18,7 +18,7 @@
   <div class="mb-3">
     <div class="g-recaptcha" data-sitekey="6LcfKZIqAAAAAHPIfoy-RQqqUFSw7HadTo9q6PIE"></div>
   </div>
-  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</button>
+  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" id="btnSubmit">Sign Up</button>
   <div class="d-flex align-items-center justify-content-center">
     <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
     <a class="text-primary fw-bold ms-2" href="/auth/login">Sign In</a>

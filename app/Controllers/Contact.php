@@ -29,7 +29,7 @@ class Contact extends BaseController
         $modelFeedback = new ModelFeedback();
         $data = [
             'id_user' => session()->get('user')['id'],
-            'message' => $this->request->getVar('message'),
+            'message' => htmlspecialchars($this->request->getVar('message')),
             'post' => false
         ];
 

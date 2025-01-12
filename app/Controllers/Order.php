@@ -44,8 +44,8 @@ class Order extends BaseController
         $data = [
             'id_status' => 1,
             'id_user' => session()->get('user')['id'],
-            'title' => $this->request->getVar('judul'),
-            'description' => $this->request->getVar('description')
+            'title' => htmlspecialchars($this->request->getVar('judul')),
+            'description' => htmlspecialchars($this->request->getVar('description'))
         ];
 
         $remoteIp = $this->request->getIPAddress();
@@ -54,12 +54,16 @@ class Order extends BaseController
             return redirect()->back()->withInput()->with('error', 'Recaptcha is not valid');
         }
 
+        $types = $this->request->getVar('type');
+        if(!isset($types)) {
+            return redirect()->back()->withInput()->with('error', 'Select at least one type');
+        }
+
         $order = $this->modelOrder->save($data);
         if (!$order) {
             return redirect()->back()->withInput()->with('errorarray', $this->modelOrder->errors());
         }
 
-        $types = $this->request->getVar('type');
         foreach ($types as $type) {
             $modelOrderType->save([
                 'id_type' => $type,
@@ -70,7 +74,7 @@ class Order extends BaseController
         return redirect()->back()->with('success', 'The order has been shipped, wait for admin confirmation');
     }
     public function deleteOrder()  {
-        $id = $this->request->getVar('id');
+        $id = htmlspecialchars($this->request->getVar('id'));
         $order = $this->modelOrder->find($id);
         if ($order['id_user'] != session()->get('user')['id'] || $order['id_status'] == 2) {
             return redirect()->back()->with('error', "You can't delete this order");

@@ -151,13 +151,6 @@ class Project extends Seeder
                 "photo" => "tsmqzdmni9ascmhrdrvk",
                 "url" => "https://www.instagram.com/"
             ],
-            [
-                "id_website" => 1,
-                "title" => "tttttttttt",
-                "description" => "Instagram is a photo and video-sharing social networking service owned by Facebook, Inc. It was created by Kevin Systrom and Mike Krieger, and launched in October 2010 exclusively on iOS.",
-                "photo" => "tsmqzdmni9ascmhrdrvk",
-                "url" => "https://www.instagram.com/"
-            ],
         ];
 
         $modelProject->insertBatch($data);

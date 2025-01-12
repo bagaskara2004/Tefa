@@ -24,8 +24,8 @@ class Login extends BaseController
             return view('auth/login');
         }
 
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
+        $email = htmlspecialchars($this->request->getVar('email'));
+        $password = htmlspecialchars($this->request->getVar('password'));
         $remember = $this->request->getVar('remember');
         
         $remoteIp = $this->request->getIPAddress();

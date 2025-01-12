@@ -79,7 +79,7 @@
             </div>
             <div class="col-md-6 col-xl-4 mb-2" data-aos="fade-up" data-aos-duration="600" data-aos-once="true">
                 <div style="box-shadow: 0px 0px 12px 9px #7b7b7b15;">
-                    <form class="p-3 p-xl-4" method="post" action="/order">
+                    <form class="p-3 p-xl-4" method="post" action="/order" id="formUser">
                         <?= csrf_field() ?>
                         <h4>Order Now</h4>
                         <p class="text-muted">Enjoy the convenience of ordering our products or services. Simply fill in your order details in the form below, and we will process it shortly.</p>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <button class="btn" type="submit" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 1.5em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Send </button>
+                            <button id="btnSubmit" class="btn" type="submit" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 1.5em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Send </button>
                         </div>
                     </form>
                 </div>

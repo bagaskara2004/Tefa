@@ -331,19 +331,11 @@
             data-aos-once="true">
 
             <?php foreach ($teams as $team) : ?>
-                <div class="col">
-                    <div class="card border-0 shadow-none">
-                        <div class="card-body text-center d-flex flex-column align-items-center p-0">
-                            <img
-                                class="rounded-circle mb-3 fit-cover"
-                                width="130"
-                                height="130"
-                                src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $team['photo'] ?>"
-                                alt="Profile Picture" />
-                            <h5 class="fw-bold text-primary card-title mb-0"><?= $team['name'] ?></h5>
-                            <p class="text-muted card-text mb-2"><?= $team['degree'] ?></p>
-
-                        </div>
+                <div class="col-md-3 py-2 py-md-2">
+                    <div class="bg-light mb-5 mb-md-0 p-2 p-lg-5 text-center position-relative">
+                        <img alt="" class="rounded-circle position-absolute fit-cover translate-middle top-0" height="96" src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $team['photo'] ?>" width="96">
+                        <h5 class="fw-bold text-primary card-title mb-0"><?= $team['name'] ?></h5>
+                        <p class="mb-4 text-muted"><?= $team['degree'] ?></p>
                     </div>
                 </div>
             <?php endforeach ?>
@@ -367,14 +359,14 @@
                 <?php foreach ($testimonials as $testimonial) : ?>
                     <div class="col-md-4 py-2 py-md-2">
                         <div class="bg-light mb-5 mb-md-0 p-2 p-lg-5 text-center position-relative">
-                            <img alt="" class="rounded-circle position-absolute translate-middle top-0" height="96" src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $testimonial['photo'] ?>" width="96">
-                            <div class="text-primary mb-md-4 mb-2 mt-5 mt-lg-4">
+                            <img alt="" class="rounded-circle position-absolute fit-cover translate-middle top-0" height="96" src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $testimonial['photo'] ?>" width="96">
+                            <div class="text-primary mt-5 mt-lg-4">
                                 <svg class="bi bi-quote" fill="currentColor" height="48" viewbox="0 0 16 16" width="48" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"></path>
                                 </svg>
                             </div>
-                            <p class="mb-4"><?= $testimonial['message'] ?></p>
-                            <h6 class="mt-4 fw-bold"><?= $testimonial['username'] ?></h6>
+                            <h5 class="fw-bold text-primary card-title mb-0"><?= $testimonial['username'] ?></h5>
+                            <p class="mb-4 text-muted"><?= $testimonial['message'] ?></p>
                         </div>
                     </div>
                 <?php endforeach ?>

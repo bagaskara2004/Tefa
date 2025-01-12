@@ -23,8 +23,8 @@ class Forgot extends BaseController
         if (!$this->request->getPost()) {
             return view('auth/forgot');
         }
-        $email = $this->request->getVar('email');
-        $newPassword = $this->request->getVar('password');
+        $email = htmlspecialchars($this->request->getVar('email'));
+        $newPassword = htmlspecialchars($this->request->getVar('password'));
 
         $remoteIp = $this->request->getIPAddress();
         $response = $this->request->getVar('g-recaptcha-response');

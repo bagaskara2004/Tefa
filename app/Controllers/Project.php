@@ -10,7 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class Project extends BaseController
 {
-    public function index($page = 1)
+    public function index()
     {
         $modelMedia = new ModelMedia();
         $modelUser = new ModelUser();
@@ -19,7 +19,7 @@ class Project extends BaseController
         $data = [
             'page' => 'Project',
             'medias' => $modelMedia->findAll(),
-            'projects' => $modelProject->paginate(4,'project'),
+            'projects' => $modelProject->select('project.*, GROUP_CONCAT(type.type ORDER BY type.type ASC SEPARATOR ", ") as types')->join('projecttype', 'project.id_project = projecttype.id_project', 'left')->join('type', 'projecttype.id_type = type.id_type', 'left')->groupBy('project.id_project')->paginate(4,'project'),
             'pager' => $modelProject->pager,
         ];
 

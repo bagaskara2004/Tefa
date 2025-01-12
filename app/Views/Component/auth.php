@@ -21,9 +21,9 @@
           <div class="col-md-8 col-lg-6 col-xxl-3">
             <div class="card mb-0">
               <div class="card-body">
-                  <div class="text-nowrap logo-img text-center d-block pt-3 pb-4 w-100">
-                    <img src="/assets/img/logos/tefa.png" width="150" alt="">
-                  </div>
+                <div class="text-nowrap logo-img text-center d-block pt-3 pb-4 w-100">
+                  <img src="/assets/img/logos/tefa.png" width="150" alt="">
+                </div>
                 <?= $this->renderSection('Form') ?>
               </div>
             </div>
@@ -55,6 +55,17 @@
       <?php } ?>
     </div>
   </div>
+  <script>
+    const formAuth = document.getElementById('formAuth');
+    const btnSubmit = document.getElementById('btnSubmit');
+    const btnResend = document.getElementById('btnResend');
+    formAuth.addEventListener('submit',function () {
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+      btnResend.removeAttribute('href');
+      btnResend.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+    });
+  </script>
   <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/js/auth.js"></script>

@@ -136,6 +136,14 @@
             </div>
         </div>
     </footer>
+    <script>
+        const formUser = document.getElementById('formUser');
+        const btnSubmit = document.getElementById('btnSubmit');
+        formUser.addEventListener('submit', function() {
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+        });
+    </script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/aos.min.js"></script>
     <script src="/assets/js/bs-init.js"></script>
