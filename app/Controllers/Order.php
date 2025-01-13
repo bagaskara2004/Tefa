@@ -29,7 +29,7 @@ class Order extends BaseController
             'location' => $this->website['location'],
             'types' => $modelType->findAll(),
             'medias' => $modelMedia->findAll(),
-            'orders' => $this->modelOrder->select('order.*,status.status,GROUP_CONCAT(type.type ORDER BY type.type SEPARATOR ", ") AS types')->join('ordertype', 'order.id_order = ordertype.id_order', 'left')->join('type', 'ordertype.id_type = type.id_type', 'left')->join('status','id_status','id_status')->where('id_user',session()->get('user')['id'])->groupBy('order.id_order, order.title')->findAll()
+            'orders' => $this->modelOrder->select('order.*,status.status,GROUP_CONCAT(type.type ORDER BY type.type SEPARATOR ", ") AS types')->join('ordertype', 'order.id_order = ordertype.id_order', 'left')->join('type', 'ordertype.id_type = type.id_type', 'left')->join('status','id_status','id_status')->where('id_user',session()->get('user')['id'])->groupBy('order.id_order, order.title')->orderBy('order.id_order','DESC')->findAll()
         ];
         if (session('user') && session()->get('user')['role'] == 0) {
             $data['user'] = $this->modelUser->find(session()->get('user')['id']);

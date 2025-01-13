@@ -79,4 +79,7 @@ $routes->group('api', function ($routes) {
     $routes->post('login','Api::login');//done
     $routes->post('forgot','Api::forgot');//done
     $routes->get('user','Api::getUser',['filter' => 'api']);//done
+    $routes->post('order','Api::order',['filter' => 'api']);//done
+    $routes->get('order','Api::getOrder',['filter' => 'api']);//done
+    $routes->get('order/(:num)','Api::detailOrder/$1',['filter' => 'api']);//done
 });
