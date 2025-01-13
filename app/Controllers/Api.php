@@ -233,10 +233,20 @@ class Api extends ResourceController
 
     public function deleteOrder()
     {
+        $authHeader = $this->request->getHeaderLine('Authorization');
+        $token = str_replace('Bearer ', '', $authHeader);
+        $jwtConfig = new JwtConfig();
+        $token = JWT::decode($token, new Key($jwtConfig->key, $jwtConfig->algorithm));
+
         $id = htmlspecialchars($this->request->getVar('id_order'));
         $order = $this->modelOrder->find($id);
+
         if (!isset($order)) {
             return $this->fail('Order not found', 400);
+        }
+        
+        if ($order['id_user'] != $token->id || $order['id_status'] == 2) {
+            return $this->fail("You can't delete this order", 400);
         }
         $this->modelOrder->delete($id);
         return $this->respond([
