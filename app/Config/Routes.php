@@ -82,4 +82,6 @@ $routes->group('api', function ($routes) {
     $routes->post('order','Api::order',['filter' => 'api']);//done
     $routes->get('order','Api::getOrder',['filter' => 'api']);//done
     $routes->get('order/(:num)','Api::detailOrder/$1',['filter' => 'api']);//done
+    $routes->delete('order','Api::deleteOrder',['filter' => 'api']);//done
+    $routes->get('type','Api::getType',['filter' => 'api']);//done
 });
