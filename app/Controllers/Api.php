@@ -37,6 +37,7 @@ class Api extends ResourceController
             'username' => htmlspecialchars($this->request->getVar('username')),
             'password' => htmlspecialchars($this->request->getVar('password')),
             'email' => htmlspecialchars($this->request->getVar('email')),
+            'telp' => htmlspecialchars($this->request->getVar('telp')),
             'photo' => 'fpcdfnizngdcifp8isbm',
             'otp' => generateKode(),
             'actived' => false,

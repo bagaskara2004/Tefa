@@ -25,6 +25,10 @@ class Users extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '500',
             ],
+            'telp' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '500',
+            ],
             'photo' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '500',

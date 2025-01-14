@@ -13,10 +13,7 @@ class Chats extends Migration
                 'type'           => 'INT',
                 'auto_increment' => true,
             ],
-            'id_admin' => [
-                'type'       => 'INT',
-            ],
-            'id_user' => [
+            'id_sender' => [
                 'type'       => 'INT',
             ],
             'id_order' => [
@@ -25,14 +22,6 @@ class Chats extends Migration
             'message' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '1000',
-            ],
-            'admin_read' => [
-                'type'       => 'TINYINT',
-                'constraint' => 1,
-            ],
-            'user_read' => [
-                'type'       => 'TINYINT',
-                'constraint' => 1,
             ],
             'created' => [
                 'type'       => 'datetime',
@@ -48,7 +37,7 @@ class Chats extends Migration
             ],
         ]);
         $this->forge->addKey('id_chat', true);
-        $this->forge->addForeignKey('id_admin', 'User', 'id_user');
+        $this->forge->addForeignKey('id_sender', 'User', 'id_user');
         $this->forge->addForeignKey('id_order', 'Order', 'id_order');
         $this->forge->createTable('Chat');
     }

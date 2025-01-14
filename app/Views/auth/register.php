@@ -15,6 +15,10 @@
     <label for="exampleInputEmail1" class="form-label">Email</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" autocomplete="off" name="email" value="<?= old('email') ?>" required minlength="10" maxlength="50">
   </div>
+  <div class="mb-4">
+    <label for="exampleInputTelp1" class="form-label">Telp</label>
+    <input type="text" class="form-control" id="exampleInputTelp1" name="telp" value="<?= old('telp') ?>" required minlength="10" maxlength="15">
+  </div>
   <div class="mb-3">
     <div class="g-recaptcha" data-sitekey="6LcfKZIqAAAAAHPIfoy-RQqqUFSw7HadTo9q6PIE"></div>
   </div>
