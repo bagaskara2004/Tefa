@@ -12,7 +12,7 @@ class ModelUser extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['username', 'password', 'email', 'photo', 'otp', 'actived', 'role'];
+    protected $allowedFields    = ['username', 'password', 'email','telp', 'photo', 'otp', 'actived', 'role'];
 
     // Dates
     protected $useTimestamps = true;
@@ -26,6 +26,7 @@ class ModelUser extends Model
         'username' => 'required|min_length[3]|max_length[25]|alpha_numeric',
         'password' => 'required|min_length[5]|max_length[50]',
         'email' => 'required|valid_email|min_length[10]|max_length[50]',
+        'telp' => 'required|numeric|min_length[10]|max_length[15]',
         'photo' => 'required|min_length[3]|max_length[500]',
     ];
     protected $validationMessages   = [];
@@ -57,6 +58,7 @@ class ModelUser extends Model
         $data['data']['username'] = $this->encryption->encrypt($data['data']['username']);
         $data['data']['password'] = $this->encryption->encrypt($data['data']['password']);
         $data['data']['email'] = $this->encryption->encrypt($data['data']['email']);
+        $data['data']['telp'] = $this->encryption->encrypt($data['data']['telp']);
         $data['data']['otp'] = $this->encryption->encrypt($data['data']['otp']);
 
         return $data;
@@ -76,7 +78,7 @@ class ModelUser extends Model
 
     private function decryptData(array $data)
     {
-        foreach (['username', 'password', 'email', 'otp'] as $field) {
+        foreach (['username', 'password', 'email','telp', 'otp'] as $field) {
             if (!empty($data[$field])) {
                 $data[$field] = $this->encryption->decrypt($data[$field]);
             }

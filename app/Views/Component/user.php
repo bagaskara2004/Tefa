@@ -28,6 +28,7 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link <?= $page == 'Home' ? 'active' : '' ?>" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link <?= $page == 'Project' ? 'active' : '' ?>" href="/project">Project</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $page == 'Contact' ? 'active' : '' ?>" href="/contact">Contact</a></li>
                     <?php if (isset($user)) : ?>
                         <li class="nav-item"><a class="nav-link <?= $page == 'Order' ? 'active' : '' ?>" href="/order">Order</a></li>
                     <?php endif ?>
@@ -88,7 +89,7 @@
             </div>
         <?php endif ?>
 
-        <div class="position-fixed bottom-0 start-0">
+        <div class="position-fixed bottom-0 start-0" id="msgUser">
             <?php if (session()->getFlashdata('errorarray')) { ?>
                 <?php foreach (session()->getFlashdata('errorarray') as $err) { ?>
                     <div class="alert alert-danger alert-dismissible fade show m-1" role="alert">
@@ -135,6 +136,15 @@
             </div>
         </div>
     </footer>
+    <?= $this->renderSection('Script') ?>
+    <script>
+        const formUser = document.getElementById('formUser');
+        const btnSubmit = document.getElementById('btnSubmit');
+        formUser.addEventListener('submit', function() {
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+        });
+    </script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/aos.min.js"></script>
     <script src="/assets/js/bs-init.js"></script>
