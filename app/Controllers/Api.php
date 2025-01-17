@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ModelChat;
 use App\Models\ModelOrder;
 use App\Models\ModelOrderType;
 use App\Models\ModelType;
@@ -245,7 +246,7 @@ class Api extends ResourceController
         if (!isset($order)) {
             return $this->fail('Order not found', 400);
         }
-        
+
         if ($order['id_user'] != $token->id || $order['id_status'] == 2) {
             return $this->fail("You can't delete this order", 400);
         }
@@ -293,5 +294,66 @@ class Api extends ResourceController
             }
         }
         return null;
+    }
+
+    public function getMessage($idOrder)
+    {
+        $authHeader = $this->request->getHeaderLine('Authorization');
+        $token = str_replace('Bearer ', '', $authHeader);
+        $jwtConfig = new JwtConfig();
+        $token = JWT::decode($token, new Key($jwtConfig->key, $jwtConfig->algorithm));
+
+        $modelChat = new ModelChat();
+        $modelOrder = new ModelOrder();
+
+        $order = $modelOrder->find($idOrder);
+        if (!$order) {
+            return $this->fail('Order not found', 404);
+        }
+        if ($order['id_user'] != $token->id || $order['id_status'] != 2) {
+            return $this->fail('Cant access message', 404);
+        }
+        $data = $modelChat->where('id_order', $idOrder)->orderBy('id_chat', 'DESC')->findAll();
+        return $this->respond([
+            'status' => 201,
+            'message' => 'Success get message',
+            'data' => $data
+        ], 201);
+    }
+
+    public function sendMessage()
+    {
+        $authHeader = $this->request->getHeaderLine('Authorization');
+        $token = str_replace('Bearer ', '', $authHeader);
+        $jwtConfig = new JwtConfig();
+        $token = JWT::decode($token, new Key($jwtConfig->key, $jwtConfig->algorithm));
+
+        $modelChat = new ModelChat();
+        $modelOrder = new ModelOrder();
+
+        $data = [
+            'id_order' => htmlspecialchars($this->request->getVar('id_order')),
+            'message' => htmlspecialchars($this->request->getVar('message')),
+            'id_sender' => $token->id,
+        ];
+
+        $order = $modelOrder->find($data['id_order']);
+        if (!$order) {
+            return $this->fail('Order not found', 404);
+        }
+
+        if ($order['id_user'] != $token->id || $order['id_status'] != 2) {
+            return $this->fail('Cant send message to this order', 404);
+        }
+
+        $send = $modelChat->save($data);
+        if (!$send) {
+            return $this->failValidationErrors($modelChat->errors());
+        }
+        return $this->respond([
+            'status' => 201,
+            'message' => 'Success send message',
+            'data' => $data
+        ], 201);
     }
 }

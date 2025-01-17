@@ -12,7 +12,7 @@ class ModelChat extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_admin','id_user','id_order','message','admin_read','user_read'];
+    protected $allowedFields    = ['id_sender','id_order','message'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,7 +23,7 @@ class ModelChat extends Model
 
     // Validation
     protected $validationRules      = [
-        'message' => 'required|min_length[3]|max_length[50]|alpha_numeric'
+        'message' => 'required|max_length[50]'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -51,7 +51,7 @@ class ModelChat extends Model
 
     protected function encryptChat(array $data)
     {
-        $data['data']['message'] = $this->encryption->encrypt($data['data']['username']);
+        $data['data']['message'] = $this->encryption->encrypt($data['data']['message']);
         return $data;
     }
 

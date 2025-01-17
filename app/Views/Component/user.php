@@ -89,7 +89,7 @@
             </div>
         <?php endif ?>
 
-        <div class="position-fixed bottom-0 start-0">
+        <div class="position-fixed bottom-0 start-0" id="msgUser">
             <?php if (session()->getFlashdata('errorarray')) { ?>
                 <?php foreach (session()->getFlashdata('errorarray') as $err) { ?>
                     <div class="alert alert-danger alert-dismissible fade show m-1" role="alert">
@@ -136,6 +136,7 @@
             </div>
         </div>
     </footer>
+    <?= $this->renderSection('Script') ?>
     <script>
         const formUser = document.getElementById('formUser');
         const btnSubmit = document.getElementById('btnSubmit');

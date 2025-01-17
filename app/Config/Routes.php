@@ -25,8 +25,9 @@ $routes->group('/', function ($routes) {
     $routes->get('order', 'Order::index',['filter' => 'user']);//done
     $routes->post('order', 'Order::addOrder',['filter' => 'user']);//done
     $routes->delete('order/delete','Order::deleteOrder',['filter' => 'user']);//done
+    $routes->post('sendMessage', 'Order::sendMessage',['filter' => 'user']);
+    $routes->get('getMessage/(:num)', 'Order::getMessage/$1',['filter' => 'user']);
 
-    $routes->post('chat', 'Chat::index',['filter' => 'user']);
 });
 
 // Admin
@@ -84,4 +85,6 @@ $routes->group('api', function ($routes) {
     $routes->get('order/(:num)','Api::detailOrder/$1',['filter' => 'api']);//done
     $routes->delete('order','Api::deleteOrder',['filter' => 'api']);//done
     $routes->get('type','Api::getType',['filter' => 'api']);//done
+    $routes->post('sendMessage', 'Api::sendMessage',['filter' => 'api']);
+    $routes->get('getMessage/(:num)', 'Api::getMessage/$1',['filter' => 'api']);
 });
