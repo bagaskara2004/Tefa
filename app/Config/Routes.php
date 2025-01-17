@@ -32,10 +32,11 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('dashboard', 'Dashboard::index');
 
     // Order management routes
-    $routes->get('orders', 'OrderController::index');
-    $routes->get('orders/edit/(:num)', 'OrderController::edit/$1');
-    $routes->get('orders/delete/(:num)', 'OrderController::delete/$1');
-
+    $routes->get('orders', 'OrderController::index'); // List orders
+    $routes->get('orders/edit/(:num)', 'OrderController::edit/$1'); // Show edit order form
+    $routes->post('orders/update/(:num)', 'OrderController::update/$1'); // Update order
+    $routes->delete('orders/delete/(:num)', 'OrderController::delete/$1'); // Change to DELETE
+    
     // User management routes
     $routes->get('users', 'UserController::index');
     $routes->post('users/delete/(:num)', 'UserController::delete/$1');
@@ -47,6 +48,30 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('projects/edit/(:num)', 'ProjectController::edit/$1'); // Show edit project form
     $routes->post('projects/update/(:num)', 'ProjectController::update/$1'); // Update project
     $routes->get('projects/delete/(:num)', 'ProjectController::delete/$1'); // Delete project
+
+    // Website management routes
+    $routes->get('websites', 'WebsiteController::index');
+    $routes->get('websites/create', 'WebsiteController::create');
+    $routes->post('websites/store', 'WebsiteController::store');
+    $routes->get('websites/edit/(:num)', 'WebsiteController::edit/$1');
+    $routes->post('websites/update/(:num)', 'WebsiteController::update/$1');
+    $routes->post('websites/delete/(:num)', 'WebsiteController::delete/$1');
+
+    // Media management routes
+    $routes->get('medias', 'MediaController::index');
+    $routes->get('media/create', 'MediaController::create');
+    $routes->post('media/store', 'MediaController::store');
+    $routes->get('media/edit/(:num)', 'MediaController::edit/$1');
+    $routes->post('media/update/(:num)', 'MediaController::update/$1');
+    $routes->post('media/delete/(:num)', 'MediaController::delete/$1');
+
+    //Mitra management route
+    $routes->get('mitras', 'MitraController::index');
+    $routes->get('mitras/create', 'MitraController::create');
+    $routes->post('mitras/store', 'MitraController::store');
+    $routes->get('mitras/edit/(:num)', 'MitraController::edit/$1');
+    $routes->post('mitras/update/(:num)', 'MitraController::update/$1');
+    $routes->post('mitras/delete/(:num)', 'MitraController::delete/$1');
 });
 
 //auth

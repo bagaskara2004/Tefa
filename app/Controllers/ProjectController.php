@@ -36,12 +36,12 @@ class ProjectController extends BaseController
 
     if ($photo->isValid() && !$photo->hasMoved()) {
         $photoName = $photo->getRandomName(); // Generate a random name for the photo
-        $photo->move(WRITEPATH . 'uploads', $photoName); // Move the file to the uploads directory
+        $photo->move(FCPATH . 'uploads', $photoName); // Move the file to the uploads directory
     }
 
     // Prepare data for saving
     $data = [
-        'id_website' => 1, // Always set id_website to 1
+        'id_website' => $this->request->getPost('id_website'),
         'title' => $this->request->getPost('title'),
         'description' => $this->request->getPost('description'),
         'photo' => $photoName, // Save the photo name
@@ -77,12 +77,12 @@ class ProjectController extends BaseController
 
     if ($photo->isValid() && !$photo->hasMoved()) {
         $photoName = $photo->getRandomName(); // Generate a random name for the photo
-        $photo->move(WRITEPATH . 'uploads', $photoName); // Move the file to the uploads directory
+        $photo->move(FCPATH . 'uploads', $photoName); // Move the file to the uploads directory
     }
 
     // Prepare data for updating
     $data = [
-        'id_website' => 1, // Always set id_website to 1
+        'id_website' => $this->request->getPost('id_website'),
         'title' => $this->request->getPost('title'),
         'description' => $this->request->getPost('description'),
         'url' => $this->request->getPost('url'),

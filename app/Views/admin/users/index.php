@@ -18,7 +18,7 @@
                     <tr>
                         <td><?= esc($user['username']) ?></td>
                         <td><?= esc($user['email']) ?></td>
-                        <td><img src="<?= esc($user['photo']) ?>" alt="User  Photo" width="100"></td>
+                        <td><img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?= $user['photo'] ?>" alt="User  Photo" width="100"></td>
                         <td>
                         <form action="<?= site_url('admin/users/delete/' . $user['id_user']) ?>" method="post" style="display:inline;">
                             <?= csrf_field() ?>

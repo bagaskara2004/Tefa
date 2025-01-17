@@ -3,8 +3,11 @@
 <?= $this->section('Content') ?>
 <h1>Create Project</h1>
 <form action="<?= site_url('admin/projects/store') ?>" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id_website" value="1"> <!-- Set id_website to 1 -->
-    
+    <div class="mb-3">
+        <label for="id_website" class="form-label">ID Website:</label>
+        <input type="number" class="form-control" name="id_website"> <!-- Set id_website to 1 -->
+    </div>
+
     <div class="mb-3">
         <label for="title" class="form-label">Title:</label>
         <input type="text" class="form-control" name="title" required>
