@@ -112,4 +112,5 @@ $routes->group('api', function ($routes) {
     $routes->get('type','Api::getType',['filter' => 'api']);//done
     $routes->post('sendMessage', 'Api::sendMessage',['filter' => 'api']);
     $routes->get('getMessage/(:num)', 'Api::getMessage/$1',['filter' => 'api']);
+    $routes->post('feedback', 'Api::feedback',['filter' => 'api']);
 });

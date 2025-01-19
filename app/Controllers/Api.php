@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelChat;
+use App\Models\ModelFeedback;
 use App\Models\ModelOrder;
 use App\Models\ModelOrderType;
 use App\Models\ModelType;
@@ -353,6 +354,33 @@ class Api extends ResourceController
         return $this->respond([
             'status' => 201,
             'message' => 'Success send message',
+            'data' => $data
+        ], 201);
+    }
+
+    public function feedback()
+    {
+        $authHeader = $this->request->getHeaderLine('Authorization');
+        $token = str_replace('Bearer ', '', $authHeader);
+        $jwtConfig = new JwtConfig();
+        $token = JWT::decode($token, new Key($jwtConfig->key, $jwtConfig->algorithm));
+
+        $modelFeedback = new ModelFeedback();
+
+        $data = [
+            'id_user' => $token->id,
+            'message' => htmlspecialchars($this->request->getVar('message')),
+            'post' => false
+        ];
+
+        $feedback = $modelFeedback->save($data);
+        if (!$feedback) {
+            return $this->failValidationErrors($modelFeedback->errors());
+        }
+
+        return $this->respond([
+            'status' => 201,
+            'message' => 'Success send feedback',
             'data' => $data
         ], 201);
     }
