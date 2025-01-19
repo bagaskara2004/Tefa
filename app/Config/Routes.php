@@ -75,6 +75,10 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('mitras/edit/(:num)', 'MitraController::edit/$1');
     $routes->post('mitras/update/(:num)', 'MitraController::update/$1');
     $routes->post('mitras/delete/(:num)', 'MitraController::delete/$1');
+
+    // chat
+    $routes->get('getMessage/(:num)', 'OrderController::getMessage/$1');
+    $routes->post('sendMessage', 'OrderController::sendMessage');
 });
 
 //auth

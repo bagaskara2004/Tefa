@@ -2,16 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\ModelChat;
 use App\Models\ModelOrder;
 use App\Models\ModelOrderType;
 use App\Models\ModelStatus;
 use App\Models\ModelType; // Include the ModelType
+use App\Models\ModelUser;
 
 class OrderController extends BaseController
 {
     protected $modelOrder;
     protected $modelOrderType;
     protected $modelStatus;
+    protected $modelUser;
     protected $modelType; // Add a property for ModelType
 
     public function __construct()
@@ -20,6 +23,7 @@ class OrderController extends BaseController
         $this->modelOrderType = new ModelOrderType();
         $this->modelStatus = new ModelStatus();
         $this->modelType = new ModelType(); // Initialize ModelType
+        $this->modelUser = new ModelUser();
     }
 
     public function index()
@@ -28,9 +32,8 @@ class OrderController extends BaseController
         $selectedStatus = $this->request->getGet('status');
 
         // Fetch orders with optional filtering by status
-        $orders = $this->modelOrder->select('order.*, status.status')
-            ->join('status', 'status.id_status = order.id_status', 'left')
-            ->where('order.deleted', null); // Assuming soft delete
+
+        $orders = $this->modelOrder->select('order.*,status.status,GROUP_CONCAT(type.type ORDER BY type.type SEPARATOR ", ") AS types')->join('ordertype', 'order.id_order = ordertype.id_order', 'left')->join('type', 'ordertype.id_type = type.id_type', 'left')->join('status', 'id_status', 'id_status')->groupBy('order.id_order, order.title')->orderBy('order.id_order', 'DESC'); // Assuming soft delete
         if ($selectedStatus) {
             $orders->where('order.id_status', $selectedStatus);
         }
@@ -67,7 +70,8 @@ class OrderController extends BaseController
             'selectedStatus' => $selectedStatus,
             'page' => 'Orders',
             'time' => $time,
-            'orderTypeNames' => $orderTypeNames // Pass the order type names to the view
+            'orderTypeNames' => $orderTypeNames, // Pass the order type names to the view
+            'user' =>  $this->modelUser->find(session()->get('user')['id'])
         ]);
     }
 
@@ -123,5 +127,70 @@ class OrderController extends BaseController
         $this->modelOrder->delete($id);
 
         return redirect()->to('/admin/orders')->with('success', 'Order deleted successfully.');
+    }
+
+    public function getMessage($idOrder)
+    {
+        $modelChat = new ModelChat();
+        $modelOrder = new ModelOrder();
+        $order = $modelOrder->find($idOrder);
+        if (!$order) {
+            return $this->response->setJSON([
+                'status' => 404,
+                'message' => 'Order not found'
+            ]);
+        }
+        if ($order['id_status'] != 2) {
+            return $this->response->setJSON([
+                'status' => 404,
+                'message' => 'Cant access message'
+            ]);
+        }
+        $data = $modelChat->where('id_order', $idOrder)->orderBy('id_chat', 'DESC')->findAll();
+        return $this->response->setJSON([
+            'status' => 201,
+            'message' => 'Success get message',
+            'data' => $data
+        ]);
+    }
+
+    public function sendMessage()
+    {
+        $modelChat = new ModelChat();
+        $modelOrder = new ModelOrder();
+
+        $data = [
+            'id_order' => htmlspecialchars($this->request->getVar('id_order')),
+            'message' => htmlspecialchars($this->request->getVar('message')),
+            'id_sender' => session()->get('user')['id'],
+        ];
+
+        $order = $modelOrder->find($data['id_order']);
+        if (!$order) {
+            return $this->response->setJSON([
+                'status' => 404,
+                'message' => 'Order not found'
+            ]);
+        }
+
+        if ($order['id_status'] != 2) {
+            return $this->response->setJSON([
+                'status' => 404,
+                'message' => 'Cant send message to this order'
+            ]);
+        }
+
+        $send = $modelChat->save($data);
+        if (!$send) {
+            return $this->response->setJSON([
+                'status' => 400,
+                'message' => $modelChat->errors()
+            ]);
+        }
+        return $this->response->setJSON([
+            'status' => 201,
+            'message' => 'Success send message',
+            'data' => $data
+        ]);
     }
 }
