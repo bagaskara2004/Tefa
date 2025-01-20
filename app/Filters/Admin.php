@@ -29,8 +29,28 @@ class Admin implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
+        $modelUser = new ModelUser();
+        $jwtConfig = new JwtConfig();
         if (!session('user')) {
-            return redirect()->to('/')->with('error', 'You must be logged in');
+            $cookie = get_cookie('remember_me');
+            if ($cookie) {
+                try {
+                    $decriptCookie = JWT::decode($cookie, new Key($jwtConfig->key, $jwtConfig->algorithm));
+                    $user = $modelUser->find($decriptCookie->id);
+                    if ($user['role'] == 0) {
+                        return redirect()->to('/')->with('error', "can't access that page");
+                    }
+                    session()->set('user', [
+                        'id' => $user['id_user'],
+                        'role' => $user['role']
+                    ]);
+                } catch (\Exception $e) {
+                    delete_cookie('remember_me');
+                    return redirect()->to('/')->withCookies()->with('error', 'You must be logged in');
+                }
+            } else {
+                return redirect()->to('/')->with('error', 'You must be logged in');
+            }
         } else if (session()->get('user')['role'] == 0) {
             return redirect()->to('/')->with('error', "can't access that page");
         }

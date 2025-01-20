@@ -54,7 +54,7 @@ class Auth implements FilterInterface
                     return redirect()->to('/')->with('success', "Selamat Datang " . $user['username']);
                 }
             }
-        } catch (\CodeIgniter\Encryption\Exceptions\EncryptionException $e) {
+        } catch (\Exception $e) {
             delete_cookie('remember_me');
         }
     }
