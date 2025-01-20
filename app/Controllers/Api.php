@@ -402,7 +402,7 @@ class Api extends ResourceController
         if (!$editUser) {
             return $this->failValidationErrors($modelUser->errors());
         }
-        if (!$file->isValid() && !$this->request->getVar('default')) {
+        if (!$file && !$this->request->getVar('default')) {
             return $this->respond([
                 'status' => 201,
                 'message' => 'Success edit profile',

@@ -97,7 +97,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/editProfile" method="post" class="d-flex flex-column" enctype="multipart/form-data">
+                            <form action="/editProfile" method="post" class="d-flex flex-column" enctype="multipart/form-data" id="formProfile">
                                 <div class="mb-3">
                                     <label for="photo" class="form-label">Photo :</label>
                                     <input type="file" class="form-control" id="photo" name="photo">
@@ -116,7 +116,7 @@
                                     <label for="telp" class="form-label">Telp :</label>
                                     <input type="text" class="form-control" id="telp" name="telp" value="<?= $user['telp'] ?>" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary" id="btnSubmit">Simpan</button>
+                                <button type="submit" class="btn btn-primary" id="btnProfile">Simpan</button>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -181,6 +181,12 @@
         formUser.addEventListener('submit', function() {
             btnSubmit.disabled = true;
             btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+        });
+        const formProfile = document.getElementById('formProfile');
+        const btnProfile = document.getElementById('btnProfile');
+        formProfile.addEventListener('submit', function() {
+            btnProfile.disabled = true;
+            btnProfile.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
         });
     </script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
