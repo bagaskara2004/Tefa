@@ -118,4 +118,5 @@ $routes->group('api', function ($routes) {
     $routes->post('sendMessage', 'Api::sendMessage',['filter' => 'api']);
     $routes->get('getMessage/(:num)', 'Api::getMessage/$1',['filter' => 'api']);
     $routes->post('feedback', 'Api::feedback',['filter' => 'api']);
+    $routes->post('editProfile','Api::editProfile',['filter' => 'api']);
 });

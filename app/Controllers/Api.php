@@ -384,4 +384,55 @@ class Api extends ResourceController
             'data' => $data
         ], 201);
     }
+
+    public function editProfile()
+    {
+        $authHeader = $this->request->getHeaderLine('Authorization');
+        $token = str_replace('Bearer ', '', $authHeader);
+        $jwtConfig = new JwtConfig();
+        $token = JWT::decode($token, new Key($jwtConfig->key, $jwtConfig->algorithm));
+
+        $modelUser = new ModelUser();
+        $file = $this->request->getFile('photo');
+
+        $data = $modelUser->find($token->id);
+        $data['username'] = htmlspecialchars($this->request->getVar('username'));
+        $data['telp'] = htmlspecialchars($this->request->getVar('telp'));
+        $editUser = $modelUser->save($data);
+        if (!$editUser) {
+            return $this->failValidationErrors($modelUser->errors());
+        }
+        if (!$file->isValid() && !$this->request->getVar('default')) {
+            return $this->respond([
+                'status' => 201,
+                'message' => 'Success edit profile',
+                'data' => $data
+            ], 201);
+        }
+
+        if ($this->request->getVar('default')) {
+            $data['photo'] = 'fpcdfnizngdcifp8isbm';
+        } else {
+            if ($file->isValid() && !$file->hasMoved()) {
+                $ext = $file->getClientExtension();
+                $valid = ['jpg', 'jpeg', 'png'];
+                if (!in_array($ext, $valid)) {
+                    return $this->fail("can't upload photo", 400);
+                }
+                $result = cloudinaryUpload($file->getRealPath());
+                if (!isset($result)) {
+                    return $this->fail("can't upload photo", 400);
+                }
+                $data['photo'] = $result;
+            } else {
+                return $this->fail("can't upload photo", 400);
+            }
+        }
+        $modelUser->save($data);
+        return $this->respond([
+            'status' => 201,
+            'message' => 'Success edit profile',
+            'data' => $data
+        ], 201);
+    }
 }
