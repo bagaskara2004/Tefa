@@ -6,8 +6,8 @@
         <div class="container py-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h2 class="fw-bold">Our Project</h2>
-                    <p class="text-muted">We are proud to present various projects that we have completed with dedication and innovation. Each project is designed to provide the best solution and create an unforgettable experience for users.</p>
+                    <h2 class="fw-bold">Projek Kami</h2>
+                    <p class="text-muted">Kami bangga mempresentasikan berbagai proyek yang telah kami selesaikan dengan dedikasi dan inovasi. Setiap proyek dirancang untuk memberikan solusi terbaik dan menciptakan pengalaman tak terlupakan bagi penggunanya.</p>
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-2 mx-auto" style="max-width: 900px;">

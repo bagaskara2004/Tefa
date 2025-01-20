@@ -59,7 +59,7 @@
             <div class="col mb-2" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" data-aos-once="true">
                 <div style="box-shadow: 0px 0px 12px 9px #7b7b7b15;">
                     <div class="p-3">
-                        <h4>List Order</h4>
+                        <h4>Daftar Pesanan</h4>
                         <hr>
                         <div class="overflow-auto" style="max-height: 635px; min-height: 300px;">
                             <?php if (empty($orders)) : ?>
@@ -91,7 +91,7 @@
                                                 <li>
                                                     <a data-title="<?= $order['title'] ?>" data-id="<?= $order['id_order'] ?>" data-bs-toggle="modal" data-bs-target="#deleteModal" class="dropdown-item d-flex align-items-center deleteOrder">
                                                         <button type="button" class="btn btn-danger me-2"><i class="bi bi-trash"></i></button>
-                                                        <h6 class="text-danger">Delete</h6>
+                                                        <h6 class="text-danger">Hapus</h6>
                                                     </a>
                                                 </li>
                                             <?php endif ?>
@@ -107,15 +107,15 @@
                 <div style="box-shadow: 0px 0px 12px 9px #7b7b7b15;">
                     <form class="p-3 p-xl-4" method="post" action="/order" id="formUser">
                         <?= csrf_field() ?>
-                        <h4>Order Now</h4>
-                        <p class="text-muted">Enjoy the convenience of ordering our products or services. Simply fill in your order details in the form below, and we will process it shortly.</p>
+                        <h4>Pesan Sekarang</h4>
+                        <p class="text-muted">Nikmati kemudahan memesan produk atau layanan kami. Isi formulir di bawah, dan kami akan segera memprosesnya.</p>
                         <div class="mb-3">
-                            <label class="form-label" for="judul">Title</label>
+                            <label class="form-label" for="judul">Judul :</label>
                             <input class="form-control" type="text" id="judul" name="judul" value="<?= old('judul') ?>" required minlength="3" maxlength="25">
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Type</label>
+                            <label class="form-label">Tipe :</label>
                             <?php foreach ($types as $type) : ?>
                                 <div class="mb-2">
                                     <input id="<?= $type['type'] ?>" type="checkbox" name="type[]" value="<?= $type['id_type'] ?>">
@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label" for="description">Description</label>
+                            <label class="form-label" for="description">Deskripsi :</label>
                             <textarea class="form-control" id="description" name="description" rows="6" required minlength="20" maxlength="1000"><?= old('description') ?></textarea>
                         </div>
 
@@ -134,7 +134,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <button id="btnSubmit" class="btn" type="submit" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 1.5em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Send </button>
+                            <button id="btnSubmit" class="btn" type="submit" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 1.5em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Kirim </button>
                         </div>
                     </form>
                 </div>
@@ -153,8 +153,8 @@
                 <div class="modal-body chat-body" id="chatBody"></div>
                 <div class="modal-footer">
                     <div class="text-danger" id="msgError"></div>
-                    <input type="text" class="form-control me-2 w-100" placeholder="Type a message" id="message">
-                    <button class="btn btn-primary w-100" id="btnSend"><i class="bi bi-send"></i> Send</button>
+                    <input type="text" class="form-control me-2 w-100" placeholder="Tuliskan pesanmu" id="message">
+                    <button class="btn btn-primary w-100" id="btnSend"><i class="bi bi-send"></i> Kirim</button>
 
                 </div>
             </div>
@@ -166,15 +166,15 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="orderModalLabel">DetailOrder</h5>
+                    <h5 class="modal-title" id="orderModalLabel">DetailPesanan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-start">
-                    <p><strong>Title :</strong> <span id="titleModal" class="text-break"></span></p>
+                    <p><strong>Judul :</strong> <span id="titleModal" class="text-break"></span></p>
                     <p><strong>Status :</strong> <span id="statusModal" class="text-break"></span></p>
-                    <p><strong>Created :</strong> <span id="createdModal" class="text-break"></span></p>
-                    <p><strong>Type :</strong> <span id="typeModal" class="text-break"></span></p>
-                    <p><strong>Description :</strong> <span id="descriptionModal" class="text-break"></span></p>
+                    <p><strong>Dibuat :</strong> <span id="createdModal" class="text-break"></span></p>
+                    <p><strong>Tipe :</strong> <span id="typeModal" class="text-break"></span></p>
+                    <p><strong>Deskripsi :</strong> <span id="descriptionModal" class="text-break"></span></p>
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">DeleteOrder</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">HapusPesanan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-start">
@@ -195,7 +195,7 @@
                     <form action="/order/delete" method="post" class="me-2">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="id" id="idDelete">
-                        <button type="submit" class="btn btn-danger">Yes</button>
+                        <button type="submit" class="btn btn-danger">Ya</button>
                     </form>
                 </div>
             </div>

@@ -9,17 +9,17 @@
                 <div style="box-shadow: 0px 0px 12px 9px #7b7b7b15;">
                     <form class="p-3 p-xl-4" method="post" action="/feedback" id="formUser">
                         <?= csrf_field() ?>
-                        <h4>Contact</h4>
-                        <p class="text-muted">Your input is invaluable for us to continue to grow and provide the best service. Fill out the form below to express your opinions, criticisms, or suggestions.</p>
+                        <h4>Kontak</h4>
+                        <p class="text-muted">Masukan Anda sangat berharga bagi kami untuk terus berkembang dan memberikan layanan terbaik. Isilah formulir di bawah ini untuk menyampaikan opini, kritik, atau saran Anda.</p>
                         <div class="mb-3">
-                            <label class="form-label" for="message">Message</label>
+                            <label class="form-label" for="message">Pesan</label>
                             <textarea class="form-control" id="message" name="message" rows="6" required minlength="3" maxlength="100"><?= old('message') ?></textarea>
                         </div>
                         <div class="mb-3">
                             <div class="g-recaptcha" data-sitekey="6LcfKZIqAAAAAHPIfoy-RQqqUFSw7HadTo9q6PIE"></div>
                         </div>
                         <div class="mb-3">
-                            <button id="btnSubmit" class="btn" type="submit" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 1.5em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Send </button>
+                            <button id="btnSubmit" class="btn" type="submit" style="background: rgba(255,255,255,0);border-radius: 10em;padding: 0.5em 1.5em;border-width: 1px;border-color: var(--swiper-theme-color);color: var(--swiper-theme-color);">Kirim </button>
                         </div>
                     </form>
                 </div>

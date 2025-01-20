@@ -11,7 +11,7 @@
                     data-aos-duration="700"
                     data-aos-offset="50"
                     data-aos-once="true">
-                    The Right Software Solution for Your
+                    Solusi Software yang Tepat untuk
                     <span class="d-inline-block">
                         <img
                             class="img-fluid d-none d-md-inline-block"
@@ -21,7 +21,7 @@
                             width="100"
                             height="100" />
                     </span>
-                    Business
+                    Bisnis Anda
                 </h1>
                 <p
                     class="lead text-muted mt-3"
@@ -30,7 +30,7 @@
                     data-aos-offset="50"
                     data-aos-delay="400"
                     data-aos-once="true">
-                    A passionate agency delivers creative software solutions for impactful results.
+                    Agensi berdedikasi yang menghadirkan solusi perangkat lunak inovatif untuk hasil berdampak.
                 </p>
             </div>
         </div>
@@ -132,7 +132,7 @@
                     data-aos="fade-up"
                     data-aos-duration="600"
                     data-aos-once="true">
-                    About Us
+                    Tentang Kami
                 </h1>
                 <h2
                     class="text-light fw-bold mt-3"
@@ -140,7 +140,7 @@
                     data-aos="fade-up"
                     data-aos-duration="600"
                     data-aos-once="true">
-                    Tefa is a center of innovation in software creation that connects education with industry.
+                    Tefa adalah pusat inovasi dalam pembuatan perangkat lunak yang menghubungkan pendidikan dengan industri.
                 </h2>
                 <p
                     class="text-light mt-4"
@@ -149,7 +149,7 @@
                     data-aos-duration="700"
                     data-aos-delay="150"
                     data-aos-once="true">
-                    We are the ones who have the creative idea to create software that attracts attention and puts customer satisfaction first
+                    Kami menciptakan perangkat lunak kreatif yang menarik dan mengutamakan kepuasan pelanggan.
                 </p>
             </div>
         </div>
@@ -173,9 +173,9 @@
             data-aos="fade-up"
             data-aos-duration="700"
             data-aos-once="true">
-            <h2>Why Us</h2>
+            <h2>Mengapa Kami</h2>
             <p class="w-lg-50">
-                We combine expert expertise and the passion of talented students to deliver the best results that meet your needs.
+                Kami menggabungkan keahlian para ahli dengan semangat mahasiswa berbakat untuk memberikan hasil terbaik yang memenuhi kebutuhan Anda.
             </p>
         </div>
     </div>
@@ -187,9 +187,9 @@
         <div class="col">
             <div class="d-flex">
                 <div class="px-3">
-                    <h4>Priced</h4>
+                    <h4>Harga</h4>
                     <p>
-                        High-quality service at a more affordable cost than other commercial services.
+                        Layanan berkualitas tinggi dengan biaya lebih terjangkau dibandingkan layanan komersial lainnya.
                     </p>
                 </div>
             </div>
@@ -197,9 +197,9 @@
         <div class="col">
             <div class="d-flex">
                 <div class="px-3">
-                    <h4>Technology</h4>
+                    <h4>Teknologi</h4>
                     <p>
-                        We use modern tools and methods to deliver efficient and reliable software.
+                        Kami menggunakan alat dan metode modern untuk menghadirkan perangkat lunak yang efisien dan dapat diandalkan.
                     </p>
                 </div>
             </div>
@@ -207,9 +207,9 @@
         <div class="col">
             <div class="d-flex">
                 <div class="px-3">
-                    <h4>Quality</h4>
+                    <h4>Kualitas</h4>
                     <p>
-                        We combine the expertise of experienced experts and the creativity of talented students to deliver the best results that suit your business needs.
+                        Kami menggabungkan keahlian para ahli berpengalaman dan kreativitas mahasiswa berbakat untuk memberikan hasil terbaik yang sesuai dengan kebutuhan bisnis Anda.
                     </p>
                 </div>
             </div>
@@ -221,9 +221,9 @@
         <div class="row mb-4 mb-lg-5">
             <div class="col-md-8 col-xl-6 text-center mx-auto">
                 <p class="fw-bold mb-2" style="color: var(--bs-body-color)">
-                    Our Services
+                    Layanan Kami
                 </p>
-                <h3 class="fw-bold">What we can do for you</h3>
+                <h3 class="fw-bold">Apa yang bisa kami lakukan</h3>
             </div>
         </div>
         <div
@@ -247,7 +247,7 @@
                 <div>
                     <h5 class="fw-bold">Website</h5>
                     <p class="text-muted mb-4">
-                        We create a website for your business. which is certainly trusted and guaranteed quality
+                        Kami menciptakan situs web untuk bisnis Anda yang pastinya terpercaya dan terjamin kualitasnya.
                     </p>
                 </div>
             </div>
@@ -273,7 +273,7 @@
                 <div>
                     <h5 class="fw-bold">Mobile Apps</h5>
                     <p class="text-muted mb-4">
-                        We create mobile apps for your business. which of course is trusted and guaranteed quality
+                        Kami menciptakan aplikasi mobile untuk bisnis Anda yang pastinya terpercaya dan terjamin kualitasnya.
                     </p>
                 </div>
             </div>
@@ -299,7 +299,7 @@
                 <div>
                     <h5 class="fw-bold">Desktop Apps</h5>
                     <p class="text-muted mb-4">
-                        We create desktop apps for your business. which of course is trusted and guaranteed quality
+                        Kami menciptakan aplikasi desktop untuk bisnis Anda yang pastinya terpercaya dan terjamin kualitasnya.
                     </p>
                 </div>
             </div>
@@ -317,9 +317,9 @@
             <div class="row justify-content-center text-center mb-2 mb-lg-4">
                 <div class="col-12 col-lg-8 col-xxl-7 text-center mx-auto">
                     <h2 data-aos="fade-up" data-aos-duration="700" data-aos-once="true">
-                        Our Team
+                        Tim Kami
                     </h2>
-                    <p class="w-lg-50">Behind every successful project, there is a great dedicated team. We are a group of professionals who are passionate about creating the best solutions and delivering outstanding results for our clients.</p>
+                    <p class="w-lg-50">Di balik setiap proyek sukses, terdapat tim yang berdedikasi. Kami adalah kelompok profesional yang bersemangat dalam menciptakan solusi terbaik dan memberikan hasil luar biasa untuk klien kami.</p>
                 </div>
             </div>
         </div>
@@ -350,9 +350,9 @@
             <div class="row justify-content-center text-center mb-2 mb-lg-4">
                 <div class="col-12 col-lg-8 col-xxl-7 text-center mx-auto">
                     <h2 data-aos="fade-up" data-aos-duration="700" data-aos-once="true">
-                        Our Testimonials
+                        Testimoni
                     </h2>
-                    <p class="w-lg-50">We pride ourselves on providing the best services and solutions for our clients. Here are some testimonials from those who have worked with us</p>
+                    <p class="w-lg-50">Kami bangga dapat memberikan layanan dan solusi terbaik untuk klien kami. Berikut adalah beberapa testimoni dari mereka yang telah bekerja sama dengan kami.</p>
                 </div>
             </div>
             <div class="row py-5">

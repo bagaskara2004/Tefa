@@ -27,10 +27,10 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link <?= $page == 'Home' ? 'active' : '' ?>" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link <?= $page == 'Project' ? 'active' : '' ?>" href="/project">Project</a></li>
-                    <li class="nav-item"><a class="nav-link <?= $page == 'Contact' ? 'active' : '' ?>" href="/contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $page == 'Project' ? 'active' : '' ?>" href="/project">Projek</a></li>
+                    <li class="nav-item"><a class="nav-link <?= $page == 'Contact' ? 'active' : '' ?>" href="/contact">Kontak</a></li>
                     <?php if (isset($user)) : ?>
-                        <li class="nav-item"><a class="nav-link <?= $page == 'Order' ? 'active' : '' ?>" href="/order">Order</a></li>
+                        <li class="nav-item"><a class="nav-link <?= $page == 'Order' ? 'active' : '' ?>" href="/order">Pesanan</a></li>
                     <?php endif ?>
                 </ul>
                 <?php if (isset($user)) : ?>
@@ -51,11 +51,11 @@
                             class="dropdown-menu dropdown-menu-end"
                             aria-labelledby="profileDropdown"
                             style="min-width: 150px;">
-                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userModal">My Profile</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userModal">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            <li><a class="dropdown-item" href="/logout">Keluar</a></li>
                         </ul>
                     </div>
                 <?php else : ?>
@@ -73,7 +73,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="userModalLabel">My Profile</h5>
+                            <h5 class="modal-title" id="userModalLabel">Profile</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-center">
@@ -84,7 +84,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-warning" data-bs-target="#editModal" data-bs-toggle="modal" data-bs-dismiss="modal">Edit</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input primary" type="checkbox" id="flexCheckChecked" name="default">
                                         <label class="form-check-label text-dark" for="flexCheckChecked">
-                                            no profile
+                                            tanpa profile
                                         </label>
                                     </div>
                                 </div>
@@ -116,11 +116,11 @@
                                     <label for="telp" class="form-label">Telp :</label>
                                     <input type="text" class="form-control" id="telp" name="telp" value="<?= $user['telp'] ?>" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary" id="btnSubmit">Save</button>
+                                <button type="submit" class="btn btn-primary" id="btnSubmit">Simpan</button>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                         </div>
                     </div>
                 </div>
