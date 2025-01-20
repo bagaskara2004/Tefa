@@ -79,10 +79,48 @@
                         <div class="modal-body text-center">
                             <img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?= $user['photo'] ?>" alt="User Photo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" class="mb-3">
                             <h5 id="username"><?= $user['username'] ?></h5>
-                            <p id="email"><?= $user['email'] ?></p>
+                            <p id="email">Email : <?= $user['email'] ?></p>
+                            <p id="telp">Telp : <?= $user['telp'] ?></p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-warning" data-bs-target="#editModal" data-bs-toggle="modal" data-bs-dismiss="modal">Edit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/editProfile" method="post" class="d-flex flex-column" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="photo" class="form-label">Photo :</label>
+                                    <input type="file" class="form-control" id="photo" name="photo">
+                                    <div class="form-check">
+                                        <input class="form-check-input primary" type="checkbox" id="flexCheckChecked" name="default">
+                                        <label class="form-check-label text-dark" for="flexCheckChecked">
+                                            no profile
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Username :</label>
+                                    <input type="text" class="form-control" id="username" name="username" value="<?= $user['username'] ?>" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telp" class="form-label">Telp :</label>
+                                    <input type="text" class="form-control" id="telp" name="telp" value="<?= $user['telp'] ?>" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="btnSubmit">Save</button>
+                            </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>

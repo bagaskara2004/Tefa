@@ -27,6 +27,7 @@ $routes->group('/', function ($routes) {
     $routes->delete('order/delete','Order::deleteOrder',['filter' => 'user']);//done
     $routes->post('sendMessage', 'Order::sendMessage',['filter' => 'user']);
     $routes->get('getMessage/(:num)', 'Order::getMessage/$1',['filter' => 'user']);
+    $routes->post('editProfile','Home::editProfile',['filter' => 'user']);
 
 });
 
