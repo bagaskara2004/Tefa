@@ -40,6 +40,7 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('orders/edit/(:num)', 'OrderController::edit/$1'); // Show edit order form
     $routes->post('orders/update/(:num)', 'OrderController::update/$1'); // Update order
     $routes->delete('orders/delete/(:num)', 'OrderController::delete/$1'); // Change to DELETE
+    $routes->get('orders/report', 'OrderController::downloadReport');
     
     // User management routes
     $routes->get('users', 'UserController::index');

@@ -130,7 +130,7 @@
                             <span class="hide-menu">Report</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/report" aria-expanded="false">
+                            <a class="sidebar-link" href="<?= site_url('admin/orders/report') ?>" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-file-analytics"></i>
                                 </span>

@@ -8,6 +8,8 @@ use App\Models\ModelOrderType;
 use App\Models\ModelStatus;
 use App\Models\ModelType; // Include the ModelType
 use App\Models\ModelUser;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class OrderController extends BaseController
 {
@@ -193,4 +195,112 @@ class OrderController extends BaseController
             'data' => $data
         ]);
     }
+
+    public function downloadReport()
+    {
+        // Get the current date and calculate the current month
+        $startDate = date('Y-m-01'); 
+        $endDate = date('Y-m-t');     
+    
+        // Fetch order counts
+        $totalOrders = $this->modelOrder->where('created >=', $startDate)
+                                         ->where('created <=', $endDate)
+                                         ->countAllResults();
+    
+        $finishedOrders = $this->modelOrder->where('id_status', 3) 
+                                            ->where('created >=', $startDate)
+                                            ->where('created <=', $endDate)
+                                            ->countAllResults();
+    
+        $inProgressOrders = $this->modelOrder->where('id_status', 2)
+                                              ->where('created >=', $startDate)
+                                              ->where('created <=', $endDate)
+                                              ->countAllResults();
+    
+        // Generate PDF
+        $this->generatePDF($totalOrders, $finishedOrders, $inProgressOrders);
+    }
+    
+    private function generatePDF($totalOrders, $finishedOrders, $inProgressOrders)
+{
+    // Load Dompdf library
+    $options = new Options();
+    $options->set('defaultFont', 'Courier');
+    $dompdf = new Dompdf($options);
+
+    // Get the current month and year
+    $currentMonth = date('F Y');
+
+    $html = '
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50; /* Green color */
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50; /* Green background for header */
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray for even rows */
+        }
+        tr:hover {
+            background-color: #ddd; /* Highlight row on hover */
+        }
+    </style>
+    <h1>Order Report for ' . $currentMonth . '</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total Orders</td>
+                <td>' . $totalOrders . '</td>
+            </tr>
+            <tr>
+                <td>Finished Orders</td>
+                <td>' . $finishedOrders . '</td>
+            </tr>
+            <tr>
+                <td>In Progress Orders</td>
+                <td>' . $inProgressOrders . '</td>
+            </tr>
+        </tbody>
+    </table>';
+
+    // Load HTML content
+    $dompdf->loadHtml($html);
+
+    // Set paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+
+    // Render the PDF
+    $dompdf->render();
+
+    // Output the generated PDF to Browser
+    return $dompdf->stream('order_report.pdf', ['Attachment' => true]);
+}
 }
