@@ -20,7 +20,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
-<body>
+<body >
     <nav class="navbar navbar-expand-md fixed-top bg-body py-3" id="navbar">
         <div class="container">
             <div class="navbar-brand d-flex align-items-center"><span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon" style="background: url(&quot;/assets/img/logos/pnb.png&quot;) center / cover round;"></span><span></span></div><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -56,6 +56,10 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="/logout">Keluar</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" id="theme">Light</button></li>
                         </ul>
                     </div>
                 <?php else : ?>
@@ -175,6 +179,33 @@
         </div>
     </footer>
     <?= $this->renderSection('Script') ?>
+    <script>
+        btnTheme = document.getElementById('theme');
+        loadTheme();
+        function loadTheme() {
+            if (!localStorage.getItem('theme')){
+                localStorage.setItem('theme', 'light');
+            }
+            changeTheme();
+        }
+        function changeTheme() {
+            if (localStorage.getItem('theme') == 'dark') {
+                document.documentElement.setAttribute('data-bs-theme', 'dark');
+                btnTheme.innerHTML = 'Dark';
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', 'light');
+                btnTheme.innerHTML = 'Light';
+            }
+        }
+        btnTheme.addEventListener('click', function() {
+            if (localStorage.getItem('theme') == 'light') {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+            changeTheme();
+        });
+    </script>
     <script>
         const formUser = document.getElementById('formUser');
         const btnSubmit = document.getElementById('btnSubmit');
