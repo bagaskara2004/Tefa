@@ -31,7 +31,7 @@ class MediaController extends BaseController
     public function store()
     {
         $data = [
-            'id_website' => $this->request->getPost('id_website'),
+            'id_website' => 1,
             'name' => $this->request->getPost('name'),
             'link' => $this->request->getPost('link'),
             'icon' => $this->request->getPost('icon'),
@@ -52,7 +52,7 @@ class MediaController extends BaseController
     public function update($id)
     {
         $data = [
-            'id_website' => $this->request->getPost('id_website'),
+            'id_website' => 1,
             'name' => $this->request->getPost('name'),
             'link' => $this->request->getPost('link'),
             'icon' => $this->request->getPost('icon'),

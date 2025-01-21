@@ -43,7 +43,7 @@ class ProjectController extends BaseController
 
     // Prepare data for saving
     $data = [
-        'id_website' => $this->request->getPost('id_website'),
+        'id_website' => 1,
         'title' => $this->request->getPost('title'),
         'description' => $this->request->getPost('description'),
         'photo' => $result, // Save the photo name
@@ -73,26 +73,22 @@ class ProjectController extends BaseController
 
     public function update($id)
 {
-    // Handle file upload
-    $photo = $this->request->getFile('photo');
-
-    if ($photo->isValid() && !$photo->hasMoved()) {
-        $result = cloudinaryUpload($photo->getRealPath());
-        if(!isset($result)){
-        return redirect()->back()->with('error', "can't upload photo");
-        $data['photo'] = $result;
-        }
-    }
-
     // Prepare data for updating
     $data = [
-        'id_website' => $this->request->getPost('id_website'),
+        'id_website' => 1,
         'title' => $this->request->getPost('title'),
         'description' => $this->request->getPost('description'),
         'url' => $this->request->getPost('url'),
     ];
 
-    if ($result) {
+    // Handle file upload
+    $photo = $this->request->getFile('photo');
+
+    if ($photo->isValid() && !$photo->hasMoved()) {
+        $result = cloudinaryUpload($photo->getRealPath());
+        if (!isset($result)) {
+            return redirect()->back()->with('error', "can't upload photo");
+        }
         $data['photo'] = $result; // Update the photo name only if a new photo was uploaded
     }
 

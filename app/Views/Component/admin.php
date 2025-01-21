@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/styles.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/themify-icons@0.1.0/themify-icons.css">
 </head>
 
 <body>
@@ -68,7 +69,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link <?= $page == 'Admins' ? 'active' : '' ?>" href="/admin/admins" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-user-plus"></i>
                                 </span>
                                 <span class="hide-menu">Admin</span>
                             </a>
@@ -76,7 +77,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link <?= $page == 'Websites' ? 'active' : '' ?>" href="/admin/websites" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-world"></i>
                                 </span>
                                 <span class="hide-menu">Website</span>
                             </a>
@@ -84,7 +85,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link <?= $page == 'Medias' ? 'active' : '' ?>" href="/admin/medias" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-camera"></i>
                                 </span>
                                 <span class="hide-menu">Media</span>
                             </a>
@@ -92,7 +93,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link <?= $page == 'Mitra' ? 'active' : '' ?>" href="/admin/mitras" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-briefcase"></i>
                                 </span>
                                 <span class="hide-menu">Mitra</span>
                             </a>
@@ -100,7 +101,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link <?= $page == 'Feedbacks' ? 'active' : '' ?>" href="/admin/feedbacks" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-pencil"></i>
                                 </span>
                                 <span class="hide-menu">Feedback</span>
                             </a>
@@ -108,7 +109,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link <?= $page == 'Teams' ? 'active' : '' ?>" href="/admin/teams" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-users   "></i>
                                 </span>
                                 <span class="hide-menu">Team</span>
                             </a>

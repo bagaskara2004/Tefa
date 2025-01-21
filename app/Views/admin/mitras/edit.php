@@ -3,10 +3,10 @@
 <?= $this->section('Content') ?>
 <h1>Edit Mitra</h1>
 <form action="<?= site_url('admin/mitras/update/' . $mitra['id_mitra']) ?>" method="post" enctype="multipart/form-data">
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="id_website" class="form-label">ID Website:</label>
         <input type="number" class="form-control" name="id_website" value="<?= esc($mitra['id_website']) ?>" required>
-    </div>
+    </div> -->
     <div class="mb-3">
         <label for="name" class="form-label">Name:</label>
         <input type="text" class="form-control" name="name" value="<?= esc($mitra['name']) ?>" required>

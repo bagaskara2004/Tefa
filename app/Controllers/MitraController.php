@@ -41,7 +41,7 @@ class MitraController extends BaseController
     }
 
     $data = [
-        'id_website' => $this->request->getPost('id_website'),
+        'id_website' => 1,
         'name' => $this->request->getPost('name'),
         'logo' => $result,
         'link' => $this->request->getPost('link'),
@@ -60,23 +60,25 @@ class MitraController extends BaseController
 
     public function update($id)
 {
+    // Initialize the data array with required fields
+    $data = [
+        'id_website' => 1,
+        'name' => $this->request->getPost('name'),
+        'link' => $this->request->getPost('link'),
+    ];
+
     // Handle file upload for logo
     $photo = $this->request->getFile('logo');
     if ($photo->isValid() && !$photo->hasMoved()) {
         $result = cloudinaryUpload($photo->getRealPath());
-        if(!isset($result)){
-        return redirect()->back()->with('error', "can't upload photo");
-        $data['logo'] = $result;
+        if (!isset($result)) {
+            return redirect()->back()->with('error', "Can't upload photo");
         }
+        // Add the logo to the data array if upload was successful
+        $data['logo'] = $result;
     }
 
-    $data = [
-        'id_website' => $this->request->getPost('id_website'),
-        'name' => $this->request->getPost('name'),
-        'logo' => $result,
-        'link' => $this->request->getPost('link'),
-    ];
-
+    // Update the mitra information
     $this->modelMitra->update($id, $data);
     return redirect()->to('/admin/mitras')->with('success', 'Mitra updated successfully.');
 }

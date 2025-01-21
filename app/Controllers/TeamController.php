@@ -43,7 +43,7 @@ class TeamController extends BaseController
         }
 
         $data = [
-            'id_website' => $this->request->getPost('id_website'),
+            'id_website' => 1,
             'name' => $this->request->getPost('name'),
             'photo' => $result,
             'degree' => $this->request->getPost('degree'),
@@ -64,27 +64,28 @@ class TeamController extends BaseController
 
     // Update team
     public function update($id)
-    {
-        $photo = $this->request->getFile('photo');
+{
+    $photo = $this->request->getFile('photo');
+    $data = [
+        'id_website' => 1,
+        'name' => $this->request->getPost('name'),
+        'degree' => $this->request->getPost('degree'),
+    ];
 
-        if ($photo->isValid() && !$photo->hasMoved()) {
-            $result = cloudinaryUpload($photo->getRealPath());
-            if(!isset($result)){
-            return redirect()->back()->with('error', "can't upload photo");
-            $data['photo'] = $result;
-            }
+    // Check if a photo was uploaded
+    if ($photo->isValid() && !$photo->hasMoved()) {
+        $result = cloudinaryUpload($photo->getRealPath());
+        if (!isset($result)) {
+            return redirect()->back()->with('error', "Can't upload photo");
         }
-
-        $data = [
-            'id_website' => $this->request->getPost('id_website'),
-            'name' => $this->request->getPost('name'),
-            'photo' => $result,
-            'degree' => $this->request->getPost('degree'),
-        ];
-
-        $this->modelTeam->update($id, $data);
-        return redirect()->to('/admin/teams')->with('success', 'Team updated successfully.');
+        // Add the photo to the data array if upload was successful
+        $data['photo'] = $result;
     }
+
+    // Update the team information
+    $this->modelTeam->update($id, $data);
+    return redirect()->to('/admin/teams')->with('success', 'Team updated successfully.');
+}
 
     // Delete team
     public function delete($id)

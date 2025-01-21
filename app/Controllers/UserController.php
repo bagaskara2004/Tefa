@@ -16,7 +16,7 @@ class UserController extends BaseController
     // Display the list of users
     public function index()
     {
-        $users = $this->modelUser ->where('deleted', null)->findAll();
+        $users = $this->modelUser ->where('role', 0)->findAll();
         $data = [
             'users' => $users,
             'page' => 'Users', // Set the page variable

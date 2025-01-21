@@ -2,7 +2,6 @@
 
 <?= $this->section('Content') ?>
 <h1>Feedback Management</h1>
-<a href="<?= site_url('admin/feedbacks/create') ?>" class="btn btn-primary">Add New Feedback</a>
 <table class="table mt-3 table-bordered">
     <thead>
         <tr>
