@@ -66,6 +66,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link <?= $page == 'Admins' ? 'active' : '' ?>" href="/admin/admins" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Admin</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link <?= $page == 'Websites' ? 'active' : '' ?>" href="/admin/websites" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
@@ -87,6 +95,22 @@
                                     <i class="ti ti-user"></i>
                                 </span>
                                 <span class="hide-menu">Mitra</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= $page == 'Feedbacks' ? 'active' : '' ?>" href="/admin/feedbacks" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Feedback</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link <?= $page == 'Teams' ? 'active' : '' ?>" href="/admin/teams" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Team</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">

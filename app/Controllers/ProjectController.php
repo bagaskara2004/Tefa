@@ -32,11 +32,13 @@ class ProjectController extends BaseController
 {
     // Handle file upload
     $photo = $this->request->getFile('photo');
-    $photoName = '';
 
     if ($photo->isValid() && !$photo->hasMoved()) {
-        $photoName = $photo->getRandomName(); // Generate a random name for the photo
-        $photo->move(FCPATH . 'uploads', $photoName); // Move the file to the uploads directory
+        $result = cloudinaryUpload($photo->getRealPath());
+        if(!isset($result)){
+        return redirect()->back()->with('error', "can't upload photo");
+        $data['photo'] = $result;
+        }
     }
 
     // Prepare data for saving
@@ -44,7 +46,7 @@ class ProjectController extends BaseController
         'id_website' => $this->request->getPost('id_website'),
         'title' => $this->request->getPost('title'),
         'description' => $this->request->getPost('description'),
-        'photo' => $photoName, // Save the photo name
+        'photo' => $result, // Save the photo name
         'url' => $this->request->getPost('url'),
     ];
 
@@ -73,11 +75,13 @@ class ProjectController extends BaseController
 {
     // Handle file upload
     $photo = $this->request->getFile('photo');
-    $photoName = '';
 
     if ($photo->isValid() && !$photo->hasMoved()) {
-        $photoName = $photo->getRandomName(); // Generate a random name for the photo
-        $photo->move(FCPATH . 'uploads', $photoName); // Move the file to the uploads directory
+        $result = cloudinaryUpload($photo->getRealPath());
+        if(!isset($result)){
+        return redirect()->back()->with('error', "can't upload photo");
+        $data['photo'] = $result;
+        }
     }
 
     // Prepare data for updating
@@ -88,8 +92,8 @@ class ProjectController extends BaseController
         'url' => $this->request->getPost('url'),
     ];
 
-    if ($photoName) {
-        $data['photo'] = $photoName; // Update the photo name only if a new photo was uploaded
+    if ($result) {
+        $data['photo'] = $result; // Update the photo name only if a new photo was uploaded
     }
 
     // Debugging: Check the data before updating

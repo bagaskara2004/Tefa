@@ -30,19 +30,22 @@ class MitraController extends BaseController
 
     public function store()
 {
+    // Handle file upload for logo
+    $photo = $this->request->getFile('logo');
+    if ($photo->isValid() && !$photo->hasMoved()) {
+        $result = cloudinaryUpload($photo->getRealPath());
+        if(!isset($result)){
+        return redirect()->back()->with('error', "can't upload photo");
+        $data['logo'] = $result;
+        }
+    }
+
     $data = [
         'id_website' => $this->request->getPost('id_website'),
         'name' => $this->request->getPost('name'),
+        'logo' => $result,
         'link' => $this->request->getPost('link'),
     ];
-
-    // Handle file upload for logo
-    $logo = $this->request->getFile('logo');
-    if ($logo->isValid() && !$logo->hasMoved()) {
-        $logoName = $logo->getRandomName(); // Generate a random name for the logo
-        $logo->move(FCPATH . 'uploads', $logoName); // Move the file to the uploads directory
-        $data['logo'] = $logoName; // Save the logo name
-    }
 
     $this->modelMitra->save($data);
     return redirect()->to('/admin/mitras')->with('success', 'Mitra created successfully.');
@@ -57,19 +60,22 @@ class MitraController extends BaseController
 
     public function update($id)
 {
+    // Handle file upload for logo
+    $photo = $this->request->getFile('logo');
+    if ($photo->isValid() && !$photo->hasMoved()) {
+        $result = cloudinaryUpload($photo->getRealPath());
+        if(!isset($result)){
+        return redirect()->back()->with('error', "can't upload photo");
+        $data['logo'] = $result;
+        }
+    }
+
     $data = [
         'id_website' => $this->request->getPost('id_website'),
         'name' => $this->request->getPost('name'),
+        'logo' => $result,
         'link' => $this->request->getPost('link'),
     ];
-
-    // Handle file upload for logo
-    $logo = $this->request->getFile('logo');
-    if ($logo->isValid() && !$logo->hasMoved()) {
-        $logoName = $logo->getRandomName(); // Generate a random name for the logo
-        $logo->move(FCPATH . 'uploads', $logoName); // Move the file to the uploads directory
-        $data['logo'] = $logoName; // Update the logo name only if a new logo was uploaded
-    }
 
     $this->modelMitra->update($id, $data);
     return redirect()->to('/admin/mitras')->with('success', 'Mitra updated successfully.');

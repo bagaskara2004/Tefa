@@ -45,6 +45,14 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('users', 'UserController::index');
     $routes->post('users/delete/(:num)', 'UserController::delete/$1');
 
+    // Admin
+    $routes->get('admins', 'AdminController::index');
+    $routes->get('admins/create', 'AdminController::create');
+    $routes->post('admins/store', 'AdminController::store');
+    $routes->get('admins/edit/(:num)', 'AdminController::edit/$1');
+    $routes->post('admins/update/(:num)', 'AdminController::update/$1');
+    $routes->post('admins/delete/(:num)', 'AdminController::delete/$1');
+
     // Project management routes
     $routes->get('projects', 'ProjectController::index'); // List projects
     $routes->get('projects/create', 'ProjectController::create'); // Show create project form
@@ -76,6 +84,22 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('mitras/edit/(:num)', 'MitraController::edit/$1');
     $routes->post('mitras/update/(:num)', 'MitraController::update/$1');
     $routes->post('mitras/delete/(:num)', 'MitraController::delete/$1');
+
+    // Feedbacks
+    $routes->get('feedbacks', 'FeedbackController::index');
+    $routes->get('feedbacks/create', 'FeedbackController::create');
+    $routes->post('feedbacks/store', 'FeedbackController::store');
+    $routes->get('feedbacks/edit/(:num)', 'FeedbackController::edit/$1');
+    $routes->post('feedbacks/update/(:num)', 'FeedbackController::update/$1');
+    $routes->post('feedbacks/delete/(:num)', 'FeedbackController::delete/$1');
+
+    // Teams
+    $routes->get('teams', 'TeamController::index');
+    $routes->get('teams/create', 'TeamController::create');
+    $routes->post('teams/store', 'TeamController::store');
+    $routes->get('teams/edit/(:num)', 'TeamController::edit/$1');
+    $routes->post('teams/update/(:num)', 'TeamController::update/$1');
+    $routes->post('teams/delete/(:num)', 'TeamController::delete/$1');
 
     // chat
     $routes->get('getMessage/(:num)', 'OrderController::getMessage/$1');

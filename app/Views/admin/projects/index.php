@@ -26,7 +26,7 @@
                 <td><?= esc($project['description']) ?></td>
                 <td>
                     <?php if (!empty($project['photo'])): ?>
-                        <img src="<?= base_url('uploads/' . esc($project['photo'])) ?>" alt="Project Photo" style="width: 100px; height: auto;">
+                        <img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?= $project['photo'] ?>" alt="Project Photo" style="width: 100px; height: auto;">
                     <?php else: ?>
                         No Image
                     <?php endif; ?>

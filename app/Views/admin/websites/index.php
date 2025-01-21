@@ -1,7 +1,6 @@
 <?= $this->extend('Component/admin') ?>
 <?= $this->section('Content') ?>
 <h1>Websites</h1>
-<a href="<?= site_url('admin/websites/create') ?>" class="btn btn-primary">Add New Website</a>
 <table class="table mt-3">
     <thead>
         <tr>
