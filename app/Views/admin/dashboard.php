@@ -10,7 +10,7 @@
                         <h5 class="card-title fw-semibold">Orders Overview this month</h5>
                     </div>
                 </div>
-                <div id="chart">
+                <div>
                     <h3 class="fw-semibold mb-3">Orders placed: <?= $totalOrders ?></h3> <!-- Display total orders -->
                     <h3 class="fw-semibold mb-3">Orders rejected: <?= $rejectedOrders ?></h3>
                     <h3 class="fw-semibold mb-3">Orders finsihed: <?= $finishedOrders ?></h3>
@@ -31,7 +31,6 @@
                             </div>
                             <div class="col-4">
                                 <div class="d-flex justify-content-center">
-                                    <div id="breakup"></div>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +48,6 @@
                             </div>
                         </div>
                     </div>
-                    <div id="earning"></div>
                 </div>
             </div>
         </div>

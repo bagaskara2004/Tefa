@@ -6,7 +6,7 @@
 <table class="table mt-3">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>No</th>
             <th>Username</th>
             <th>Email</th>
             <th>Phone</th>
@@ -15,9 +15,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $no = 1; ?>
         <?php foreach ($admins as $admin): ?>
             <tr>
-                <td><?= esc($admin['id_user']) ?></td>
+                <td><?= esc($no) ?></td>
                 <td><?= esc($admin['username']) ?></td>
                 <td><?= esc($admin['email']) ?></td>
                 <td><?= esc($admin['telp']) ?></td>
@@ -29,6 +30,7 @@
                     </form>
                 </td>
             </tr>
+            <?php $no++; ?>
         <?php endforeach; ?>
     </tbody>
 </table>

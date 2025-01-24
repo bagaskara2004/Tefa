@@ -11,31 +11,41 @@ class User extends Seeder
         $modelUser = new ModelUser();
         $data = [
             [
-                'username' => 'bagastmpvan',
+                'username' => 'admin',
                 'password' => 'qwerty',
-                'email' => 'testing20041120@gmail.com',
+                'email' => 'admin@gmail.com',
                 'telp' => '098374829999',
-                'photo' => 'olbulzmg4oazsfxqozls',
+                'photo' => 'fpcdfnizngdcifp8isbm',
+                'otp' => '123456',
+                'actived' => true,
+                'role' => 1
+            ],
+            [
+                'username' => 'daus',
+                'password' => 'qwerty',
+                'email' => 'daus@gmail.com',
+                'telp' => '098374829999',
+                'photo' => 'fpcdfnizngdcifp8isbm',
                 'otp' => '123456',
                 'actived' => true,
                 'role' => 0
             ],
             [
-                'username' => 'rara',
+                'username' => 'roro',
                 'password' => 'qwerty',
-                'email' => 'rara20041120@gmail.com',
+                'email' => 'roro@gmail.com',
                 'telp' => '098374829999',
-                'photo' => 'q4phdnmt9tdkgabeottm',
+                'photo' => 'fpcdfnizngdcifp8isbm',
                 'otp' => '123456',
                 'actived' => true,
                 'role' => 0
             ],
             [
-                'username' => 'roko',
+                'username' => 'rizal',
                 'password' => 'qwerty',
-                'email' => 'roko20041120@gmail.com',
+                'email' => 'rizal@gmail.com',
                 'telp' => '098374829999',
-                'photo' => 'te5wi2etvgdnjmxsd556',
+                'photo' => 'fpcdfnizngdcifp8isbm',
                 'otp' => '123456',
                 'actived' => true,
                 'role' => 0

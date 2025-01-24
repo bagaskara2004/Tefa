@@ -45,8 +45,7 @@
 <table class="table mt-3">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>ID Website</th>
+            <th>No</th>
             <th>Name</th>
             <th>Logo</th>
             <th>Link</th>
@@ -54,10 +53,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $no = 1 ?>
         <?php foreach ($mitras as $mitra): ?>
             <tr>
-                <td><?= esc($mitra['id_mitra']) ?></td>
-                <td><?= esc($mitra['id_website']) ?></td>
+                <td><?= esc($no) ?></td>
                 <td><?= esc($mitra['name']) ?></td>
                 <td>
                     <img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?= $mitra['logo'] ?>" alt="Mitra Logo" style="width: 100px; height: auto;">
@@ -71,6 +70,7 @@
                     </form>
                 </td>
             </tr>
+            <?php $no++ ?>
         <?php endforeach; ?>
     </tbody>
 </table>

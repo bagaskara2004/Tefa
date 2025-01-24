@@ -6,8 +6,7 @@
 <table class="table mt-3">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Website ID</th>
+            <th>No</th>
             <th>Title</th>
             <th>Description</th>
             <th>Photo</th>
@@ -18,10 +17,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $no=1; ?>
         <?php foreach ($projects as $project): ?>
             <tr>
-                <td><?= esc($project['id_project']) ?></td>
-                <td><?= esc($project['id_website']) ?></td>
+                <td><?= esc($no) ?></td>
                 <td><?= esc($project['title']) ?></td>
                 <td><?= esc($project['description']) ?></td>
                 <td>
@@ -39,6 +38,7 @@
                     <a href="<?= site_url('admin/projects/delete/' . $project['id_project']) ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this project?');">Delete</a>
                 </td>
             </tr>
+            <?php $no++; ?>
         <?php endforeach; ?>
     </tbody>
 </table>

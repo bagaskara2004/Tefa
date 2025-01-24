@@ -60,7 +60,8 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>No</th>
+            <th>IdUser</th>
             <th>Title</th>
             <th>Description</th>
             <th>Order Type</th>
@@ -73,6 +74,7 @@
         <?php foreach ($orders as $order): ?>
             <tr>
                 <td><?= $no ?></td>
+                <td><?= $order['id_user'] ?></td>
                 <td><?= $order['title'] ?></td>
                 <td><?= $order['description'] ?></td>
                 <td><?= $order['types'] ?></td> <!-- Display the order type -->

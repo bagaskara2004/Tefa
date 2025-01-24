@@ -1,6 +1,19 @@
 <?= $this->extend('Component/user.php') ?>
 
 <?= $this->section('Content') ?>
+<style>
+    #mitra {
+        overflow-x: hidden;
+        white-space: nowrap;
+        position: relative;
+    }
+
+    .content-mitra {
+        transition: transform 0.5s ease-in-out;
+        display: flex;
+        align-items: center;
+    }
+</style>
 <section id="Hero" class="w-100 py-5">
     <div class="container mt-5">
         <div class="row justify-content-center text-center">
@@ -52,20 +65,20 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img
-                        class="w-100 d-block"
-                        src="https://www.korsa.io/images/head-img2.png"
+                        class="w-100 d-block rounded"
+                        src="/assets/img/ilustrasi/banner1.png"
                         alt="Slide Image" />
                 </div>
                 <div class="carousel-item">
                     <img
-                        class="w-100 d-block"
-                        src="https://www.korsa.io/images/head-img2.png"
+                        class="w-100 d-block rounded"
+                        src="/assets/img/ilustrasi/banner2.png"
                         alt="Slide Image" />
                 </div>
                 <div class="carousel-item">
                     <img
-                        class="w-100 d-block"
-                        src="https://www.korsa.io/images/head-img4.png"
+                        class="w-100 d-block rounded"
+                        src="/assets/img/ilustrasi/banner3.png"
                         alt="Slide Image" />
                 </div>
             </div>
@@ -157,10 +170,10 @@
 </section>
 
 <?php if (!empty($mitras)) : ?>
-    <section style="margin-top:9em">
-        <div class="container text-center">
+    <section id="mitra" class="mt-5">
+        <div class="container text-center content-mitra">
             <?php foreach ($mitras as $mitra) : ?>
-                <a href="<?= $mitra['link'] ?>"> <img class="m-3" src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $mitra['logo'] ?>"></a>
+                <a href="<?= $mitra['link'] ?>" class="item-mitra"> <img class="m-3" src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $mitra['logo'] ?>" width="100"></a>
             <?php endforeach ?>
         </div>
     </section>
@@ -236,7 +249,7 @@
                 data-aos-once="true">
                 <img
                     class="rounded img-fluid shadow"
-                    src="https://www.korsa.io/images/service-3.png" />
+                    src="/assets/img/ilustrasi/website.png" />
             </div>
             <div
                 class="col d-md-flex align-items-md-end align-items-lg-center mb-5"
@@ -263,7 +276,7 @@
                 data-aos-once="true">
                 <img
                     class="rounded img-fluid shadow"
-                    src="https://www.korsa.io/images/service-1.png" />
+                    src="/assets/img/ilustrasi/mobile.png" />
             </div>
             <div
                 class="col d-md-flex align-items-md-end align-items-lg-center mb-5"
@@ -288,7 +301,7 @@
                 data-aos-once="true">
                 <img
                     class="rounded img-fluid shadow"
-                    src="https://www.korsa.io/images/service-3.png" />
+                    src="/assets/img/ilustrasi/desktop.png" />
             </div>
             <div
                 class="col d-md-flex align-items-md-end align-items-lg-center mb-5"
@@ -331,14 +344,14 @@
             data-aos-once="true">
 
             <?php foreach ($teams as $team) : ?>
-                
-                <div class="col-md-4 py-2 py-md-2">
+
+                <div class="col-md-3 py-2 py-md-2">
                     <div class=" mb-5 mb-md-0 p-2 p-lg-5 text-center position-relative">
                         <img alt="" class="rounded-circle position-absolute fit-cover translate-middle top-0" height="96" src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734609573/<?= $team['photo'] ?>" width="96">
-                        <div class="text-primary mt-5 mt-lg-4">
+                        <h5 class="fw-bold text-primary card-title mb-0 mt-1"><?= $team['name'] ?></h5>
+                        <div class="text-primary">
                             degree
                         </div>
-                        <h5 class="fw-bold text-primary card-title mb-0"><?= $team['name'] ?></h5>
                         <p class="mb-4 text-muted"><?= $team['degree'] ?></p>
                     </div>
                 </div>
@@ -379,4 +392,24 @@
     </section>
 <?php endif ?>
 
+<script>
+    var mitra = document.getElementById('mitra');
+    var contentMitra = document.querySelector('.content-mitra');
+    var scrollAmount = 0;
+    var scrollStep = 2; // Kecepatan scroll yang lebih halus
+
+    // Gandakan konten untuk membuat efek loop
+    contentMitra.innerHTML += contentMitra.innerHTML;
+
+    function autoScroll() {
+        scrollAmount += scrollStep;
+        if (scrollAmount >= contentMitra.scrollWidth / 2) {
+            scrollAmount = 0; // Reset scroll ketika mencapai setengah dari konten yang digandakan
+        }
+        mitra.scrollLeft = scrollAmount;
+        requestAnimationFrame(autoScroll);
+    }
+
+    requestAnimationFrame(autoScroll);
+</script>
 <?= $this->endSection() ?>

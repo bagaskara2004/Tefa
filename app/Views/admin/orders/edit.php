@@ -13,6 +13,15 @@
         <textarea class="form-control" id="description" name="description" required><?= old('description', $order['description']) ?></textarea>
     </div>
     <div class="mb-3">
+        <label class="form-label">Tipe :</label>
+        <?php foreach ($types as $type) : ?>
+            <div class="mb-2">
+                <input id="<?= $type['type'] ?>" type="checkbox" name="type[]" value="<?= $type['id_type'] ?>">
+                <label for="<?= $type['type'] ?>"><?= $type['type'] ?></label>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <div class="mb-3">
         <label for="id_status" class="form-label">Status</label>
         <select name="id_status" id="id_status" class="form-select" required>
             <?php foreach ($statuses as $status): ?>

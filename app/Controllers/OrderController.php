@@ -95,7 +95,8 @@ class OrderController extends BaseController
         return view('admin/orders/edit', [
             'order' => $order,
             'statuses' => $statuses,
-            'page' => 'Edit Order',
+            'types' => $this->modelType->findAll(), // Pass all types to the view
+            'page' => 'Orders',
             'time' => $time // Pass the time variable to the view
         ]);
     }
@@ -113,12 +114,25 @@ class OrderController extends BaseController
             return redirect()->back()->withInput()->with('error', 'Validation failed.');
         }
 
+        $types = $this->request->getVar('type');
+        if (!isset($types)) {
+            return redirect()->back()->withInput()->with('error', 'Select at least one type');
+        }
+
         // Update the order
         $this->modelOrder->update($id, [
             'title' => $this->request->getPost('title'),
             'description' => $this->request->getPost('description'),
             'id_status' => $this->request->getPost('id_status')
         ]);
+        
+        $this->modelOrderType->where('id_order', $id)->delete();
+        foreach ($types as $type) {
+            $this->modelOrderType->save([
+                'id_type' => $type,
+                'id_order' => $id
+            ]);
+        }
 
         return redirect()->to('/admin/orders')->with('success', 'Order updated successfully.');
     }
@@ -199,39 +213,39 @@ class OrderController extends BaseController
     public function downloadReport()
     {
         // Get the current date and calculate the current month
-        $startDate = date('Y-m-01'); 
-        $endDate = date('Y-m-t');     
-    
+        $startDate = date('Y-m-01');
+        $endDate = date('Y-m-t');
+
         // Fetch order counts
         $totalOrders = $this->modelOrder->where('created >=', $startDate)
-                                         ->where('created <=', $endDate)
-                                         ->countAllResults();
-    
-        $finishedOrders = $this->modelOrder->where('id_status', 3) 
-                                            ->where('created >=', $startDate)
-                                            ->where('created <=', $endDate)
-                                            ->countAllResults();
-    
+            ->where('created <=', $endDate)
+            ->countAllResults();
+
+        $finishedOrders = $this->modelOrder->where('id_status', 3)
+            ->where('created >=', $startDate)
+            ->where('created <=', $endDate)
+            ->countAllResults();
+
         $inProgressOrders = $this->modelOrder->where('id_status', 2)
-                                              ->where('created >=', $startDate)
-                                              ->where('created <=', $endDate)
-                                              ->countAllResults();
-    
+            ->where('created >=', $startDate)
+            ->where('created <=', $endDate)
+            ->countAllResults();
+
         // Generate PDF
         $this->generatePDF($totalOrders, $finishedOrders, $inProgressOrders);
     }
-    
+
     private function generatePDF($totalOrders, $finishedOrders, $inProgressOrders)
-{
-    // Load Dompdf library
-    $options = new Options();
-    $options->set('defaultFont', 'Courier');
-    $dompdf = new Dompdf($options);
+    {
+        // Load Dompdf library
+        $options = new Options();
+        $options->set('defaultFont', 'Courier');
+        $dompdf = new Dompdf($options);
 
-    // Get the current month and year
-    $currentMonth = date('F Y');
+        // Get the current month and year
+        $currentMonth = date('F Y');
 
-    $html = '
+        $html = '
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -291,16 +305,16 @@ class OrderController extends BaseController
         </tbody>
     </table>';
 
-    // Load HTML content
-    $dompdf->loadHtml($html);
+        // Load HTML content
+        $dompdf->loadHtml($html);
 
-    // Set paper size and orientation
-    $dompdf->setPaper('A4', 'portrait');
+        // Set paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
 
-    // Render the PDF
-    $dompdf->render();
+        // Render the PDF
+        $dompdf->render();
 
-    // Output the generated PDF to Browser
-    return $dompdf->stream('order_report.pdf', ['Attachment' => true]);
-}
+        // Output the generated PDF to Browser
+        return $dompdf->stream('order_report.pdf', ['Attachment' => true]);
+    }
 }

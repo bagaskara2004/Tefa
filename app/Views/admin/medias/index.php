@@ -6,8 +6,7 @@
 <table class="table mt-3">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>ID Website</th>
+            <th>No</th>
             <th>Name</th>
             <th>Link</th>
             <th>Icon</th>
@@ -15,10 +14,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $no = 1; ?>
         <?php foreach ($medias as $media): ?>
             <tr>
-                <td><?= esc($media['id_media']) ?></td>
-                <td><?= esc($media['id_website']) ?></td>
+                <td><?= esc($no) ?></td>
                 <td><?= esc($media['name']) ?></td>
                 <td><a href="<?= esc($media['link']) ?>" target="_blank"><?= esc($media['link']) ?></a></td>
                 <td><i class="<?= esc($media['icon']) ?>"></i></td>
@@ -30,6 +29,7 @@
                     </form>
                 </td>
             </tr>
+            <?php $no++; ?>
         <?php endforeach; ?>
     </tbody>
 </table>

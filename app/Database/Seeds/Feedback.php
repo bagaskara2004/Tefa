@@ -12,18 +12,13 @@ class Feedback extends Seeder
         $modelFeedback = new ModelFeedback();
         $data = [
             [
-                'id_user' => 1,
+                'id_user' => 3,
                 'message' => 'bagus banget dan cepet kerjanya',
                 'post' => true
             ],
             [
-                'id_user' => 2,
+                'id_user' => 4,
                 'message' => 'lumayan untuk umkm harganya murah bangettt, kerja juga cepet pokoknya best deh',
-                'post' => true
-            ],
-            [
-                'id_user' => 3,
-                'message' => 'njay kualitasnya bagus banget , desainnya mantull topp sih. rekomended banget website ini',
                 'post' => true
             ],
         ];

@@ -6,7 +6,7 @@
 <table class="table mt-3">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>No</th>
             <th>Name</th>
             <th>Degree</th>
             <th>Photo</th>
@@ -14,9 +14,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $no=1; ?>
         <?php foreach ($teams as $team): ?>
             <tr>
-                <td><?= esc($team['id_team']) ?></td>
+                <td><?= esc($no++) ?></td>
                 <td><?= esc($team['name']) ?></td>
                 <td><?= esc($team['degree']) ?></td>
                 <td><img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?= esc($team['photo']) ?>" alt="Team Photo" width="100"></td>

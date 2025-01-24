@@ -23,7 +23,7 @@ class ModelMitra extends Model
 
     // Validation
     protected $validationRules      = [
-        'name' => 'required|min_length[2]|max_length[50]|alpha_numeric',
+        'name' => 'required|min_length[2]|max_length[50]',
         'logo' => 'required|min_length[5]|max_length[500]',
         'link' => 'required|min_length[5]|max_length[500]',
     ];

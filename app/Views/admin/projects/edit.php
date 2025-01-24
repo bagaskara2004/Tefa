@@ -17,6 +17,15 @@
         <textarea class="form-control" name="description" required><?= esc($project['description']) ?></textarea>
     </div>
     <div class="mb-3">
+        <label class="form-label">Tipe :</label>
+        <?php foreach ($types as $type) : ?>
+            <div class="mb-2">
+                <input id="<?= $type['type'] ?>" type="checkbox" name="type[]" value="<?= $type['id_type'] ?>">
+                <label for="<?= $type['type'] ?>"><?= $type['type'] ?></label>
+            </div>
+        <?php endforeach ?>
+    </div>
+    <div class="mb-3">
         <label for="photo" class="form-label">Photo:</label>
         <input type="file" class="form-control" name="photo" accept="image/*">
         <small>Leave blank if you do not want to change the photo.</small>

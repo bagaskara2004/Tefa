@@ -5,18 +5,17 @@
 <table class="table mt-3 table-bordered">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>User ID</th>
+            <th>No</th>
             <th>Message</th>
             <th>Posted</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
+        <?php $no = 1; ?>
         <?php foreach ($feedbacks as $feedback): ?>
             <tr>
-                <td><?= esc($feedback['id_feedback']) ?></td>
-                <td><?= esc($feedback['id_user']) ?></td>
+                <td><?= esc($no) ?></td>
                 <td><?= esc($feedback['message']) ?></td>
                 <td><?= esc($feedback['post'] ? 'Yes' : 'No') ?></td>
                 <td>
@@ -27,6 +26,7 @@
                     </form>
                 </td>
             </tr>
+            <?php $no++; ?>
         <?php endforeach; ?>
     </tbody>
 </table>

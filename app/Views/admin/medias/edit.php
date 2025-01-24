@@ -21,6 +21,6 @@
         <small class="form-text text-muted">Enter the Bootstrap icon class (e.g., <code>bi-twitter</code>).</small>
     </div>
     <button type="submit" class="btn btn-warning">Update Media</button>
-    <a href="<?= site_url('admin/media') ?>" class="btn btn-secondary">Cancel</a>
+    <a href="<?= site_url('admin/medias') ?>" class="btn btn-secondary">Cancel</a>
 </form>
 <?= $this->endSection() ?>

@@ -23,7 +23,7 @@ class ModelProject extends Model
 
     // Validation
     protected $validationRules      = [
-        'title' => 'required|min_length[3]|max_length[50]|alpha_numeric',
+        'title' => 'required|min_length[3]|max_length[50]',
         'description' => 'required|min_length[20]|max_length[1000]',
         'photo' => 'required|max_length[500]',
         'url' => 'required|max_length[500]',
