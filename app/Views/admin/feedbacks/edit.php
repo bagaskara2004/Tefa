@@ -9,7 +9,7 @@
     </div>
     <div class="mb-3">
         <label for="message" class="form-label">Message:</label>
-        <textarea class="form-control" name="message" required><?= esc($feedback['message']) ?></textarea>
+        <textarea disabled class="form-control" name="message" required><?= esc($feedback['message']) ?></textarea>
     </div>
     <div class="mb-3">
         <label for="post" class="form-label">Post:</label>

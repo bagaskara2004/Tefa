@@ -29,77 +29,102 @@ class OrderController extends BaseController
     }
 
     public function index()
-    {
-        // Get the selected status from the query string
-        $selectedStatus = $this->request->getGet('status');
+{
+    // Get the selected status from the query string
+    $selectedStatus = $this->request->getGet('status');
 
-        // Fetch orders with optional filtering by status
+    // Fetch orders with optional filtering by status
+    $orders = $this->modelOrder->select('order.*, status.status, GROUP_CONCAT(type.type ORDER BY type.type SEPARATOR ", ") AS types')
+        ->join('ordertype', 'order.id_order = ordertype.id_order', 'left')
+        ->join('type', 'ordertype.id_type = type.id_type', 'left')
+        ->join('status', 'id_status', 'id_status')
+        ->groupBy('order.id_order, order.title')
+        ->orderBy('order.id_order', 'DESC'); // Assuming soft delete
 
-        $orders = $this->modelOrder->select('order.*,status.status,GROUP_CONCAT(type.type ORDER BY type.type SEPARATOR ", ") AS types')->join('ordertype', 'order.id_order = ordertype.id_order', 'left')->join('type', 'ordertype.id_type = type.id_type', 'left')->join('status', 'id_status', 'id_status')->groupBy('order.id_order, order.title')->orderBy('order.id_order', 'DESC'); // Assuming soft delete
-        if ($selectedStatus) {
+    // Apply filtering based on selected status
+    if ($selectedStatus) {
+        if ($selectedStatus == 4) {
+            // If filtering by 'done', include done orders
             $orders->where('order.id_status', $selectedStatus);
+        } else {
+            // If filtering by any other status, exclude done orders
+            $orders->where('order.id_status !=', 4);
         }
-        $orders = $orders->findAll();
+    }
 
-        // Fetch all statuses for the filter dropdown
-        $statuses = $this->modelStatus->findAll();
+    // If no status is selected (i.e., filtering by "all"), exclude done orders
+    if (!$selectedStatus || $selectedStatus == 'all') {
+        $orders->where('order.id_status !=', 4); // Exclude done orders when filtering by "all"
+    }
 
-        // Prepare an array to hold order type names
-        $orderTypeNames = [];
-        foreach ($orders as $order) {
-            // Fetch the order type for this order
-            $orderType = $this->modelOrderType->where('id_order', $order['id_order'])->first();
-            if ($orderType) {
-                // Fetch the type name using the id_type
-                $type = $this->modelType->find($orderType['id_type']);
-                if ($type) {
-                    $orderTypeNames[$order['id_order']] = $type['type']; // Ensure 'type' exists
-                } else {
-                    $orderTypeNames[$order['id_order']] = 'N/A'; // Handle case where type is not found
-                }
+    $orders = $orders->findAll();
+
+    // Fetch all statuses for the filter dropdown
+    $statuses = $this->modelStatus->findAll();
+    
+    // Prepare an array to hold order type names
+    $orderTypeNames = [];
+    foreach ($orders as $order) {
+        // Fetch the order type for this order
+        $orderType = $this->modelOrderType->where('id_order', $order['id_order'])->first();
+        if ($orderType) {
+            // Fetch the type name using the id_type
+            $type = $this->modelType->find($orderType['id_type']);
+            if ($type) {
+                $orderTypeNames[$order['id_order']] = $type['type']; // Ensure 'type' exists
             } else {
-                $orderTypeNames[$order['id_order']] = 'N/A'; // Handle case where order type is not found
+                $orderTypeNames[$order['id_order']] = 'N/A'; // Handle case where type is not found
             }
+        } else {
+            $orderTypeNames[$order['id_order']] = 'N/A'; // Handle case where order type is not found
         }
-
-        // Get the current time
-        $time = date('Y-m-d H:i:s'); // You can format this as needed
-
-        // Pass data to the view
-        return view('admin/orders/index', [
-            'orders' => $orders,
-            'statuses' => $statuses,
-            'selectedStatus' => $selectedStatus,
-            'page' => 'Orders',
-            'time' => $time,
-            'orderTypeNames' => $orderTypeNames, // Pass the order type names to the view
-            'user' =>  $this->modelUser->find(session()->get('user')['id'])
-        ]);
     }
 
-    public function edit($id)
-    {
-        // Fetch the order by ID
-        $order = $this->modelOrder->find($id);
-        if (!$order) {
-            return redirect()->to('/admin/orders')->with('error', 'Order not found.');
-        }
+    // Get the current time
+    $time = date('Y-m-d H:i:s'); // You can format this as needed
 
-        // Fetch all statuses for the dropdown
-        $statuses = $this->modelStatus->findAll();
+    // Pass data to the view
+    return view('admin/orders/index', [
+        'orders' => $orders,
+        'statuses' => $statuses,
+        'selectedStatus' => $selectedStatus,
+        'page' => 'Orders',
+        'time' => $time,
+        'orderTypeNames' => $orderTypeNames, // Pass the order type names to the view
+        'user' =>  $this->modelUser ->find(session()->get('user')['id'])
+    ]);
+}
 
-        // Get the current time
-        $time = date('Y-m-d H:i:s'); // You can format this as needed
-
-        // Pass data to the view
-        return view('admin/orders/edit', [
-            'order' => $order,
-            'statuses' => $statuses,
-            'types' => $this->modelType->findAll(), // Pass all types to the view
-            'page' => 'Orders',
-            'time' => $time // Pass the time variable to the view
-        ]);
+public function edit($id)
+{
+    // Fetch the order by ID
+    $order = $this->modelOrder->find($id);
+    if (!$order) {
+        return redirect()->to('/admin/orders')->with('error', 'Order not found.');
     }
+
+    // Fetch all statuses for the dropdown
+    $statuses = $this->modelStatus->findAll();
+
+    // Fetch the order types associated with this order
+    $orderTypes = $this->modelOrderType->where('id_order', $id)->findAll();
+
+    // Get the current time
+    $time = date('Y-m-d H:i:s'); // You can format this as needed
+
+    // Prepare an array of type IDs for pre-checking
+    $selectedTypes = array_column($orderTypes, 'id_type');
+
+    // Pass data to the view
+    return view('admin/orders/edit', [
+        'order' => $order,
+        'statuses' => $statuses,
+        'types' => $this->modelType->findAll(), // Pass all types to the view
+        'selectedTypes' => $selectedTypes, // Pass the selected types to the view
+        'page' => 'Orders',
+        'time' => $time // Pass the time variable to the view
+    ]);
+}
 
     public function update($id)
     {
@@ -221,7 +246,7 @@ class OrderController extends BaseController
             ->where('created <=', $endDate)
             ->countAllResults();
 
-        $finishedOrders = $this->modelOrder->where('id_status', 3)
+        $finishedOrders = $this->modelOrder->where('id_status', 4)
             ->where('created >=', $startDate)
             ->where('created <=', $endDate)
             ->countAllResults();

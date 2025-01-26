@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\ModelUser;
+use App\Models\ModelUser ;
 use CodeIgniter\HTTP\ResponseInterface;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -20,15 +20,27 @@ class AdminController extends BaseController
 
     public function index()
     {
-        // Assuming role 1 is for admins
-        $data['admins'] = $this->modelUser ->where('role', true)->findAll();
+        // Get the first admin
+        $firstAdmin = $this->modelUser ->where('role', true)->first();
+
+        // Get all admins excluding the first one
+        $data['admins'] = $this->modelUser ->where('role', true)
+                                           ->where('id_user !=', $firstAdmin['id_user']) // Exclude the first admin
+                                           ->findAll();
+        $data['firstAdmin'] = $firstAdmin; // Store the first admin for reference
         $data['page'] = 'Admins';
         $data['time'] = $this->time;
+
         return view('admin/admins/index', $data);
     }
 
     public function create()
     {
+        // Check if the current user is the first admin
+        if (!$this->isFirstAdmin(session()->get('user')['id'])) {
+            return redirect()->to('/admin/admins')->with('error', "You don't have permission to add admins.");
+        }
+
         $data['page'] = 'Teams';
         $data['time'] = $this->time;
         return view('admin/admins/create', $data);
@@ -36,15 +48,20 @@ class AdminController extends BaseController
 
     public function store()
     {
+        // Check if the current user is the first admin
+        if (!$this->isFirstAdmin(session()->get('user')['id'])) {
+            return redirect()->to('/admin/admins')->with('error', "You don't have permission to add admins.");
+        }
+
         $data = [
             'username' => $this->request->getPost('username'),
             'password' => $this->request->getPost('password'),
             'email'    => $this->request->getPost('email'),
             'telp'     => $this->request->getPost('telp'),
-            'photo'    => 'fpcdfnizngdcifp8isbm', 
+            'photo'    => 'fpcdfnizngdcifp8isbm',
             'otp'      => generateKode(),
-            'actived' => false, 
-            'role'     => 1 
+            'actived'  => false,
+            'role'     => 1 // Set role to admin
         ];
 
         $user = $this->findUserByEmail($data['email']);
@@ -52,9 +69,9 @@ class AdminController extends BaseController
             return redirect()->back()->withInput()->with('error', 'The email must be unique');
         }
 
-        $addUser = $this->modelUser->save($data);
-        if (!$addUser) {
-            return redirect()->back()->withInput()->with('errorarray', $this->modelUser->errors());
+        $addUser  = $this->modelUser ->save($data);
+        if (!$addUser ) {
+            return redirect()->back()->withInput()->with('errorarray', $this->modelUser ->errors());
         }
 
         $jwt = new JwtConfig();
@@ -70,13 +87,30 @@ class AdminController extends BaseController
             return redirect()->back()->withInput()->with('error', 'Failed to send email');
         }
 
-        // $this->modelUser ->save($data);
         return redirect()->to('/admin/admins')->with('success', 'Admin created successfully.');
+    }
+
+    public function delete($id)
+    {
+        // Check if the current user is the first admin
+        if (!$this->isFirstAdmin(session()->get('user')['id'])) {
+            return redirect()->to('/admin/admins')->with('error', "You don't have permission to delete admins.");
+        }
+
+        $this->modelUser ->delete($id);
+        return redirect()->to('/admin/admins')->with('success', 'Admin deleted successfully.');
+    }
+
+    private function isFirstAdmin($userId)
+    {
+        // Get the first admin
+        $firstAdmin = $this->modelUser ->where('role', true)->first();
+        return $firstAdmin['id_user'] === $userId; // Check if the current user is the first admin
     }
 
     private function findUserByEmail($email)
     {
-        $data = $this->modelUser->findAll();
+        $data = $this->modelUser ->findAll();
         foreach ($data as $row) {
             if ($row['actived']) {
                 if ($row['email'] == $email) {
@@ -85,11 +119,5 @@ class AdminController extends BaseController
             }
         }
         return null;
-    }
-
-    public function delete($id)
-    {
-        $this->modelUser ->delete($id);
-        return redirect()->to('/admin/admins')->with('success', 'Admin deleted successfully.');
     }
 }

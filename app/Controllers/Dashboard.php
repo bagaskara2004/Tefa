@@ -32,12 +32,12 @@ class Dashboard extends BaseController
                                          ->where('created <=', $currentMonth . '-31')
                                          ->countAllResults();
         
-        $finishedOrders = $this->modelOrder->where('id_status', 3) // Assuming 3 is the status for finished
+        $finishedOrders = $this->modelOrder->where('id_status', 4) // Assuming 3 is the status for finished
                                             ->where('created >=', $currentMonth . '-01')
                                             ->where('created <=', $currentMonth . '-31')
                                             ->countAllResults();
         
-        $rejectedOrders = $this->modelOrder->where('id_status', 2) // Assuming 2 is the status for rejected
+        $rejectedOrders = $this->modelOrder->where('id_status', 3) // Assuming 2 is the status for rejected
                                             ->where('created >=', $currentMonth . '-01')
                                             ->where('created <=', $currentMonth . '-31')
                                             ->countAllResults();

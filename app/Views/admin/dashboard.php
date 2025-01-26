@@ -71,7 +71,7 @@
                             <span class="timeline-badge-border d-block flex-shrink-0"></span>
                         </div>
                         <div class="timeline-desc fs-5 text-dark mt-n1">
-                            Proyek Baru tercatat: <strong><?= $project['title'] ?></strong> (ID: <?= $project['id_project'] ?>)
+                            Proyek Baru tercatat: <strong><?= $project['title'] ?></strong>
                         </div>
                     </li>
                     <?php endforeach; ?>

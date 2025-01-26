@@ -14,12 +14,13 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Tipe :</label>
-        <?php foreach ($types as $type) : ?>
-            <div class="mb-2">
-                <input id="<?= $type['type'] ?>" type="checkbox" name="type[]" value="<?= $type['id_type'] ?>">
-                <label for="<?= $type['type'] ?>"><?= $type['type'] ?></label>
+        <?php foreach ($types as $type): ?>
+            <div>
+                <input type="checkbox" name="type[]" value="<?= $type['id_type'] ?>" 
+                    <?= in_array($type['id_type'], $selectedTypes) ? 'checked' : '' ?>>
+                <label><?= $type['type'] ?></label>
             </div>
-        <?php endforeach ?>
+        <?php endforeach; ?>
     </div>
     <div class="mb-3">
         <label for="id_status" class="form-label">Status</label>
