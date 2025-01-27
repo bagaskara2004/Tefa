@@ -21,5 +21,6 @@
         <small class="form-text text-muted">Enter the Bootstrap icon class (e.g., <code>bi-twitter</code>).</small>
     </div>
     <button type="submit" class="btn btn-success">Create Media</button>
+    <a href="/admin/medias" class="btn btn-secondary">Close</a>
 </form>
 <?= $this->endSection() ?>

@@ -36,5 +36,6 @@
         <input type="text" class="form-control" name="url" value="<?= esc($project['url']) ?>" required>
     </div>
     <button type="submit" class="btn btn-warning">Update Project</button>
+    <a href="/admin/projects" class="btn btn-secondary">Close</a>
 </form>
 <?= $this->endSection() ?>

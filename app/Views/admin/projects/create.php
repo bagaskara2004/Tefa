@@ -29,6 +29,6 @@
         <input type="text" class="form-control" name="url" required>
     </div>
     <button type="submit" class="btn btn-success">Create Project</button>
-    <a href="" class="btn btn-secondary">Close</a>
+    <a href="/admin/projects" class="btn btn-secondary">Close</a>
 </form>
 <?= $this->endSection() ?>

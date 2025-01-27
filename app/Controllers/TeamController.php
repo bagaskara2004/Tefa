@@ -24,7 +24,7 @@ class TeamController extends BaseController
     // Show create team form
     public function create()
     {
-        $data['page'] = 'Create Team';
+        $data['page'] = 'Teams';
         $data['time'] = $this->time;
         return view('admin/teams/create', $data);
     }
@@ -57,7 +57,7 @@ class TeamController extends BaseController
     public function edit($id)
     {
         $data['team'] = $this->modelTeam->find($id);
-        $data['page'] = 'Edit Team';
+        $data['page'] = 'Teams';
         $data['time'] = $this->time;
         return view('admin/teams/edit', $data);
     }

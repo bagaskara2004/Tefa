@@ -41,7 +41,7 @@ class AdminController extends BaseController
             return redirect()->to('/admin/admins')->with('error', "You don't have permission to add admins.");
         }
 
-        $data['page'] = 'Teams';
+        $data['page'] = 'Admins';
         $data['time'] = $this->time;
         return view('admin/admins/create', $data);
     }

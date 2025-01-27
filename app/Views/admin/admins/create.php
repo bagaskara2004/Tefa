@@ -20,5 +20,6 @@
         <input type="text" class="form-control" name="telp" required>
     </div>
     <button type="submit" class="btn btn-success">Create Admin</button>
+    <a href="/admin/admins" class="btn btn-secondary">Close</a>
 </form>
 <?= $this->endSection() ?>

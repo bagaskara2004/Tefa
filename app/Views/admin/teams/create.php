@@ -20,5 +20,6 @@
         <input type="file" class="form-control" name="photo" accept="image/*" required>
     </div>
     <button type="submit" class="btn btn-success">Create Team</button>
+    <a href="/admin/teams" class="btn btn-secondary">Close</a>
 </form>
 <?= $this->endSection() ?>

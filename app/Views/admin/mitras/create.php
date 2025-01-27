@@ -20,5 +20,6 @@
         <input type="url" class="form-control" name="link" required>
     </div>
     <button type="submit" class="btn btn-success">Create Mitra</button>
+    <a href="/admin/mitras" class="btn btn-secondary">Close</a>
 </form>
 <?= $this->endSection() ?>

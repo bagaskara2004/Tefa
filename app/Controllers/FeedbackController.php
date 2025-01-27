@@ -25,7 +25,7 @@ class FeedbackController extends BaseController
     // Show create feedback form
     public function create()
     {
-        $data['page'] = 'Create Feedback';
+        $data['page'] = 'Feedback';
         $data['time'] = $this->time;
         return view('admin/feedbacks/create', $data);
     }
@@ -47,7 +47,7 @@ class FeedbackController extends BaseController
     public function edit($id)
     {
         $data['feedback'] = $this->modelFeedback->find($id);
-        $data['page'] = 'Edit Feedback';
+        $data['page'] = 'Feedbacks';
         $data['time'] = $this->time;
         return view('admin/feedbacks/edit', $data);
     }
