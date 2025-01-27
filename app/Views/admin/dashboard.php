@@ -88,10 +88,7 @@
                         <thead class="text-dark fs-4">
                             <tr>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">ID Pesanan</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">ID Pengguna</h6>
+                                    <h6 class="fw-semibold mb-0">No</h6>
                                 </th>
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Judul</h6>
@@ -102,13 +99,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $no=1; ?>
                             <?php foreach ($recentOrders as $order): ?>
                             <tr>
                                 <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0"><?= $order['id_order'] ?></h6>
-                                </td>
-                                <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-1"><?= $order['id_user'] ?></h6>
+                                    <h6 class="fw-semibold mb-1"><?= $no++ ?></h6>
                                 </td>
                                 <td class="border-bottom-0">
                                     <h6 class="fw-semibold mb-1"><?= $order['title'] ?></h6>
