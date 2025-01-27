@@ -34,30 +34,24 @@ class OrderController extends BaseController
     $selectedStatus = $this->request->getGet('status');
 
     // Fetch orders with optional filtering by status
-    $orders = $this->modelOrder->select('order.*, status.status, GROUP_CONCAT(type.type ORDER BY type.type SEPARATOR ", ") AS types')
+    $orders = $this->modelOrder->select('order.*,user.username, status.status, GROUP_CONCAT(type.type ORDER BY type.type SEPARATOR ", ") AS types')
         ->join('ordertype', 'order.id_order = ordertype.id_order', 'left')
         ->join('type', 'ordertype.id_type = type.id_type', 'left')
         ->join('status', 'id_status', 'id_status')
+        ->join('user', 'order.id_user = user.id_user')
         ->groupBy('order.id_order, order.title')
         ->orderBy('order.id_order', 'DESC'); // Assuming soft delete
 
     // Apply filtering based on selected status
     if ($selectedStatus) {
-        if ($selectedStatus == 4) {
-            // If filtering by 'done', include done orders
-            $orders->where('order.id_status', $selectedStatus);
-        } else {
-            // If filtering by any other status, exclude done orders
-            $orders->where('order.id_status !=', 4);
-        }
-    }
-
-    // If no status is selected (i.e., filtering by "all"), exclude done orders
-    if (!$selectedStatus || $selectedStatus == 'all') {
-        $orders->where('order.id_status !=', 4); // Exclude done orders when filtering by "all"
+        $orders->where('order.id_status', $selectedStatus);
     }
 
     $orders = $orders->findAll();
+    $encryption = \Config\Services::encrypter();
+    foreach ($orders as $key => $order) {
+        $orders[$key]['username'] = $encryption->decrypt($order['username']);
+    }
 
     // Fetch all statuses for the filter dropdown
     $statuses = $this->modelStatus->findAll();

@@ -87,6 +87,8 @@ class ProjectController extends BaseController
         $data['page'] = 'Projects'; // Set the active page for the sidebar
         $data['types'] = $this->typeModel->findAll();
         $data['time'] = date('Y-m-d H:i:s'); // Set the current time
+        $projektTypes = $this->projecttypeModel->where('id_project', $id)->findAll();
+        $data['selectedTypes'] = array_column($projektTypes, 'id_type');
         return view('admin/projects/edit', $data);
     }
 

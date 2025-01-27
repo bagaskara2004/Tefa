@@ -45,6 +45,7 @@ class Dashboard extends BaseController
         // Count the number of users created this month
         $newUsers = $this->modelUser ->where('created >=', $currentMonth . '-01')
                                      ->where('created <=', $currentMonth . '-31')
+                                     ->where('role =',0)
                                      ->countAllResults();
 
         // Count the number of projects created this month

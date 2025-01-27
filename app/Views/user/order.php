@@ -87,7 +87,7 @@
                                                         <h6 class="text-secondary">Chat</h6>
                                                     </a>
                                                 </li>
-                                            <?php else : ?>
+                                            <?php elseif ($order['id_status'] == 1): ?>
                                                 <li>
                                                     <a data-title="<?= $order['title'] ?>" data-id="<?= $order['id_order'] ?>" data-bs-toggle="modal" data-bs-target="#deleteModal" class="dropdown-item d-flex align-items-center deleteOrder">
                                                         <button type="button" class="btn btn-danger me-2"><i class="bi bi-trash"></i></button>
@@ -118,7 +118,7 @@
                             <label class="form-label">Tipe :</label>
                             <?php foreach ($types as $type) : ?>
                                 <div class="mb-2">
-                                    <input id="<?= $type['type'] ?>" type="checkbox" name="type[]" value="<?= $type['id_type'] ?>">
+                                    <input id="<?= $type['type'] ?>" type="checkbox" name="type[]" value="<?= $type['id_type'] ?>" <?= in_array($type['id_type'], old('type', [])) ? 'checked' : ''; ?>>
                                     <label for="<?= $type['type'] ?>"><?= $type['type'] ?></label>
                                 </div>
                             <?php endforeach ?>

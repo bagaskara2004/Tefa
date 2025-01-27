@@ -61,7 +61,7 @@
     <thead>
         <tr>
             <th>No</th>
-            <th>IdUser</th>
+            <th>Username</th>
             <th>Title</th>
             <th>Description</th>
             <th>Order Type</th>
@@ -74,19 +74,13 @@
         <?php foreach ($orders as $order): ?>
             <tr>
                 <td><?= $no ?></td>
-                <td><?= $order['id_user'] ?></td>
+                <td><?= $order['username'] ?></td>
                 <td><?= $order['title'] ?></td>
                 <td><?= $order['description'] ?></td>
                 <td><?= $order['types'] ?></td> <!-- Display the order type -->
                 <td><?= $order['status'] ?></td>
                 <td>
                     <a href="/admin/orders/edit/<?= $order['id_order'] ?>" class="btn btn-warning btn-sm">Edit</a>
-                    <?php if ($order['id_status'] != 4): // Assuming 4 is the status for "done" ?>
-                    <form action="/admin/orders/delete/<?= $order['id_order'] ?>" method="POST" style="display:inline;">
-                        <input type="hidden" name="_method" value="DELETE"> <!-- This is not needed if you change the route -->
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this order?');">Delete</button>
-                    </form>
-                    <?php endif ?>
                     <?php if ($order['id_status'] == 2) : ?>
                         <button type="button" class="btn btn-success btn-sm chatOrder" data-bs-toggle="modal" data-bs-target="#chatModal" data-id="<?= $order['id_order'] ?>" data-title="<?= $order['title'] ?>">chat</button>
                     <?php endif ?>

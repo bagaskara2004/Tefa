@@ -7,7 +7,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>IdUser</th>
+                    <th>No</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Photo</th>
@@ -15,9 +15,10 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $no=1 ?>
                 <?php foreach ($users as $user): ?>
                     <tr>
-                        <td><?= esc($user['id_user']) ?></td>
+                        <td><?= esc($no++) ?></td>
                         <td><?= esc($user['username']) ?></td>
                         <td><?= esc($user['email']) ?></td>
                         <td><img src="https://res.cloudinary.com/dnppmhczy/image/upload/v1734949243/<?= $user['photo'] ?>" alt="User Photo" width="100"></td>
