@@ -56,12 +56,13 @@ class FeedbackController extends BaseController
     public function update($id)
     {
         $data = [
-            'id_user' => $this->request->getPost('id_user'),
-            'message' => $this->request->getPost('message'),
-            'post' => $this->request->getPost('post') ? 1 : 0,
+            'id_feedback' => $id,
+            'id_user' => $this->request->getVar('id_user'),
+            'message' => $this->request->getVar('message'),
+            'post' => $this->request->getVar('post'),
         ];
 
-        $this->modelFeedback->update($id, $data);
+        $this->modelFeedback->save($data);
         return redirect()->to('/admin/feedbacks')->with('success', 'Feedback updated successfully.');
     }
 
